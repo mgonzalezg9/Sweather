@@ -3,17 +3,17 @@ import { StyleSheet, TouchableOpacity } from "react-native";
 import { Text, View } from "../components/Themed";
 import { RootStackScreenProps } from "../types";
 
-export default function NotFoundScreen({
+export default function LocationRequestScreen({
   navigation,
-}: RootStackScreenProps<"NotFound">) {
+}: RootStackScreenProps<"LocationRequest">) {
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>This screen doesn't exist.</Text>
+      <Text style={styles.title}>LocationRequestScreen</Text>
       <TouchableOpacity
-        onPress={() => navigation.replace("LocationRequest")}
+        onPress={() => navigation.replace("NotFound")}
         style={styles.link}
       >
-        <Text style={styles.linkText}>Go to home screen!</Text>
+        <Text style={styles.linkText}>Go to NOT FOUND!</Text>
       </TouchableOpacity>
     </View>
   );
