@@ -1,6 +1,7 @@
 import { StyleSheet } from "react-native";
+import { View } from "../../components/icons/view/View";
+import { Text } from "../../components/text/Text";
 
-import { Text, View } from "../../components/Themed";
 import { RootStackScreenProps } from "../../types";
 
 export default function LocationDetailsScreen({
