@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { StyleSheet } from "react-native";
 
 import { Text, View } from "../../components/Themed";
@@ -6,6 +7,10 @@ import { RootStackScreenProps } from "../../types";
 export default function LocationDetailsScreen({
   route,
 }: RootStackScreenProps<"LocationDetails">) {
+  useEffect(() => {
+    console.log("Requesting weather at location");
+  }, []);
+
   return (
     <View style={styles.container}>
       <View>

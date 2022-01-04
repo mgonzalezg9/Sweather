@@ -1,5 +1,5 @@
-import { useEffect, useState } from "react";
-import { StyleSheet, Image } from "react-native";
+import { useState } from "react";
+import { StyleSheet } from "react-native";
 import SquareButton from "../../components/buttons/SquareButton";
 import LocationPin from "../../components/icons/LocationPin";
 import { View, Text, TextInput } from "../../components/Themed";
@@ -27,9 +27,7 @@ const SearchSection = ({ onSearch }: SearchSection) => {
     }
 
     const location = await Location.getCurrentPositionAsync({});
-    console.log("User's current location:", location);
     setCoordinates(location);
-    setLocation(`${location.coords.latitude}, ${location.coords.longitude}`);
   };
 
   return (
@@ -38,15 +36,26 @@ const SearchSection = ({ onSearch }: SearchSection) => {
       <View style={styles.searchBox}>
         <TextInput
           style={styles.locationInput}
-          value={location}
-          onChangeText={setLocation}
+          value={
+            coordinates
+              ? `${coordinates.coords.latitude}, ${coordinates.coords.longitude}`
+              : location
+          }
+          onChangeText={(value: string) => {
+            if (coordinates) {
+              setCoordinates(undefined);
+            }
+            setLocation(value);
+          }}
           onSubmitEditing={getWeatherDetails}
           placeholder="Eg. Tokyo"
           clearButtonMode="while-editing"
         />
         <SquareButton
-          onClick={location ? getWeatherDetails : requestUserLocation}
-          icon={location ? <Search /> : <LocationPin />}
+          onClick={
+            location || coordinates ? getWeatherDetails : requestUserLocation
+          }
+          icon={location || coordinates ? <Search /> : <LocationPin />}
         />
       </View>
       {errorMsg ? (
