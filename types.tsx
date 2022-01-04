@@ -13,6 +13,7 @@ declare global {
 
 export type RootStackParamList = {
   LocationRequest: undefined;
+  LocationDetails: undefined;
   NotFound: undefined;
 };
 
