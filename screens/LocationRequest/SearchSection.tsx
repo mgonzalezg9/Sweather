@@ -1,18 +1,25 @@
+import { useEffect, useState } from "react";
 import { StyleSheet, Image } from "react-native";
 import SquareButton from "../../components/buttons/SquareButton";
 import LocationPin from "../../components/icons/LocationPin";
-import { View, Text } from "../../components/Themed";
+import { View, Text, TextInput } from "../../components/Themed";
 
 const SearchSection = () => {
+  const [location, setLocation] = useState<string>();
+
   const searchLocation = () => {
     console.log("Searching for location");
   };
 
   return (
     <View style={styles.container}>
-      <Text style={styles.chooseText}>Specify your location:</Text>
+      <Text style={styles.chooseText}>Name your town or city:</Text>
       <View style={styles.searchBox}>
-        <Text>S</Text>
+        <TextInput
+          placeholder="Eg. Tokyo"
+          onChangeText={setLocation}
+          style={styles.locationInput}
+        />
         <SquareButton onClick={searchLocation} icon={<LocationPin />} />
       </View>
     </View>
@@ -26,7 +33,6 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     width: "100%",
     marginTop: 20,
-    marginLeft: 20,
   },
   searchBox: {
     display: "flex",
@@ -34,6 +40,11 @@ const styles = StyleSheet.create({
   },
   chooseText: {
     fontSize: 18,
+    marginBottom: 10,
+  },
+  locationInput: {
+    marginRight: 15,
+    flex: 1,
   },
 });
 
