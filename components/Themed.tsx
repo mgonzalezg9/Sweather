@@ -52,6 +52,10 @@ export function TextInput(props: TextInputProps) {
     { light: lightColor, dark: darkColor },
     "text"
   );
+  const tintColor = useThemeColor(
+    { light: lightColor, dark: darkColor },
+    "tint"
+  );
 
   const defaultStyle = {
     backgroundColor,
@@ -62,7 +66,13 @@ export function TextInput(props: TextInputProps) {
     padding: 10,
   };
 
-  return <DefaultTextInput style={[defaultStyle, style]} {...otherProps} />;
+  return (
+    <DefaultTextInput
+      style={[defaultStyle, style]}
+      selectionColor={tintColor}
+      {...otherProps}
+    />
+  );
 }
 
 export function View(props: ViewProps) {

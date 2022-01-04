@@ -3,12 +3,29 @@ import { StyleSheet, Image } from "react-native";
 import SquareButton from "../../components/buttons/SquareButton";
 import LocationPin from "../../components/icons/LocationPin";
 import { View, Text, TextInput } from "../../components/Themed";
+import * as Location from "expo-location";
+import Search from "../../components/icons/Search";
 
 const SearchSection = () => {
+  const [coordinates, setCoordinates] = useState<Location.LocationObject>();
   const [location, setLocation] = useState<string>();
+  const [errorMsg, setErrorMsg] = useState<string>();
 
-  const searchLocation = () => {
-    console.log("Searching for location");
+  const getWeatherDetails = () => {
+    console.log("Searching for location", { location, coordinates });
+  };
+
+  const requestUserLocation = async () => {
+    let { status } = await Location.requestForegroundPermissionsAsync();
+    if (status !== "granted") {
+      setErrorMsg("Permission to access location was denied");
+      return;
+    }
+
+    const location = await Location.getCurrentPositionAsync({});
+    console.log("User's current location:", location);
+    setCoordinates(location);
+    setLocation(`${location.coords.latitude}, ${location.coords.longitude}`);
   };
 
   return (
@@ -16,12 +33,23 @@ const SearchSection = () => {
       <Text style={styles.chooseText}>Name your town or city:</Text>
       <View style={styles.searchBox}>
         <TextInput
-          placeholder="Eg. Tokyo"
-          onChangeText={setLocation}
           style={styles.locationInput}
+          value={location}
+          onChangeText={setLocation}
+          onSubmitEditing={getWeatherDetails}
+          placeholder="Eg. Tokyo"
+          clearButtonMode="while-editing"
         />
-        <SquareButton onClick={searchLocation} icon={<LocationPin />} />
+        <SquareButton
+          onClick={location ? getWeatherDetails : requestUserLocation}
+          icon={location ? <Search /> : <LocationPin />}
+        />
       </View>
+      {errorMsg ? (
+        <Text style={styles.errorText}>
+          Ups! We couldn't find the weather at this location. Try with another!
+        </Text>
+      ) : null}
     </View>
   );
 };
@@ -41,6 +69,11 @@ const styles = StyleSheet.create({
   chooseText: {
     fontSize: 18,
     marginBottom: 10,
+  },
+  errorText: {
+    fontSize: 18,
+    marginTop: 40,
+    color: "red",
   },
   locationInput: {
     marginRight: 15,
