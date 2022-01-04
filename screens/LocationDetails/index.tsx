@@ -3,13 +3,16 @@ import { StyleSheet } from "react-native";
 import { Text, View } from "../../components/Themed";
 import { RootStackScreenProps } from "../../types";
 
-export default function LocationRequestScreen({
-  navigation,
-}: RootStackScreenProps<"LocationRequest">) {
+export default function LocationDetailsScreen({
+  route,
+}: RootStackScreenProps<"LocationDetails">) {
   return (
     <View style={styles.container}>
       <View>
-        <Text style={styles.text}>Hello world!</Text>
+        <Text style={styles.text}>
+          Hello world!
+          {JSON.stringify(route.params)}
+        </Text>
       </View>
     </View>
   );

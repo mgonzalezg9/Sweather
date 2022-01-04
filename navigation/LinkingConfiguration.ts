@@ -14,6 +14,7 @@ const linking: LinkingOptions<RootStackParamList> = {
   config: {
     screens: {
       LocationRequest: 'request',
+      LocationDetails: 'details',
       NotFound: '*',
     },
   },

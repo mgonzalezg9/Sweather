@@ -1,5 +1,5 @@
 import AppTitle from "./AppTitle";
-import { StyleSheet, TouchableOpacity } from "react-native";
+import { StyleSheet } from "react-native";
 
 import { Text, View } from "../../components/Themed";
 import { RootStackScreenProps } from "../../types";
@@ -8,11 +8,15 @@ import SearchSection from "./SearchSection";
 export default function LocationRequestScreen({
   navigation,
 }: RootStackScreenProps<"LocationRequest">) {
+  const weatherSearch = (location: any) => {
+    navigation.navigate("LocationDetails", location);
+  };
+
   return (
     <View style={styles.container}>
       <View style={styles.locationInput}>
         <AppTitle />
-        <SearchSection />
+        <SearchSection onSearch={weatherSearch} />
       </View>
       <View>
         <Text style={styles.poweredText}>Powered by: XXXXXXXXXXX</Text>

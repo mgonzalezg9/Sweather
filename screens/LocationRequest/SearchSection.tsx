@@ -6,13 +6,17 @@ import { View, Text, TextInput } from "../../components/Themed";
 import * as Location from "expo-location";
 import Search from "../../components/icons/Search";
 
-const SearchSection = () => {
+type SearchSection = {
+  onSearch: (result: any) => void;
+};
+
+const SearchSection = ({ onSearch }: SearchSection) => {
   const [coordinates, setCoordinates] = useState<Location.LocationObject>();
   const [location, setLocation] = useState<string>();
   const [errorMsg, setErrorMsg] = useState<string>();
 
   const getWeatherDetails = () => {
-    console.log("Searching for location", { location, coordinates });
+    onSearch(location ? { location } : { coordinates });
   };
 
   const requestUserLocation = async () => {
