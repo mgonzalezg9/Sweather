@@ -16,7 +16,7 @@ const SearchSection = ({ onSearch }: SearchSection) => {
   const [errorMsg, setErrorMsg] = useState<string>();
 
   const getWeatherDetails = () => {
-    onSearch(location ? { location } : { coordinates });
+    onSearch(location ? { location } : { coordinates: coordinates?.coords });
   };
 
   const requestUserLocation = async () => {

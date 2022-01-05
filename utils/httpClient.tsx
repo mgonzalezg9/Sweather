@@ -1,7 +1,4 @@
-export const get = async (
-  endpoint: string,
-  filters: Record<string, string>
-) => {
+export const get = async (endpoint: string, filters: Record<string, any>) => {
   let url = endpoint;
   Object.keys(filters).forEach((key: string, index: number) => {
     if (index === 0) {

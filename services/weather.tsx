@@ -19,9 +19,27 @@ export type Weather = {
   countryCode: string;
 };
 
-export const getCurrentWeather = async (city: string): Promise<Weather> => {
+export type Coordinates = {
+  latitude: number;
+  longitude: number;
+};
+
+type GetCurrentWeatherProps = {
+  location?: string;
+  coordinates?: Coordinates;
+};
+export const getCurrentWeather = async ({
+  location,
+  coordinates,
+}: GetCurrentWeatherProps): Promise<Weather> => {
+  const query = location
+    ? { q: location }
+    : {
+        lat: coordinates?.latitude,
+        lon: coordinates?.longitude,
+      };
   const data = await get(`${WEATHER_URL}/data/2.5/weather`, {
-    q: city,
+    ...query,
     units: "metric",
     appid: WEATHER_API_KEY,
   });
