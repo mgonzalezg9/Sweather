@@ -2,9 +2,11 @@ import { useState } from "react";
 import { StyleSheet } from "react-native";
 import SquareButton from "../../components/buttons/SquareButton";
 import LocationPin from "../../components/icons/LocationPin";
-import { View, Text, TextInput } from "../../components/Themed";
 import * as Location from "expo-location";
 import Search from "../../components/icons/Search";
+import { View } from "../../components/icons/view/View";
+import { Text } from "../../components/text/Text";
+import { TextInput } from "../../components/input/TextInput";
 
 type SearchSection = {
   onSearch: (result: any) => void;

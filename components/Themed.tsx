@@ -3,12 +3,6 @@
  * https://docs.expo.io/guides/color-schemes/
  */
 
-import {
-  Text as DefaultText,
-  View as DefaultView,
-  TextInput as DefaultTextInput,
-} from "react-native";
-
 import Colors from "../constants/Colors";
 import useColorScheme from "../hooks/useColorScheme";
 
@@ -26,61 +20,7 @@ export function useThemeColor(
   }
 }
 
-type ThemeProps = {
+export type ThemeProps = {
   lightColor?: string;
   darkColor?: string;
 };
-
-export type TextProps = ThemeProps & DefaultText["props"];
-export type TextInputProps = ThemeProps & DefaultTextInput["props"];
-export type ViewProps = ThemeProps & DefaultView["props"];
-
-export function Text(props: TextProps) {
-  const { style, lightColor, darkColor, ...otherProps } = props;
-  const color = useThemeColor({ light: lightColor, dark: darkColor }, "text");
-
-  return <DefaultText style={[{ color }, style]} {...otherProps} />;
-}
-
-export function TextInput(props: TextInputProps) {
-  const { style, lightColor, darkColor, ...otherProps } = props;
-  const backgroundColor = useThemeColor(
-    { light: lightColor, dark: darkColor },
-    "background"
-  );
-  const textColor = useThemeColor(
-    { light: lightColor, dark: darkColor },
-    "text"
-  );
-  const tintColor = useThemeColor(
-    { light: lightColor, dark: darkColor },
-    "tint"
-  );
-
-  const defaultStyle = {
-    backgroundColor,
-    color: textColor,
-    borderColor: textColor,
-    borderWidth: 1,
-    borderRadius: 10,
-    padding: 10,
-  };
-
-  return (
-    <DefaultTextInput
-      style={[defaultStyle, style]}
-      selectionColor={tintColor}
-      {...otherProps}
-    />
-  );
-}
-
-export function View(props: ViewProps) {
-  const { style, lightColor, darkColor, ...otherProps } = props;
-  const backgroundColor = useThemeColor(
-    { light: lightColor, dark: darkColor },
-    "background"
-  );
-
-  return <DefaultView style={[{ backgroundColor }, style]} {...otherProps} />;
-}
