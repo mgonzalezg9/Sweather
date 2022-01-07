@@ -1,6 +1,6 @@
 import { StyleSheet, Image } from "react-native";
 import AppLogo from "../../assets/images/icon.png";
-import { View } from "../../components/icons/view/View";
+import { View } from "../../components/view/View";
 import { Text } from "../../components/text/Text";
 
 const AppTitle = () => {

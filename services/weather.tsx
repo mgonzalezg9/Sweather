@@ -32,6 +32,10 @@ export const getCurrentWeather = async ({
   location,
   coordinates,
 }: GetCurrentWeatherProps): Promise<Weather> => {
+  if (!location && !coordinates?.latitude && !coordinates?.longitude) {
+    throw new Error("Either location or coordinates must be provided");
+  }
+
   const query = location
     ? { q: location }
     : {

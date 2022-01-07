@@ -4,7 +4,7 @@ import SquareButton from "../../components/buttons/SquareButton";
 import LocationPin from "../../components/icons/LocationPin";
 import * as Location from "expo-location";
 import Search from "../../components/icons/Search";
-import { View } from "../../components/icons/view/View";
+import { View } from "../../components/view/View";
 import { Text } from "../../components/text/Text";
 import { TextInput } from "../../components/input/TextInput";
 
