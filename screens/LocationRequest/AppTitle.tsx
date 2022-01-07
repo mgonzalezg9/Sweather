@@ -1,6 +1,7 @@
-import { StyleSheet, Image, View } from "react-native";
+import { StyleSheet, Image } from "react-native";
 import AppLogo from "../../assets/images/icon.png";
-import { Text } from "../../components/Themed";
+import { View } from "../../components/icons/view/View";
+import { Text } from "../../components/text/Text";
 
 const AppTitle = () => {
   return (
