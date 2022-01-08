@@ -1,10 +1,11 @@
 import AppTitle from "./AppTitle";
-import { StyleSheet } from "react-native";
+import { Image, StyleSheet } from "react-native";
 
 import { RootStackScreenProps } from "../../types";
 import SearchSection from "./SearchSection";
 import { Text } from "../../components/text/Text";
 import { View } from "../../components/view/View";
+import OpenweatherBanner from "../../assets/images/openweather.png";
 
 export default function LocationRequestScreen({
   navigation,
@@ -19,8 +20,9 @@ export default function LocationRequestScreen({
         <AppTitle />
         <SearchSection onSearch={weatherSearch} />
       </View>
-      <View>
-        <Text style={styles.poweredText}>Powered by: XXXXXXXXXXX</Text>
+      <View style={styles.poweredContainer}>
+        <Text style={styles.poweredText}>Powered by:</Text>
+        <Image source={OpenweatherBanner} style={styles.openweatherImage} />
       </View>
     </View>
   );
@@ -40,5 +42,17 @@ const styles = StyleSheet.create({
     width: "100%",
     marginLeft: 40,
     marginRight: 40,
+  },
+  poweredContainer: {
+    display: "flex",
+    alignItems: "center",
+    flexDirection: "row",
+    justifyContent: "flex-start",
+  },
+  openweatherImage: {
+    resizeMode: "contain",
+    height: 100,
+    width: 100,
+    marginLeft: 15,
   },
 });
