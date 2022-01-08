@@ -3,6 +3,7 @@ import { StyleSheet, View as DefaultView } from "react-native";
 import { View } from "../../components/view/View";
 import { Text } from "../../components/text/Text";
 import CityTitle from "./CityTitle";
+import WeatherDetails from "./WeatherDetails";
 
 type WeatherSectionProps = {
   city: string;
@@ -12,6 +13,8 @@ type WeatherSectionProps = {
   windSpeed: number;
 };
 
+const regionNames = { of: (code: string) => code };
+
 const WeatherSection = ({
   city,
   countryCode,
@@ -19,9 +22,17 @@ const WeatherSection = ({
   condition,
   windSpeed,
 }: Partial<WeatherSectionProps>) => {
+  const temperatureText = temperature ? Math.ceil(temperature) : "-";
+  const regionName = countryCode ? regionNames.of(countryCode) : "-";
+
   return (
     <View style={styles.container}>
-      <CityTitle style={styles.title} city={city} country={countryCode} />
+      <CityTitle style={styles.title} city={city} country={regionName} />
+      <WeatherDetails
+        temperature={temperature}
+        condition={condition}
+        windSpeed={windSpeed}
+      />
     </View>
   );
 };
@@ -38,7 +49,7 @@ const styles = StyleSheet.create({
   },
   title: {
     position: "absolute",
-    marginTop: 75,
-    marginLeft: 5,
+    top: 75,
+    left: 5,
   },
 });

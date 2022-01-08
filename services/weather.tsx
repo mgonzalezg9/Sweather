@@ -16,6 +16,7 @@ export type Weather = {
   humidity: number;
   sunrise: number;
   sunset: number;
+  city: string;
   countryCode: string;
 };
 
@@ -60,6 +61,7 @@ export const getCurrentWeather = async ({
     humidity: data.main.humidity,
     sunrise: data.sys.sunrise,
     sunset: data.sys.sunset,
+    city: data.name,
     countryCode: data.sys.country,
   };
 };

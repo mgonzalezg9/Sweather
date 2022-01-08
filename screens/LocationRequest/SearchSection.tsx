@@ -59,9 +59,9 @@ const SearchSection = ({ onSearch }: SearchSection) => {
           }
           icon={
             location || coordinates ? (
-              <Search lightColor="white" />
+              <Search lightColor="white" lightStroke="white" />
             ) : (
-              <LocationPin lightColor="white" />
+              <LocationPin lightColor="white" lightStroke="white" />
             )
           }
         />

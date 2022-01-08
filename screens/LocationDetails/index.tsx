@@ -6,7 +6,6 @@ import { Text } from "../../components/text/Text";
 import { RootStackScreenProps } from "../../types";
 import * as WeatherService from "../../services/weather";
 import background from "../../assets/images/background_1.jpg";
-import SquareButton from "../../components/buttons/SquareButton";
 import WeatherSection from "./WeatherSection";
 
 export default function LocationDetailsScreen({
@@ -26,20 +25,13 @@ export default function LocationDetailsScreen({
   return (
     <View style={styles.container}>
       <ImageBackground source={background} style={styles.backgroundImage}>
-        {/* <Text style={styles.text}>
-          The weather at {params.location || "your location"} is currently{" "}
-          {weatherData?.condition} with a temperature of{" "}
-          {weatherData?.temperature.current}°C.
-        </Text>
-        <SquareButton
-          onClick={() => {
-            console.log("back");
-            navigation.goBack();
-          }}
-        /> */}
+        {/* <Text>{JSON.stringify(weatherData)}</Text> */}
         <WeatherSection
-          city={params.location}
+          city={weatherData?.city}
+          temperature={weatherData?.temperature.current}
           condition={weatherData?.condition}
+          countryCode={weatherData?.countryCode}
+          windSpeed={weatherData?.wind}
         />
       </ImageBackground>
     </View>
@@ -49,7 +41,7 @@ export default function LocationDetailsScreen({
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    padding: 20,
+    padding: 10,
   },
   backgroundImage: {
     height: "100%",
