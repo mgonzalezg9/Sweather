@@ -18,6 +18,8 @@ export default {
   },
   palette: {
     grey: '#707070',
-    deepBlue: '#153B50'
+    deepBlue: '#153B50',
+    lightBlue: '#429EA6',
+    yellow: '#FFBA08'
   }
 };

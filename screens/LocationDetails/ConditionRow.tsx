@@ -2,6 +2,8 @@ import React from "react";
 import { StyleSheet, Text, View as DefaultView } from "react-native";
 import { Icon } from "../../components/icons";
 import Cloud from "../../components/icons/cloud";
+import Rain from "../../components/icons/rain";
+import Snow from "../../components/icons/snow";
 import Sun from "../../components/icons/sun";
 import Wind from "../../components/icons/wind";
 import Colors from "../../constants/Colors";
@@ -24,7 +26,27 @@ const ConditionMap = {
       {...ICON_DEFAULT_PROPS}
     />
   ),
-  Sunny: <Sun {...ICON_DEFAULT_PROPS} />,
+  Rain: (
+    <Rain
+      lightStroke={Colors.palette.lightBlue}
+      darkStroke={Colors.palette.lightBlue}
+      {...ICON_DEFAULT_PROPS}
+    />
+  ),
+  Snow: (
+    <Snow
+      lightStroke={Colors.palette.grey}
+      darkStroke={Colors.palette.grey}
+      {...ICON_DEFAULT_PROPS}
+    />
+  ),
+  Clear: (
+    <Sun
+      lightStroke={Colors.palette.yellow}
+      darkStroke={Colors.palette.yellow}
+      {...ICON_DEFAULT_PROPS}
+    />
+  ),
   Wind: (
     <Wind
       lightStroke={Colors.palette.deepBlue}

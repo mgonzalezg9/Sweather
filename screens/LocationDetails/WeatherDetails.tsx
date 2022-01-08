@@ -44,6 +44,6 @@ const styles = StyleSheet.create({
   },
   main: {
     flexDirection: "column",
-    marginTop: 15,
+    marginTop: 25,
   },
 });
