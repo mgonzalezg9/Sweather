@@ -1,9 +1,9 @@
 import React from "react";
 import { StyleSheet, View as DefaultView } from "react-native";
 import { View } from "../../components/view/View";
-import { Text } from "../../components/text/Text";
 import CityTitle from "./CityTitle";
 import WeatherDetails from "./WeatherDetails";
+import { countries } from "country-data";
 
 type WeatherSectionProps = {
   city: string;
@@ -22,8 +22,7 @@ const WeatherSection = ({
   condition,
   windSpeed,
 }: Partial<WeatherSectionProps>) => {
-  const temperatureText = temperature ? Math.ceil(temperature) : "-";
-  const regionName = countryCode ? regionNames.of(countryCode) : "-";
+  const regionName = countryCode ? countries[countryCode].name : "-";
 
   return (
     <View style={styles.container}>

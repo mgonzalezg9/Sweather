@@ -1,11 +1,13 @@
 import React from "react";
-import { StyleSheet, Text, View as DefaultView } from "react-native";
+import { StyleSheet, View as DefaultView } from "react-native";
 import { Icon } from "../../components/icons";
 import Cloud from "../../components/icons/cloud";
 import Rain from "../../components/icons/rain";
 import Snow from "../../components/icons/snow";
+import Storm from "../../components/icons/storm";
 import Sun from "../../components/icons/sun";
 import Wind from "../../components/icons/wind";
+import { Text } from "../../components/text/Text";
 import Colors from "../../constants/Colors";
 
 const ICON_SIZE = 17;
@@ -42,6 +44,13 @@ const ConditionMap = {
   ),
   Clear: (
     <Sun
+      lightStroke={Colors.palette.yellow}
+      darkStroke={Colors.palette.yellow}
+      {...ICON_DEFAULT_PROPS}
+    />
+  ),
+  Storm: (
+    <Storm
       lightStroke={Colors.palette.yellow}
       darkStroke={Colors.palette.yellow}
       {...ICON_DEFAULT_PROPS}

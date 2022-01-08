@@ -16,7 +16,6 @@ const WeatherDetails = ({
 }: Partial<WeatherDetailsProps>) => {
   const temperatureText = temperature ? Math.ceil(temperature) : "-";
 
-  console.log(windSpeed);
   return (
     <DefaultView style={styles.container}>
       <Text style={styles.temperatureText}>{temperatureText}º</Text>
