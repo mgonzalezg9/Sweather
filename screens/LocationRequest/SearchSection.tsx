@@ -57,7 +57,13 @@ const SearchSection = ({ onSearch }: SearchSection) => {
           onClick={
             location || coordinates ? getWeatherDetails : requestUserLocation
           }
-          icon={location || coordinates ? <Search /> : <LocationPin />}
+          icon={
+            location || coordinates ? (
+              <Search lightColor="white" />
+            ) : (
+              <LocationPin lightColor="white" />
+            )
+          }
         />
       </View>
       {errorMsg ? (

@@ -1,5 +1,8 @@
 export type Icon = {
     width?: number;
     height?: number;
-    color?: string;
+    lightColor?: string;
+    darkColor?: string;
+    lightStroke?: string;
+    darkStroke?: string;
 };

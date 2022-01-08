@@ -1,7 +1,8 @@
 import React from "react";
-import { StyleSheet } from "react-native";
+import { StyleSheet, View as DefaultView } from "react-native";
 import { View } from "../../components/view/View";
 import { Text } from "../../components/text/Text";
+import CityTitle from "./CityTitle";
 
 type WeatherSectionProps = {
   city: string;
@@ -20,12 +21,7 @@ const WeatherSection = ({
 }: Partial<WeatherSectionProps>) => {
   return (
     <View style={styles.container}>
-      <View style={styles.content}>
-        <View style={styles.leftColumn}></View>
-        <View style={styles.rightColumn}>
-          <Text>Hey there</Text>
-        </View>
-      </View>
+      <CityTitle style={styles.title} city={city} country={countryCode} />
     </View>
   );
 };
@@ -34,23 +30,15 @@ export default WeatherSection;
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: "#fff",
     position: "absolute",
     top: "33%",
     width: "150%",
     height: "68%",
     borderTopRightRadius: 500,
   },
-  content: {
+  title: {
     position: "absolute",
-    top: 10,
-    flex: 1,
-    flexDirection: "row",
-  },
-  rightColumn: {
-    flex: 1,
-  },
-  leftColumn: {
-    flex: 1,
+    marginTop: 75,
+    marginLeft: 5,
   },
 });
