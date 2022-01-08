@@ -1,5 +1,5 @@
 const tintColorLight = '#EC7357';
-const tintColorDark = '#fff';
+const tintColorDark = '#EC7357';
 
 export default {
   light: {
@@ -16,4 +16,10 @@ export default {
     tabIconDefault: '#ccc',
     tabIconSelected: tintColorDark,
   },
+  palette: {
+    grey: '#707070',
+    deepBlue: '#153B50',
+    lightBlue: '#429EA6',
+    yellow: '#FFBA08'
+  }
 };

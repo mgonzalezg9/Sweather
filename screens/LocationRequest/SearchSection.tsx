@@ -1,10 +1,10 @@
-import { useEffect, useState } from "react";
-import { StyleSheet, Image } from "react-native";
+import { useState } from "react";
+import { StyleSheet } from "react-native";
 import SquareButton from "../../components/buttons/SquareButton";
 import LocationPin from "../../components/icons/LocationPin";
 import * as Location from "expo-location";
 import Search from "../../components/icons/Search";
-import { View } from "../../components/icons/view/View";
+import { View } from "../../components/view/View";
 import { Text } from "../../components/text/Text";
 import { TextInput } from "../../components/input/TextInput";
 
@@ -18,7 +18,7 @@ const SearchSection = ({ onSearch }: SearchSection) => {
   const [errorMsg, setErrorMsg] = useState<string>();
 
   const getWeatherDetails = () => {
-    onSearch(location ? { location } : { coordinates });
+    onSearch(location ? { location } : { coordinates: coordinates?.coords });
   };
 
   const requestUserLocation = async () => {
@@ -29,9 +29,7 @@ const SearchSection = ({ onSearch }: SearchSection) => {
     }
 
     const location = await Location.getCurrentPositionAsync({});
-    console.log("User's current location:", location);
     setCoordinates(location);
-    setLocation(`${location.coords.latitude}, ${location.coords.longitude}`);
   };
 
   return (
@@ -40,15 +38,32 @@ const SearchSection = ({ onSearch }: SearchSection) => {
       <View style={styles.searchBox}>
         <TextInput
           style={styles.locationInput}
-          value={location}
-          onChangeText={setLocation}
+          value={
+            coordinates
+              ? `${coordinates.coords.latitude}, ${coordinates.coords.longitude}`
+              : location
+          }
+          onChangeText={(value: string) => {
+            if (coordinates) {
+              setCoordinates(undefined);
+            }
+            setLocation(value);
+          }}
           onSubmitEditing={getWeatherDetails}
           placeholder="Eg. Tokyo"
           clearButtonMode="while-editing"
         />
         <SquareButton
-          onClick={location ? getWeatherDetails : requestUserLocation}
-          icon={location ? <Search /> : <LocationPin />}
+          onClick={
+            location || coordinates ? getWeatherDetails : requestUserLocation
+          }
+          icon={
+            location || coordinates ? (
+              <Search lightColor="white" lightStroke="white" />
+            ) : (
+              <LocationPin lightColor="white" lightStroke="white" />
+            )
+          }
         />
       </View>
       {errorMsg ? (

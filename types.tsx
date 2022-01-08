@@ -4,6 +4,7 @@
  */
 
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
+import { Coordinates } from "./services/weather";
 
 declare global {
   namespace ReactNavigation {
@@ -13,7 +14,10 @@ declare global {
 
 export type RootStackParamList = {
   LocationRequest: undefined;
-  LocationDetails: undefined;
+  LocationDetails: {
+    location: string;
+    coordinates: Coordinates;
+  };
   NotFound: undefined;
 };
 

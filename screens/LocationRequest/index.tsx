@@ -3,8 +3,8 @@ import { StyleSheet } from "react-native";
 
 import { RootStackScreenProps } from "../../types";
 import SearchSection from "./SearchSection";
-import { View } from "../../components/icons/view/View";
 import { Text } from "../../components/text/Text";
+import { View } from "../../components/view/View";
 
 export default function LocationRequestScreen({
   navigation,
