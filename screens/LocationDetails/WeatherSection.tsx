@@ -41,9 +41,9 @@ export default WeatherSection;
 const styles = StyleSheet.create({
   container: {
     position: "absolute",
-    top: "33%",
-    width: "150%",
-    height: "68%",
+    top: "40%",
+    width: "100%",
+    height: "62%",
     borderTopRightRadius: 500,
   },
   title: {

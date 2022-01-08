@@ -7,6 +7,8 @@ export const get = async (endpoint: string, filters: Record<string, any>) => {
       url += `&${key}=${filters[key]}`;
     }
   });
+
   const response = await fetch(url);
+
   return await response.json();
 };

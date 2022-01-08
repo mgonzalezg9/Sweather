@@ -7,11 +7,13 @@ import { RootStackScreenProps } from "../../types";
 import * as WeatherService from "../../services/weather";
 import background from "../../assets/images/background_1.jpg";
 import WeatherSection from "./WeatherSection";
+import { getLocationBackground } from "../../services/wallpaper";
 
 export default function LocationDetailsScreen({
   route: { params },
   navigation,
 }: RootStackScreenProps<"LocationDetails">) {
+  const [wallpaper, setWallpaper] = useState();
   const [weatherData, setWeatherData] = useState<WeatherService.Weather>();
 
   useEffect(() => {
@@ -22,9 +24,19 @@ export default function LocationDetailsScreen({
     }).then(setWeatherData);
   }, [params.location, params.coordinates]);
 
+  useEffect(() => {
+    console.log("Searching wallpaper");
+    getLocationBackground({ query: weatherData?.city || params.location }).then(
+      setWallpaper
+    );
+  }, [weatherData]);
+
   return (
     <View style={styles.container}>
-      <ImageBackground source={background} style={styles.backgroundImage}>
+      <ImageBackground
+        source={wallpaper ? { uri: wallpaper } : background}
+        style={styles.backgroundImage}
+      >
         {/* <Text>{JSON.stringify(weatherData)}</Text> */}
         <WeatherSection
           city={weatherData?.city}
