@@ -18,7 +18,7 @@ const CityTitle = ({
     <View {...props}>
       <Text style={styles.cityText}>{city}</Text>
       <View style={styles.countryContainer}>
-        <LocationPin style={styles.locationPin} lightColor="white" width={15} />
+        <LocationPin style={styles.locationPin} width={20} />
         <Text style={styles.countryText}>{country}</Text>
       </View>
     </View>
@@ -35,10 +35,9 @@ const styles = StyleSheet.create({
     fontSize: 16,
   },
   countryContainer: {
-    flex: 1,
     flexDirection: "row",
-    alignItems: "flex-end",
     marginTop: 5,
+    width: 80,
   },
   locationPin: {
     marginHorizontal: 5,
