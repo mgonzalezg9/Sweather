@@ -4,7 +4,7 @@ import config from "../config/global";
 const UNSPLASH_API_KEY = config.UNSPLASH_API_KEY as string;
 const UNSPLASH_URL = config.UNSPLASH_URL as string;
 
-const PER_PAGE = 1;
+const PER_PAGE = 3; // retrieves 3 wallpaper and choose one of them
 const ORIENTATION = "portrait";
 
 export const getLocationBackground = async ({ query }: { query: string }) => {
@@ -15,5 +15,12 @@ export const getLocationBackground = async ({ query }: { query: string }) => {
     client_id: UNSPLASH_API_KEY,
   });
 
-  return data.results[0].urls.regular;
+  if (data.total === 0) {
+    return null;
+  }
+
+  const choosenPhotoIndex = Math.floor(Math.random() * data.results.length);
+  return {
+    uri: data.results[choosenPhotoIndex].urls.regular,
+  };
 };

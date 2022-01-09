@@ -37,7 +37,7 @@ const styles = StyleSheet.create({
   countryContainer: {
     flexDirection: "row",
     marginTop: 5,
-    width: 50,
+    width: 80,
   },
   locationPin: {
     marginHorizontal: 5,

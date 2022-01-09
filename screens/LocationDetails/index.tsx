@@ -13,7 +13,7 @@ export default function LocationDetailsScreen({
   route: { params },
   navigation,
 }: RootStackScreenProps<"LocationDetails">) {
-  const [wallpaper, setWallpaper] = useState();
+  const [wallpaper, setWallpaper] = useState<{ uri: string } | null>();
   const [weatherData, setWeatherData] = useState<WeatherService.Weather>();
 
   useEffect(() => {
@@ -21,7 +21,9 @@ export default function LocationDetailsScreen({
     WeatherService.getCurrentWeather({
       location: params.location,
       coordinates: params.coordinates,
-    }).then(setWeatherData);
+    })
+      .then(setWeatherData)
+      .catch(console.error);
   }, [params.location, params.coordinates]);
 
   useEffect(() => {
@@ -34,7 +36,7 @@ export default function LocationDetailsScreen({
   return (
     <View style={styles.container}>
       <ImageBackground
-        source={wallpaper ? { uri: wallpaper } : background}
+        source={wallpaper || background}
         style={styles.backgroundImage}
       >
         {/* <Text>{JSON.stringify(weatherData)}</Text> */}
