@@ -5,6 +5,7 @@ import CityTitle from "./CityTitle";
 import WeatherDetails from "./WeatherDetails";
 import { countries } from "country-data";
 import ForecastRow from "../../components/weather/ForecastRow";
+import { Forecast } from "../../services/weather/types";
 
 type WeatherSectionProps = {
   city: string;
@@ -12,6 +13,7 @@ type WeatherSectionProps = {
   temperature: number;
   condition: string;
   windSpeed: number;
+  forecast: Forecast;
 };
 
 const WeatherSection = ({
@@ -20,6 +22,7 @@ const WeatherSection = ({
   temperature,
   condition,
   windSpeed,
+  forecast,
 }: Partial<WeatherSectionProps>) => {
   const regionName = countryCode ? countries[countryCode].name : "-";
 
@@ -31,12 +34,7 @@ const WeatherSection = ({
         condition={condition}
         windSpeed={windSpeed}
       />
-      <ForecastRow
-        forecast={[
-          { time: "9:00", condition: "Clouds", temperature: 18 },
-          { time: "9:00", condition: "Clouds", temperature: 18 },
-        ]}
-      />
+      <ForecastRow forecast={forecast} />
     </View>
   );
 };

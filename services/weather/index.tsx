@@ -5,28 +5,34 @@ import { Coordinates, Weather } from "./types";
 const WEATHER_API_KEY = config.WEATHER_API_KEY as string;
 const WEATHER_URL = config.WEATHER_URL as string;
 
-type GetCurrentWeatherProps = {
+const FORECAST_MAX_HOURS = 5;
+const UNIT_SYSTEM = "metric";
+
+type GetWeatherProps = {
   location?: string;
   coordinates?: Coordinates;
 };
 
-export const getCurrentWeather = async ({
-  location,
-  coordinates,
-}: GetCurrentWeatherProps): Promise<Weather> => {
-  if (!location && !coordinates?.latitude && !coordinates?.longitude) {
-    throw new Error("Either location or coordinates must be provided");
-  }
-
-  const query = location
+const createQuery = ({ location, coordinates }: GetWeatherProps) => {
+  return location
     ? { q: location }
     : {
         lat: coordinates?.latitude,
         lon: coordinates?.longitude,
       };
+};
+
+export const getCurrentWeather = async ({
+  location,
+  coordinates,
+}: GetWeatherProps): Promise<Weather> => {
+  if (!location && !coordinates?.latitude && !coordinates?.longitude) {
+    throw new Error("Either location or coordinates must be provided");
+  }
+
   const data = await get(`${WEATHER_URL}/data/2.5/weather`, {
-    ...query,
-    units: "metric",
+    ...createQuery({ location, coordinates }),
+    units: UNIT_SYSTEM,
     appid: WEATHER_API_KEY,
   });
 
@@ -47,10 +53,19 @@ export const getCurrentWeather = async ({
   };
 };
 
-export const getHourlyForecast = async (city: string) => {
-  return await get(`${WEATHER_URL}/data/2.5/forecast`, {
-    q: city,
-    units: "metric",
+export const getHourlyForecast = async ({
+  location,
+  coordinates,
+}: GetWeatherProps) => {
+  const data = await get(`${WEATHER_URL}/data/2.5/forecast`, {
+    ...createQuery({ location, coordinates }),
+    units: UNIT_SYSTEM,
     appid: WEATHER_API_KEY,
   });
+
+  return data.list.slice(0, FORECAST_MAX_HOURS).map((f: any) => ({
+    time: f.dt_txt,
+    temperature: f.main.temp,
+    condition: f.weather[0].main,
+  }));
 };

@@ -22,6 +22,7 @@ const ForecastRow = ({ forecast }: Partial<ForecastRowProps>) => {
     <DefaultView style={styles.container}>
       {forecast.map((f) => (
         <TimeWeather
+          key={f.time}
           temperature={f.temperature}
           condition={f.condition}
           time={f.time}
@@ -36,7 +37,7 @@ export default ForecastRow;
 const styles = StyleSheet.create({
   container: {
     position: "relative",
-    top: 70,
+    top: 40,
     marginLeft: 5,
     flex: 1,
     flexDirection: "row",

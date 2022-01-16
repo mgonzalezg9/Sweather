@@ -16,6 +16,14 @@ export type Weather = {
     countryCode: string;
 };
 
+type TimeForecast = {
+    time: string;
+    condition: Condition;
+    temperature: number;
+}
+
+export type Forecast = TimeForecast[];
+
 export type Coordinates = {
     latitude: number;
     longitude: number;
