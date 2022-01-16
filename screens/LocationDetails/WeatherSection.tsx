@@ -4,6 +4,7 @@ import { View } from "../../components/view/View";
 import CityTitle from "./CityTitle";
 import WeatherDetails from "./WeatherDetails";
 import { countries } from "country-data";
+import ForecastRow from "../../components/weather/ForecastRow";
 
 type WeatherSectionProps = {
   city: string;
@@ -12,8 +13,6 @@ type WeatherSectionProps = {
   condition: string;
   windSpeed: number;
 };
-
-const regionNames = { of: (code: string) => code };
 
 const WeatherSection = ({
   city,
@@ -31,6 +30,12 @@ const WeatherSection = ({
         temperature={temperature}
         condition={condition}
         windSpeed={windSpeed}
+      />
+      <ForecastRow
+        forecast={[
+          { time: "9:00", condition: "Clouds", temperature: 18 },
+          { time: "9:00", condition: "Clouds", temperature: 18 },
+        ]}
       />
     </View>
   );

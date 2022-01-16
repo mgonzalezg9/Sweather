@@ -1,34 +1,15 @@
-import { get } from "../utils/httpClient";
-import config from "../config/global";
+import { get } from "../../utils/httpClient";
+import config from "../../config/global";
+import { Coordinates, Weather } from "./types";
 
 const WEATHER_API_KEY = config.WEATHER_API_KEY as string;
 const WEATHER_URL = config.WEATHER_URL as string;
-
-export type Weather = {
-  temperature: {
-    current: number;
-    feelsLike: number;
-    min: number;
-    max: number;
-  };
-  condition: string;
-  wind: number;
-  humidity: number;
-  sunrise: number;
-  sunset: number;
-  city: string;
-  countryCode: string;
-};
-
-export type Coordinates = {
-  latitude: number;
-  longitude: number;
-};
 
 type GetCurrentWeatherProps = {
   location?: string;
   coordinates?: Coordinates;
 };
+
 export const getCurrentWeather = async ({
   location,
   coordinates,
