@@ -1,6 +1,5 @@
 import React from "react";
 import { StyleSheet, View as DefaultView } from "react-native";
-import { View } from "../../components/view/View";
 import { Text } from "../../components/text/Text";
 import LocationPin from "../../components/icons/LocationPin";
 
@@ -15,13 +14,17 @@ const CityTitle = ({
   ...props
 }: Partial<CityTitleProps>) => {
   return (
-    <View {...props}>
-      <Text style={styles.cityText}>{city}</Text>
-      <View style={styles.countryContainer}>
+    <DefaultView {...props}>
+      <Text style={styles.cityText} numberOfLines={1}>
+        {city}
+      </Text>
+      <DefaultView style={styles.countryContainer}>
         <LocationPin style={styles.locationPin} width={20} />
-        <Text style={styles.countryText}>{country}</Text>
-      </View>
-    </View>
+        <Text style={styles.countryText} numberOfLines={1}>
+          {country}
+        </Text>
+      </DefaultView>
+    </DefaultView>
   );
 };
 
@@ -30,6 +33,7 @@ export default CityTitle;
 const styles = StyleSheet.create({
   cityText: {
     fontSize: 36,
+    maxWidth: 250,
   },
   countryText: {
     fontSize: 16,
@@ -37,7 +41,7 @@ const styles = StyleSheet.create({
   countryContainer: {
     flexDirection: "row",
     marginTop: 5,
-    width: 80,
+    // width: 80,
   },
   locationPin: {
     marginHorizontal: 5,

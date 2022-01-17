@@ -23,6 +23,13 @@ export const ConditionMap = {
       {...ICON_DEFAULT_PROPS}
     />
   ),
+  Fog: (
+    <Cloud
+      lightStroke={Colors.palette.grey}
+      darkStroke={Colors.palette.grey}
+      {...ICON_DEFAULT_PROPS}
+    />
+  ),
   Rain: (
     <Rain
       lightStroke={Colors.palette.lightBlue}
