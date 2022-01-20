@@ -1,5 +1,3 @@
-import { ConditionMap } from "./map";
-
 export type Weather = {
     temperature: {
         current: number;
@@ -10,14 +8,14 @@ export type Weather = {
     condition: string;
     wind: number;
     humidity: number;
-    sunrise: number;
-    sunset: number;
+    sunrise: Date;
+    sunset: Date;
     city: string;
     countryCode: string;
 };
 
 type TimeForecast = {
-    time: string;
+    time: Date;
     condition: Condition;
     temperature: number;
 }
@@ -28,5 +26,3 @@ export type Coordinates = {
     latitude: number;
     longitude: number;
 };
-
-export type Condition = keyof typeof ConditionMap;

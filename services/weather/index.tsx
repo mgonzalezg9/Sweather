@@ -46,8 +46,8 @@ export const getCurrentWeather = async ({
     condition: data.weather[0].main,
     wind: data.wind.speed,
     humidity: data.main.humidity,
-    sunrise: data.sys.sunrise,
-    sunset: data.sys.sunset,
+    sunrise: new Date((data.sys.sunrise + data.timezone) * 1000),
+    sunset: new Date((data.sys.sunset + data.timezone) * 1000),
     city: data.name,
     countryCode: data.sys.country,
   };
@@ -64,7 +64,7 @@ export const getHourlyForecast = async ({
   });
 
   return data.list.slice(0, FORECAST_MAX_HOURS).map((f: any) => ({
-    time: f.dt_txt,
+    time: new Date((f.dt + data.city.timezone) * 1000),
     temperature: f.main.temp,
     condition: f.weather[0].main,
   }));

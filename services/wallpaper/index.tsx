@@ -1,5 +1,5 @@
-import { get } from "../utils/httpClient";
-import config from "../config/global";
+import { get } from "../../utils/httpClient";
+import config from "../../config/global";
 
 const UNSPLASH_API_KEY = config.UNSPLASH_API_KEY as string;
 const UNSPLASH_URL = config.UNSPLASH_URL as string;

@@ -1,29 +1,41 @@
 import React from "react";
 import { StyleSheet, View as DefaultView } from "react-native";
-import { Condition } from "../../services/weather/types";
-import { ConditionMap } from "../../services/weather/map";
+import { formatTwoDigits } from "../../utils/date";
 import { Text } from "../text/Text";
+import ConditionIcon, { Condition } from "./ConditionIcon";
 
 type TimeWeatherProps = {
-  time: string;
+  time: Date;
   temperature: number;
   condition: Condition;
+  sunrise?: Date;
+  sunset?: Date;
 };
 
 const TimeWeather = ({
   time,
   condition,
   temperature,
+  sunrise,
+  sunset,
   ...props
 }: TimeWeatherProps) => {
-  const computedTime = time.slice(10, 16);
+  const computedTime = `${formatTwoDigits(time.getHours())}:${formatTwoDigits(
+    time.getMinutes()
+  )}`;
   const computedTemperature = Math.ceil(temperature);
-  const ComputedIcon = ConditionMap[condition];
 
   return (
     <DefaultView style={styles.container} {...props}>
       <Text style={styles.timeContainer}>{computedTime}</Text>
-      {ComputedIcon}
+      <ConditionIcon
+        width={25}
+        height={25}
+        condition={condition}
+        sunrise={sunrise}
+        sunset={sunset}
+        time={time}
+      />
       <Text style={styles.temperatureContainer}>{computedTemperature}º</Text>
     </DefaultView>
   );

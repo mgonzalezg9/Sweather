@@ -1,19 +1,25 @@
 import React from "react";
 import { StyleSheet, View as DefaultView } from "react-native";
-import { Condition } from "../../services/weather/types";
+import { Condition } from "./ConditionIcon";
 import TimeWeather from "./TimeWeather";
 
 type Forecast = {
-  time: string;
+  time: Date;
   temperature: number;
   condition: Condition;
 };
 
 type ForecastRowProps = {
   forecast: Forecast[];
+  sunrise: Date;
+  sunset: Date;
 };
 
-const ForecastRow = ({ forecast }: Partial<ForecastRowProps>) => {
+const ForecastRow = ({
+  forecast,
+  sunrise,
+  sunset,
+}: Partial<ForecastRowProps>) => {
   if (!forecast) {
     return null;
   }
@@ -22,10 +28,12 @@ const ForecastRow = ({ forecast }: Partial<ForecastRowProps>) => {
     <DefaultView style={styles.container}>
       {forecast.map((f) => (
         <TimeWeather
-          key={f.time}
+          key={f.time.getTime()}
           temperature={f.temperature}
           condition={f.condition}
           time={f.time}
+          sunrise={sunrise}
+          sunset={sunset}
         />
       ))}
     </DefaultView>

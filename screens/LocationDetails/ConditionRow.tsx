@@ -2,8 +2,9 @@ import React from "react";
 import { StyleSheet, View as DefaultView } from "react-native";
 import { Icon } from "../../components/icons";
 import { Text } from "../../components/text/Text";
-import { Condition } from "../../services/weather/types";
-import { ConditionMap } from "../../services/weather/map";
+import ConditionIcon, {
+  Condition,
+} from "../../components/weather/ConditionIcon";
 
 type ConditionRow = {
   text?: string;
@@ -15,13 +16,11 @@ const ConditionRow = ({ icon, text, condition }: ConditionRow) => {
   if (!condition && !text) {
     return null;
   }
-
-  const ComputedIcon = icon || ConditionMap[condition as Condition];
   const computedText = condition === "Wind" ? text : condition;
 
   return (
     <DefaultView style={styles.container}>
-      {ComputedIcon}
+      {condition ? <ConditionIcon condition={condition} /> : icon}
       <Text style={styles.conditionText}>{computedText}</Text>
     </DefaultView>
   );
