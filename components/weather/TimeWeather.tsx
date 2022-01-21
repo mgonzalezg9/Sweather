@@ -49,7 +49,7 @@ const styles = StyleSheet.create({
     flexDirection: "column",
     alignItems: "center",
     padding: 5,
-    marginHorizontal: 7,
+    marginHorizontal: 10,
   },
   timeContainer: {
     marginBottom: 25,

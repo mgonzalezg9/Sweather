@@ -1,6 +1,6 @@
 import { get } from "../../utils/httpClient";
 import config from "../../config/global";
-import { Coordinates, Weather } from "./types";
+import { Coordinates, Forecast, Weather } from "./types";
 
 const WEATHER_API_KEY = config.WEATHER_API_KEY as string;
 const WEATHER_URL = config.WEATHER_URL as string;
@@ -46,8 +46,6 @@ export const getCurrentWeather = async ({
     condition: data.weather[0].main,
     wind: data.wind.speed,
     humidity: data.main.humidity,
-    sunrise: new Date((data.sys.sunrise + data.timezone) * 1000),
-    sunset: new Date((data.sys.sunset + data.timezone) * 1000),
     city: data.name,
     countryCode: data.sys.country,
   };
@@ -56,16 +54,20 @@ export const getCurrentWeather = async ({
 export const getHourlyForecast = async ({
   location,
   coordinates,
-}: GetWeatherProps) => {
+}: GetWeatherProps): Promise<Forecast> => {
   const data = await get(`${WEATHER_URL}/data/2.5/forecast`, {
     ...createQuery({ location, coordinates }),
     units: UNIT_SYSTEM,
     appid: WEATHER_API_KEY,
   });
 
-  return data.list.slice(0, FORECAST_MAX_HOURS).map((f: any) => ({
-    time: new Date((f.dt + data.city.timezone) * 1000),
-    temperature: f.main.temp,
-    condition: f.weather[0].main,
-  }));
+  return {
+    hours: data.list.slice(0, FORECAST_MAX_HOURS).map((f: any) => ({
+      time: new Date((f.dt + data.city.timezone) * 1000),
+      temperature: f.main.temp,
+      condition: f.weather[0].main,
+    })),
+    sunrise: new Date((data.city.sunrise + data.city.timezone) * 1000),
+    sunset: new Date((data.city.sunset + data.city.timezone) * 1000),
+  };
 };

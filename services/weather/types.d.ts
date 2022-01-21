@@ -8,8 +8,6 @@ export type Weather = {
     condition: string;
     wind: number;
     humidity: number;
-    sunrise: Date;
-    sunset: Date;
     city: string;
     countryCode: string;
 };
@@ -20,7 +18,11 @@ type TimeForecast = {
     temperature: number;
 }
 
-export type Forecast = TimeForecast[];
+export type Forecast = {
+    hours: TimeForecast[];
+    sunrise: Date;
+    sunset: Date;
+};
 
 export type Coordinates = {
     latitude: number;

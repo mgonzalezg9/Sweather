@@ -1,32 +1,16 @@
 import React from "react";
 import { StyleSheet, View as DefaultView } from "react-native";
-import { Condition } from "./ConditionIcon";
+import { Forecast } from "../../services/weather/types";
 import TimeWeather from "./TimeWeather";
 
-type Forecast = {
-  time: Date;
-  temperature: number;
-  condition: Condition;
-};
-
-type ForecastRowProps = {
-  forecast: Forecast[];
-  sunrise: Date;
-  sunset: Date;
-};
-
-const ForecastRow = ({
-  forecast,
-  sunrise,
-  sunset,
-}: Partial<ForecastRowProps>) => {
-  if (!forecast) {
+const ForecastRow = ({ hours, sunrise, sunset }: Partial<Forecast>) => {
+  if (!hours) {
     return null;
   }
 
   return (
     <DefaultView style={styles.container}>
-      {forecast.map((f) => (
+      {hours.map((f) => (
         <TimeWeather
           key={f.time.getTime()}
           temperature={f.temperature}

@@ -20,6 +20,7 @@ export default {
     grey: '#707070',
     deepBlue: '#153B50',
     lightBlue: '#429EA6',
-    yellow: '#FFBA08'
+    yellow: '#FFBA08',
+    purple: '#153B50'
   }
 };

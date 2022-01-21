@@ -38,17 +38,7 @@ const DayIconsMap = {
   Wind: Wind,
 };
 
-const NightIconsMap = {
-  Clouds: Moon,
-  Fog: Cloud,
-  Rain: Rain,
-  Snow: Snow,
-  Clear: Moon,
-  Storm: Storm,
-  Wind: Wind,
-};
-
-const ConditionProps = {
+const DayProps = {
   Clouds: {
     lightStroke: Colors.palette.grey,
     darkStroke: Colors.palette.grey,
@@ -79,6 +69,47 @@ const ConditionProps = {
   },
 };
 
+const NightIconsMap = {
+  Clouds: Moon,
+  Fog: Cloud,
+  Rain: Rain,
+  Snow: Snow,
+  Clear: Moon,
+  Storm: Storm,
+  Wind: Wind,
+};
+
+const NightProps = {
+  Clouds: {
+    lightStroke: Colors.palette.purple,
+    darkStroke: Colors.palette.purple,
+  },
+  Fog: {
+    lightStroke: Colors.palette.grey,
+    darkStroke: Colors.palette.grey,
+  },
+  Rain: {
+    lightStroke: Colors.palette.lightBlue,
+    darkStroke: Colors.palette.lightBlue,
+  },
+  Snow: {
+    lightStroke: Colors.palette.grey,
+    darkStroke: Colors.palette.grey,
+  },
+  Clear: {
+    lightStroke: Colors.palette.purple,
+    darkStroke: Colors.palette.purple,
+  },
+  Storm: {
+    lightStroke: Colors.palette.yellow,
+    darkStroke: Colors.palette.yellow,
+  },
+  Wind: {
+    lightStroke: Colors.palette.deepBlue,
+    darkStroke: Colors.palette.deepBlue,
+  },
+};
+
 const ConditionIcon = ({
   condition,
   sunrise,
@@ -86,14 +117,11 @@ const ConditionIcon = ({
   time,
   ...props
 }: ConditionIconProps) => {
-  const Icon =
-    time && sunrise && sunset && time > sunrise && time < sunset
-      ? DayIconsMap[condition]
-      : NightIconsMap[condition];
+  const isDay = time && sunrise && sunset && time < sunset;
+  const Icon = isDay ? DayIconsMap[condition] : NightIconsMap[condition];
+  const Props = isDay ? DayProps[condition] : NightProps[condition];
 
-  return (
-    <Icon {...ICON_DEFAULT_PROPS} {...ConditionProps[condition]} {...props} />
-  );
+  return <Icon {...ICON_DEFAULT_PROPS} {...Props} {...props} />;
 };
 
 export default ConditionIcon;

@@ -10,7 +10,6 @@ import { Forecast, Weather } from "../../services/weather/types";
 
 export default function LocationDetailsScreen({
   route: { params },
-  navigation,
 }: RootStackScreenProps<"LocationDetails">) {
   const [wallpaper, setWallpaper] = useState<{ uri: string } | null>();
   const [weatherData, setWeatherData] = useState<Weather>();
