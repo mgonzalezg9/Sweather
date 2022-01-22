@@ -21,6 +21,8 @@ export default {
     deepBlue: '#153B50',
     lightBlue: '#429EA6',
     yellow: '#FFBA08',
-    purple: '#153B50'
+    purple: '#153B50',
+    black: '#000',
+    white: '#fff',
   }
 };

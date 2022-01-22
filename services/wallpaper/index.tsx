@@ -1,5 +1,6 @@
 import { get } from "../../utils/httpClient";
 import config from "../../config/global";
+import { BackgroundQuery, Uri } from "./types.d";
 
 const UNSPLASH_API_KEY = config.UNSPLASH_API_KEY as string;
 const UNSPLASH_URL = config.UNSPLASH_URL as string;
@@ -7,7 +8,9 @@ const UNSPLASH_URL = config.UNSPLASH_URL as string;
 const PER_PAGE = 3; // retrieves 3 wallpaper and choose one of them
 const ORIENTATION = "portrait";
 
-export const getLocationBackground = async ({ query }: { query: string }) => {
+export const getLocationBackground = async ({
+  query,
+}: BackgroundQuery): Promise<Uri | null> => {
   const data = await get(`${UNSPLASH_URL}/search/photos`, {
     query,
     per_page: PER_PAGE,

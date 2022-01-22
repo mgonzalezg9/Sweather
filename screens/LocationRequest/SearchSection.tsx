@@ -7,15 +7,17 @@ import Search from "../../components/icons/Search";
 import { View } from "../../components/view/View";
 import { Text } from "../../components/text/Text";
 import { TextInput } from "../../components/input/TextInput";
+import Colors from "../../constants/Colors";
 
 type SearchSection = {
   onSearch: (result: any) => void;
+  errorMsg: unknown;
 };
 
-const SearchSection = ({ onSearch }: SearchSection) => {
+const SearchSection = ({ onSearch, errorMsg }: SearchSection) => {
   const [coordinates, setCoordinates] = useState<Location.LocationObject>();
   const [location, setLocation] = useState<string>();
-  const [errorMsg, setErrorMsg] = useState<string>();
+  const [locationDenied, setLocationDenied] = useState<boolean>(false);
 
   const getWeatherDetails = () => {
     onSearch(location ? { location } : { coordinates: coordinates?.coords });
@@ -24,7 +26,7 @@ const SearchSection = ({ onSearch }: SearchSection) => {
   const requestUserLocation = async () => {
     let { status } = await Location.requestForegroundPermissionsAsync();
     if (status !== "granted") {
-      setErrorMsg("Permission to access location was denied");
+      setLocationDenied(true);
       return;
     }
 
@@ -59,18 +61,30 @@ const SearchSection = ({ onSearch }: SearchSection) => {
           }
           icon={
             location || coordinates ? (
-              <Search lightColor="white" lightStroke="white" />
+              <Search
+                lightColor={Colors.palette.white}
+                lightStroke={Colors.palette.white}
+                darkColor={Colors.palette.black}
+                darkStroke={Colors.palette.black}
+              />
             ) : (
-              <LocationPin lightColor="white" lightStroke="white" />
+              <LocationPin
+                lightColor={Colors.palette.white}
+                lightStroke={Colors.palette.white}
+                darkColor={Colors.palette.black}
+                darkStroke={Colors.palette.black}
+              />
             )
           }
         />
       </View>
-      {errorMsg ? (
-        <Text style={styles.errorText}>
-          Ups! We couldn't find the weather at this location. Try with another!
-        </Text>
-      ) : null}
+      <Text style={styles.errorText}>
+        {errorMsg
+          ? "Ups! We couldn't find the weather at this location. Try with another!"
+          : locationDenied
+          ? "Please enable location services to use this feature."
+          : null}
+      </Text>
     </View>
   );
 };
