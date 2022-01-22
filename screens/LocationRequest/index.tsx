@@ -1,24 +1,55 @@
 import AppTitle from "./AppTitle";
-import { Image, StyleSheet } from "react-native";
+import { ActivityIndicator, Image, StyleSheet } from "react-native";
 
 import { RootStackScreenProps } from "../../types";
 import SearchSection from "./SearchSection";
 import { Text } from "../../components/text/Text";
 import { View } from "../../components/view/View";
 import OpenweatherBanner from "../../assets/images/openweather.png";
+import { getCurrentWeather, getHourlyForecast } from "../../services/weather";
+import { useState } from "react";
+import Colors from "../../constants/Colors";
+import { getLocationBackground } from "../../services/wallpaper";
 
 export default function LocationRequestScreen({
   navigation,
 }: RootStackScreenProps<"LocationRequest">) {
-  const weatherSearch = (location: any) => {
-    navigation.navigate("LocationDetails", location);
+  const [loading, setLoading] = useState<boolean>(false);
+  const [error, setError] = useState<unknown>();
+
+  const weatherSearch = async (location: any) => {
+    console.log("Requesting weather at location", location);
+
+    setError(false);
+    setLoading(true);
+    try {
+      const weather = await getCurrentWeather(location);
+      const forecast = await getHourlyForecast(location);
+
+      console.log("Searching wallpaper");
+      const wallpaper = await getLocationBackground({ query: weather.city });
+      setLoading(false);
+
+      navigation.navigate("LocationDetails", { weather, forecast, wallpaper });
+    } catch (error) {
+      console.log("Unknown weather at location");
+      setError(error);
+    }
   };
 
   return (
     <View style={styles.container}>
       <View style={styles.locationInput}>
         <AppTitle />
-        <SearchSection onSearch={weatherSearch} />
+        {loading && !error ? (
+          <ActivityIndicator
+            style={styles.spinner}
+            size="large"
+            color={Colors.light.tint}
+          />
+        ) : (
+          <SearchSection onSearch={weatherSearch} errorMsg={error} />
+        )}
       </View>
       <View style={styles.poweredContainer}>
         <Text style={styles.poweredText}>Powered by:</Text>
@@ -54,5 +85,8 @@ const styles = StyleSheet.create({
     height: 100,
     width: 100,
     marginLeft: 15,
+  },
+  spinner: {
+    marginTop: 20,
   },
 });
