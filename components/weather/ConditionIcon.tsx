@@ -9,6 +9,7 @@ import Storm from "../icons/Storm";
 import Wind from "../icons/Wind";
 import Colors from "../../constants/Colors";
 import Moon from "../icons/Moon";
+import Fog from "../icons/Fog";
 
 export type Condition = keyof typeof DayIconsMap;
 
@@ -30,7 +31,7 @@ const ICON_DEFAULT_PROPS = {
 
 const DayIconsMap = {
   Clouds: Cloud,
-  Fog: Cloud,
+  Fog: Fog,
   Rain: Rain,
   Snow: Snow,
   Clear: Sun,
@@ -71,7 +72,7 @@ const DayProps = {
 
 const NightIconsMap = {
   Clouds: Moon,
-  Fog: Cloud,
+  Fog: Fog,
   Rain: Rain,
   Snow: Snow,
   Clear: Moon,
