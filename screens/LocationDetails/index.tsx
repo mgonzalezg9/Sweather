@@ -1,20 +1,21 @@
 import { useEffect, useState } from "react";
 import { ImageBackground, StyleSheet } from "react-native";
 import { View } from "../../components/view/View";
-import { getCurrentWeather, getHourlyForecast } from "../../services/weather";
+import { getLocalBackground } from "../../services/wallpaper";
 import { RootStackScreenProps } from "../../types";
-import background from "../../assets/images/background_1.jpg";
 import WeatherSection from "./WeatherSection";
+
+const localBackground = getLocalBackground();
 
 export default function LocationDetailsScreen({
   route: { params },
 }: RootStackScreenProps<"LocationDetails">) {
+  // In case no bg is provided, it takes one from local
+  const background = params.wallpaper || localBackground;
+
   return (
     <View style={styles.container}>
-      <ImageBackground
-        source={params.wallpaper || background}
-        style={styles.backgroundImage}
-      >
+      <ImageBackground source={background} style={styles.backgroundImage}>
         <WeatherSection
           city={params.weather?.city}
           temperature={params.weather?.temperature.current}
