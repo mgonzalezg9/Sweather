@@ -23,13 +23,15 @@ export default function LocationRequestScreen({
   const [error, setError] = useState<unknown>();
 
   const weatherSearch = async (location: any) => {
-    console.log("Requesting weather at location", location);
-
     setError(false);
     setLoading(true);
+
     try {
-      const weather = await getCurrentWeather(location);
-      const forecast = await getHourlyForecast(location);
+      console.log("Requesting weather at location", location);
+      const [weather, forecast] = await Promise.all([
+        getCurrentWeather(location),
+        getHourlyForecast(location),
+      ]);
 
       console.log("Searching wallpaper");
       const wallpaper = await getLocationBackground({ query: weather.city });
