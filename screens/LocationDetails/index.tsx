@@ -22,6 +22,8 @@ export default function LocationDetailsScreen({
           condition={params.weather?.condition}
           countryCode={params.weather?.countryCode}
           windSpeed={params.weather?.wind}
+          sunrise={params.weather.sunrise}
+          sunset={params.weather.sunset}
           forecast={params.forecast}
         />
       </ImageBackground>

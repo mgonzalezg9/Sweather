@@ -10,6 +10,8 @@ export type Weather = {
     humidity: number;
     city: string;
     countryCode: string;
+    sunrise: Date;
+    sunset: Date;
 };
 
 type TimeForecast = {

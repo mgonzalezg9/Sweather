@@ -50,6 +50,8 @@ export const getCurrentWeather = async ({
     humidity: data.main.humidity,
     city: data.name,
     countryCode: data.sys.country,
+    sunrise: new Date((data.sys.sunrise + data.timezone) * 1000),
+    sunset: new Date((data.sys.sunset + data.timezone) * 1000),
   };
 };
 

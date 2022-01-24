@@ -16,6 +16,8 @@ type WeatherSectionProps = {
   condition: string;
   windSpeed: number;
   forecast: Forecast;
+  sunrise: Date;
+  sunset: Date;
 };
 
 const WeatherSection = ({
@@ -25,6 +27,8 @@ const WeatherSection = ({
   condition,
   windSpeed,
   forecast,
+  sunrise,
+  sunset,
 }: Partial<WeatherSectionProps>) => {
   let regionName = "-";
   if (countryCode) {
@@ -41,6 +45,8 @@ const WeatherSection = ({
         temperature={temperature}
         condition={condition}
         windSpeed={windSpeed}
+        sunrise={sunrise}
+        sunset={sunset}
       />
       <ForecastRow
         hours={forecast?.hours}

@@ -1,18 +1,23 @@
 import React from "react";
 import { StyleSheet, View as DefaultView } from "react-native";
 import { Text } from "../../components/text/Text";
-import ConditionRow, { Condition } from "./ConditionRow";
+import { Condition } from "../../components/weather/ConditionIcon";
+import ConditionRow from "./ConditionRow";
 
 type WeatherDetailsProps = {
   temperature: number;
   condition: string;
   windSpeed: number;
+  sunrise: Date;
+  sunset: Date;
 };
 
 const WeatherDetails = ({
   temperature,
   condition,
   windSpeed,
+  sunrise,
+  sunset,
 }: Partial<WeatherDetailsProps>) => {
   const temperatureText = temperature ? Math.ceil(temperature) : "-";
 
@@ -20,7 +25,11 @@ const WeatherDetails = ({
     <DefaultView style={styles.container}>
       <Text style={styles.temperatureText}>{temperatureText}º</Text>
       <DefaultView style={styles.main}>
-        <ConditionRow condition={condition as Condition} />
+        <ConditionRow
+          condition={condition as Condition}
+          sunrise={sunrise}
+          sunset={sunset}
+        />
         <ConditionRow condition="Wind" text={`${windSpeed} m/s`} />
       </DefaultView>
     </DefaultView>

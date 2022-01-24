@@ -11,9 +11,17 @@ type ConditionRow = {
   text?: string;
   condition?: Condition;
   icon?: (p: Icon) => JSX.Element;
+  sunrise?: Date;
+  sunset?: Date;
 };
 
-const ConditionRow = ({ icon, text, condition }: ConditionRow) => {
+const ConditionRow = ({
+  icon,
+  text,
+  condition,
+  sunrise,
+  sunset,
+}: ConditionRow) => {
   if (!condition && !text) {
     return null;
   }
@@ -22,7 +30,15 @@ const ConditionRow = ({ icon, text, condition }: ConditionRow) => {
 
   return (
     <DefaultView style={styles.container}>
-      {condition ? <ConditionIcon condition={condition} /> : icon}
+      {condition ? (
+        <ConditionIcon
+          condition={condition}
+          sunset={sunset}
+          sunrise={sunrise}
+        />
+      ) : (
+        icon
+      )}
       <Text style={styles.conditionText}>{computedText}</Text>
     </DefaultView>
   );
