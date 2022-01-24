@@ -1,3 +1,4 @@
+import I18n from "i18n-js";
 import React from "react";
 import { StyleSheet, View as DefaultView } from "react-native";
 import { Icon } from "../../components/icons";
@@ -16,7 +17,8 @@ const ConditionRow = ({ icon, text, condition }: ConditionRow) => {
   if (!condition && !text) {
     return null;
   }
-  const computedText = condition === "Wind" ? text : condition;
+  const computedText =
+    condition === "Wind" ? text : I18n.t(`conditions.${condition}`);
 
   return (
     <DefaultView style={styles.container}>

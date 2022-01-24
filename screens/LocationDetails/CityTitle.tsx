@@ -8,11 +8,7 @@ type CityTitleProps = {
   country: string;
 };
 
-const CityTitle = ({
-  city,
-  country = "Spain",
-  ...props
-}: Partial<CityTitleProps>) => {
+const CityTitle = ({ city, country, ...props }: Partial<CityTitleProps>) => {
   return (
     <DefaultView {...props}>
       <Text style={styles.cityText} numberOfLines={1}>

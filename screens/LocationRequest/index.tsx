@@ -15,6 +15,7 @@ import { getCurrentWeather, getHourlyForecast } from "../../services/weather";
 import { useState } from "react";
 import Colors from "../../constants/Colors";
 import { getLocationBackground } from "../../services/wallpaper";
+import I18n from "i18n-js";
 
 export default function LocationRequestScreen({
   navigation,
@@ -59,7 +60,7 @@ export default function LocationRequestScreen({
         )}
       </DefaultView>
       <DefaultView style={styles.poweredContainer}>
-        <Text style={styles.poweredText}>Powered by:</Text>
+        <Text style={styles.poweredText}>{I18n.t("poweredBy")}:</Text>
         <Image source={OpenweatherBanner} style={styles.openweatherImage} />
       </DefaultView>
     </View>

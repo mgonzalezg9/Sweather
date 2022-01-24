@@ -1,6 +1,7 @@
 import { get } from "../../utils/httpClient";
 import config from "../../config/global";
 import { Coordinates, Forecast, Weather } from "./types";
+import * as Localization from "expo-localization";
 
 const WEATHER_API_KEY = config.WEATHER_API_KEY as string;
 const WEATHER_URL = config.WEATHER_URL as string;
@@ -33,6 +34,7 @@ export const getCurrentWeather = async ({
   const data = await get(`${WEATHER_URL}/data/2.5/weather`, {
     ...createQuery({ location, coordinates }),
     units: UNIT_SYSTEM,
+    lang: Localization.locale,
     appid: WEATHER_API_KEY,
   });
 
@@ -58,6 +60,7 @@ export const getHourlyForecast = async ({
   const data = await get(`${WEATHER_URL}/data/2.5/forecast`, {
     ...createQuery({ location, coordinates }),
     units: UNIT_SYSTEM,
+    lang: Localization.locale,
     appid: WEATHER_API_KEY,
   });
 

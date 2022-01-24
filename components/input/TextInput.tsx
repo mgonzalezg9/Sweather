@@ -13,6 +13,10 @@ export function TextInput(props: TextInputProps) {
     { light: lightColor, dark: darkColor },
     "text"
   );
+  const textLightColor = useThemeColor(
+    { light: lightColor, dark: darkColor },
+    "textLight"
+  );
   const tintColor = useThemeColor(
     { light: lightColor, dark: darkColor },
     "tint"
@@ -31,6 +35,7 @@ export function TextInput(props: TextInputProps) {
     <DefaultTextInput
       style={[defaultStyle, style]}
       selectionColor={tintColor}
+      placeholderTextColor={textLightColor}
       {...otherProps}
     />
   );

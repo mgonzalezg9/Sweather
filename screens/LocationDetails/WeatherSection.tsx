@@ -6,6 +6,8 @@ import WeatherDetails from "./WeatherDetails";
 import { countries } from "country-data";
 import ForecastRow from "../../components/weather/ForecastRow";
 import { Forecast } from "../../services/weather/types";
+import { getCountry } from "country-list-spanish";
+import * as Localization from "expo-localization";
 
 type WeatherSectionProps = {
   city: string;
@@ -24,7 +26,13 @@ const WeatherSection = ({
   windSpeed,
   forecast,
 }: Partial<WeatherSectionProps>) => {
-  const regionName = countryCode ? countries[countryCode].name : "-";
+  let regionName = "-";
+  if (countryCode) {
+    regionName =
+      Localization.locale === "en"
+        ? countries[countryCode].name
+        : getCountry(countryCode);
+  }
 
   return (
     <View style={styles.container}>

@@ -29,7 +29,7 @@ that provides users valuable data. The [Figma design](https://www.figma.com/file
 - Get the weather of a city using the current location
 - Dynamic weather details background, depending on the requested city
 - Dark mode
-- Spanish support (**TODO**)
+- Spanish support
 
 ## Installation
 
