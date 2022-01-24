@@ -25,7 +25,8 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.mgonzalezg9.Sweather"
     },
     "web": {
       "favicon": "./assets/images/favicon.png"

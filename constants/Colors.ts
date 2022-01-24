@@ -17,11 +17,14 @@ export default {
     tabIconSelected: tintColorDark,
   },
   palette: {
-    grey: '#707070',
+    grey: '#4f4f4f',
+    lightGrey: '#707070',
     deepBlue: '#153B50',
+    blue: '#428ba6',
     lightBlue: '#429EA6',
     yellow: '#FFBA08',
-    purple: '#153B50',
+    purple: '#3e237d',
+    brown: '#db7721',
     black: '#000',
     white: '#fff',
   }

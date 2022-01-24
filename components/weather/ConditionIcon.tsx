@@ -10,6 +10,7 @@ import Wind from "../icons/Wind";
 import Colors from "../../constants/Colors";
 import Moon from "../icons/Moon";
 import Fog from "../icons/Fog";
+import Tornado from "../icons/Tornado";
 
 export type Condition = keyof typeof DayIconsMap;
 
@@ -25,18 +26,27 @@ const ICON_SIZE = 17;
 const ICON_DEFAULT_PROPS = {
   width: ICON_SIZE,
   height: ICON_SIZE,
-  lightColor: "white",
-  darkColor: "black",
+  lightColor: Colors.palette.white,
+  darkColor: Colors.palette.black,
 };
 
 const DayIconsMap = {
   Clouds: Cloud,
+  Smoke: Cloud,
   Fog: Fog,
+  Haze: Fog,
+  Mist: Fog,
   Rain: Rain,
+  Squall: Rain,
+  Drizzle: Rain,
   Snow: Snow,
   Clear: Sun,
-  Storm: Storm,
+  Thunderstorm: Storm,
   Wind: Wind,
+  Dust: Wind,
+  Sand: Wind,
+  Ash: Wind,
+  Tornado: Tornado,
 };
 
 const DayProps = {
@@ -44,70 +54,151 @@ const DayProps = {
     lightStroke: Colors.palette.grey,
     darkStroke: Colors.palette.grey,
   },
+  Smoke: {
+    lightStroke: Colors.palette.black,
+    darkStroke: Colors.palette.black,
+  },
   Fog: {
-    lightStroke: Colors.palette.grey,
-    darkStroke: Colors.palette.grey,
+    lightStroke: Colors.palette.lightGrey,
+    darkStroke: Colors.palette.lightGrey,
+  },
+  Haze: {
+    lightStroke: Colors.palette.lightGrey,
+    darkStroke: Colors.palette.lightGrey,
+  },
+  Mist: {
+    lightStroke: Colors.palette.lightGrey,
+    darkStroke: Colors.palette.lightGrey,
   },
   Rain: {
     lightStroke: Colors.palette.lightBlue,
-    darkStroke: Colors.palette.lightBlue,
+    darkStroke: Colors.palette.blue,
+  },
+  Squall: {
+    lightStroke: Colors.palette.lightBlue,
+    darkStroke: Colors.palette.blue,
+  },
+  Drizzle: {
+    lightStroke: Colors.palette.lightBlue,
+    darkStroke: Colors.palette.blue,
   },
   Snow: {
-    lightStroke: Colors.palette.grey,
-    darkStroke: Colors.palette.grey,
+    lightStroke: Colors.palette.lightGrey,
+    darkStroke: Colors.palette.white,
   },
   Clear: {
     lightStroke: Colors.palette.yellow,
     darkStroke: Colors.palette.yellow,
   },
-  Storm: {
+  Thunderstorm: {
     lightStroke: Colors.palette.yellow,
     darkStroke: Colors.palette.yellow,
   },
   Wind: {
     lightStroke: Colors.palette.deepBlue,
     darkStroke: Colors.palette.deepBlue,
+  },
+  Dust: {
+    lightStroke: Colors.palette.brown,
+    darkStroke: Colors.palette.brown,
+  },
+  Sand: {
+    lightStroke: Colors.palette.brown,
+    darkStroke: Colors.palette.brown,
+  },
+  Ash: {
+    lightStroke: Colors.palette.black,
+    darkStroke: Colors.palette.black,
+  },
+  Tornado: {
+    lightStroke: Colors.palette.lightGrey,
+    darkStroke: Colors.palette.lightGrey,
   },
 };
 
 const NightIconsMap = {
-  Clouds: Moon,
+  Clouds: Cloud,
+  Smoke: Cloud,
   Fog: Fog,
+  Haze: Fog,
+  Mist: Fog,
   Rain: Rain,
+  Squall: Rain,
+  Drizzle: Rain,
   Snow: Snow,
   Clear: Moon,
-  Storm: Storm,
+  Thunderstorm: Storm,
   Wind: Wind,
+  Dust: Wind,
+  Sand: Wind,
+  Ash: Wind,
+  Tornado: Tornado,
 };
 
 const NightProps = {
   Clouds: {
-    lightStroke: Colors.palette.purple,
-    darkStroke: Colors.palette.purple,
+    lightStroke: Colors.palette.grey,
+    darkStroke: Colors.palette.grey,
+  },
+  Smoke: {
+    lightStroke: Colors.palette.grey,
+    darkStroke: Colors.palette.grey,
   },
   Fog: {
-    lightStroke: Colors.palette.grey,
-    darkStroke: Colors.palette.grey,
+    lightStroke: Colors.palette.lightGrey,
+    darkStroke: Colors.palette.lightGrey,
+  },
+  Haze: {
+    lightStroke: Colors.palette.lightGrey,
+    darkStroke: Colors.palette.lightGrey,
+  },
+  Mist: {
+    lightStroke: Colors.palette.lightGrey,
+    darkStroke: Colors.palette.lightGrey,
   },
   Rain: {
+    lightStroke: Colors.palette.blue,
+    darkStroke: Colors.palette.blue,
+  },
+  Squall: {
     lightStroke: Colors.palette.lightBlue,
-    darkStroke: Colors.palette.lightBlue,
+    darkStroke: Colors.palette.blue,
+  },
+  Drizzle: {
+    lightStroke: Colors.palette.lightBlue,
+    darkStroke: Colors.palette.blue,
   },
   Snow: {
-    lightStroke: Colors.palette.grey,
-    darkStroke: Colors.palette.grey,
+    lightStroke: Colors.palette.lightGrey,
+    darkStroke: Colors.palette.white,
   },
   Clear: {
     lightStroke: Colors.palette.purple,
     darkStroke: Colors.palette.purple,
   },
-  Storm: {
+  Thunderstorm: {
     lightStroke: Colors.palette.yellow,
     darkStroke: Colors.palette.yellow,
   },
   Wind: {
     lightStroke: Colors.palette.deepBlue,
     darkStroke: Colors.palette.deepBlue,
+  },
+  Dust: {
+    lightStroke: Colors.palette.brown,
+    darkStroke: Colors.palette.brown,
+  },
+  Sand: {
+    lightStroke: Colors.palette.brown,
+    darkStroke: Colors.palette.brown,
+  },
+  Ash: {
+    lightStroke: Colors.palette.grey,
+    darkStroke: Colors.palette.grey,
+  },
+  Tornado: {
+    lightStroke: Colors.palette.lightGrey,
+    darkStroke: Colors.palette.lightGrey,
   },
 };
 

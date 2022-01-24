@@ -1,5 +1,10 @@
 import AppTitle from "./AppTitle";
-import { ActivityIndicator, Image, StyleSheet } from "react-native";
+import {
+  ActivityIndicator,
+  Image,
+  StyleSheet,
+  View as DefaultView,
+} from "react-native";
 
 import { RootStackScreenProps } from "../../types";
 import SearchSection from "./SearchSection";
@@ -39,7 +44,7 @@ export default function LocationRequestScreen({
 
   return (
     <View style={styles.container}>
-      <View style={styles.locationInput}>
+      <DefaultView style={styles.locationInput}>
         <AppTitle />
         {loading && !error ? (
           <ActivityIndicator
@@ -50,11 +55,11 @@ export default function LocationRequestScreen({
         ) : (
           <SearchSection onSearch={weatherSearch} errorMsg={error} />
         )}
-      </View>
-      <View style={styles.poweredContainer}>
+      </DefaultView>
+      <DefaultView style={styles.poweredContainer}>
         <Text style={styles.poweredText}>Powered by:</Text>
         <Image source={OpenweatherBanner} style={styles.openweatherImage} />
-      </View>
+      </DefaultView>
     </View>
   );
 }

@@ -31,6 +31,7 @@ export default ConditionRow;
 const styles = StyleSheet.create({
   container: {
     flexDirection: "row",
+    alignItems: "center",
     marginLeft: 22,
     marginTop: 17,
     width: "100%",

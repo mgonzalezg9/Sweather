@@ -1,5 +1,5 @@
 import { StyleSheet, Image } from "react-native";
-import AppLogo from "../../assets/images/icon.png";
+import AppLogo from "../../assets/images/banner.png";
 import { View } from "../../components/view/View";
 import { Text } from "../../components/text/Text";
 
@@ -7,7 +7,7 @@ const AppTitle = () => {
   return (
     <View style={styles.container}>
       <Image style={styles.logo} source={AppLogo} />
-      <Text style={styles.title}>sweather</Text>
+      <Text style={styles.title}>Sweather</Text>
     </View>
   );
 };
