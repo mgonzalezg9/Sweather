@@ -2,13 +2,27 @@ import React from "react";
 import { StyleSheet, View as DefaultView } from "react-native";
 import { Text } from "../../components/text/Text";
 import LocationPin from "../../components/icons/LocationPin";
+import { countries } from "country-data";
+import { getCountry } from "country-list-spanish";
+import * as Localization from "expo-localization";
 
 type CityTitleProps = {
   city: string;
-  country: string;
+  countryCode: string;
 };
 
-const CityTitle = ({ city, country, ...props }: Partial<CityTitleProps>) => {
+const CityTitle = ({
+  city,
+  countryCode,
+  ...props
+}: Partial<CityTitleProps>) => {
+  let regionName = "-";
+  if (countryCode) {
+    regionName = Localization.locale.includes("es")
+      ? getCountry(countryCode)
+      : countries[countryCode].name;
+  }
+
   return (
     <DefaultView {...props}>
       <Text style={styles.cityText} numberOfLines={1}>
@@ -17,7 +31,7 @@ const CityTitle = ({ city, country, ...props }: Partial<CityTitleProps>) => {
       <DefaultView style={styles.countryContainer}>
         <LocationPin style={styles.locationPin} width={20} />
         <Text style={styles.countryText} numberOfLines={1}>
-          {country}
+          {regionName}
         </Text>
       </DefaultView>
     </DefaultView>
@@ -37,7 +51,7 @@ const styles = StyleSheet.create({
   countryContainer: {
     flexDirection: "row",
     marginTop: 5,
-    // width: 80,
+    width: 200,
   },
   locationPin: {
     marginHorizontal: 5,

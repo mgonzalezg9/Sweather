@@ -5,48 +5,29 @@ import CityTitle from "./CityTitle";
 import WeatherDetails from "./WeatherDetails";
 import { countries } from "country-data";
 import ForecastRow from "../../components/weather/ForecastRow";
-import { Forecast } from "../../services/weather/types";
-import { getCountry } from "country-list-spanish";
-import * as Localization from "expo-localization";
+import { Forecast, Weather } from "../../services/weather/types";
 
 type WeatherSectionProps = {
-  city: string;
-  countryCode: string;
-  temperature: number;
-  condition: string;
-  windSpeed: number;
+  weather: Weather;
   forecast: Forecast;
-  sunrise: Date;
-  sunset: Date;
 };
 
 const WeatherSection = ({
-  city,
-  countryCode,
-  temperature,
-  condition,
-  windSpeed,
+  weather,
   forecast,
-  sunrise,
-  sunset,
 }: Partial<WeatherSectionProps>) => {
-  let regionName = "-";
-  if (countryCode) {
-    regionName =
-      Localization.locale === "en"
-        ? countries[countryCode].name
-        : getCountry(countryCode);
-  }
-
   return (
     <View style={styles.container}>
-      <CityTitle style={styles.title} city={city} country={regionName} />
+      <CityTitle
+        style={styles.title}
+        city={weather?.geolocation.city}
+        countryCode={weather?.geolocation.countryCode}
+      />
       <WeatherDetails
-        temperature={temperature}
-        condition={condition}
-        windSpeed={windSpeed}
-        sunrise={sunrise}
-        sunset={sunset}
+        temperature={weather?.temperature.current}
+        condition={weather?.condition}
+        windSpeed={weather?.wind}
+        time={weather?.time}
       />
       <ForecastRow
         hours={forecast?.hours}

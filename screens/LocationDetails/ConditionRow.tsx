@@ -11,6 +11,7 @@ type ConditionRow = {
   text?: string;
   condition?: Condition;
   icon?: (p: Icon) => JSX.Element;
+  time?: Date;
   sunrise?: Date;
   sunset?: Date;
 };
@@ -21,10 +22,12 @@ const ConditionRow = ({
   condition,
   sunrise,
   sunset,
+  time,
 }: ConditionRow) => {
   if (!condition && !text) {
     return null;
   }
+
   const computedText =
     condition === "Wind" ? text : I18n.t(`conditions.${condition}`);
 
@@ -33,6 +36,7 @@ const ConditionRow = ({
       {condition ? (
         <ConditionIcon
           condition={condition}
+          time={time}
           sunset={sunset}
           sunrise={sunrise}
         />

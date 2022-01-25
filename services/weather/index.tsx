@@ -48,10 +48,15 @@ export const getCurrentWeather = async ({
     condition: data.weather[0].main,
     wind: data.wind.speed,
     humidity: data.main.humidity,
-    city: data.name,
-    countryCode: data.sys.country,
-    sunrise: new Date((data.sys.sunrise + data.timezone) * 1000),
-    sunset: new Date((data.sys.sunset + data.timezone) * 1000),
+    geolocation: {
+      city: data.name,
+      countryCode: data.sys.country,
+    },
+    time: {
+      now: new Date((data.dt + data.timezone) * 1000),
+      sunrise: new Date((data.sys.sunrise + data.timezone) * 1000),
+      sunset: new Date((data.sys.sunset + data.timezone) * 1000),
+    },
   };
 };
 

@@ -182,7 +182,7 @@ const NightProps = {
   },
   Wind: {
     lightStroke: Colors.palette.deepBlue,
-    darkStroke: Colors.palette.deepBlue,
+    darkStroke: Colors.palette.blue,
   },
   Dust: {
     lightStroke: Colors.palette.brown,

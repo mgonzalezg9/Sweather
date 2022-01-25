@@ -8,10 +8,15 @@ export type Weather = {
     condition: string;
     wind: number;
     humidity: number;
-    city: string;
-    countryCode: string;
-    sunrise: Date;
-    sunset: Date;
+    geolocation: {
+        city: string;
+        countryCode: string;
+    };
+    time: {
+        now: Date;
+        sunrise: Date;
+        sunset: Date;
+    };
 };
 
 type TimeForecast = {

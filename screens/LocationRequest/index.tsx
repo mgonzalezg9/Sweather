@@ -35,7 +35,9 @@ export default function LocationRequestScreen({
       ]);
 
       console.log("Searching wallpaper");
-      const wallpaper = await getLocationBackground({ query: weather.city });
+      const wallpaper = await getLocationBackground({
+        query: weather.geolocation.city,
+      });
       setLoading(false);
 
       navigation.navigate("LocationDetails", { weather, forecast, wallpaper });
