@@ -18,8 +18,6 @@ Sweather stands for "**S**imple **weather**".
   <img src="assets/images/location-request.png" width="350" height="700" title="Weather request screen">
   <img src="assets/images/location-details.png" width="350" height="700" title="Weather details screen">
 </p>
-<!-- ![Weather request screen](assets/images/location-request.png)
-![Weather details screen](assets/images/location-details.png) -->
 
 The main goal behind this project is to learn React Native along with Figma prototyping by creating an app
 that provides users valuable data. The [Figma design](https://www.figma.com/file/Jy1owSd3o2e8TZlySfW6eb/Sweather?node-id=0%3A1) was created in advance in order to have a clear idea of what the app should be before programming and to become a development challenge.
@@ -58,6 +56,8 @@ Feel free to run the app with `yarn start`.
 -   [React Native](https://reactnative.dev/)
 -   [React Navigation](https://reactnavigation.org/)
 -   [Expo](https://docs.expo.dev/)
+-   [Unsplash API](https://unsplash.com/documentation)
+-   [Openweather API](https://openweathermap.org/api)
 
 ## Architecture
 Sweather architecture is composed by the following folders:
