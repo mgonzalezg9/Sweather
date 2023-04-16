@@ -23,7 +23,7 @@ The main goal behind this project is to learn React Native along with Figma prot
 that provides users valuable data. The [Figma design](https://www.figma.com/file/Jy1owSd3o2e8TZlySfW6eb/Sweather?node-id=0%3A1) was created in advance in order to have a clear idea of what the app should be before programming and to become a development challenge.
 
 ## Features
-- Get the weather of a city specifyng its name
+- Get the weather of a city specifying its name
 - Get the weather of a city using the current location
 - Dynamic weather details background, depending on the requested city
 - Dark mode
@@ -31,18 +31,14 @@ that provides users valuable data. The [Figma design](https://www.figma.com/file
 
 ## Installation
 
-At the folder `config/` add a `global.ts` file with the following content:
+Install the project node and npm version via `nvm` by using `nvm install`. 
+Then install `yarn` in case you don't have it and add the following `.env` file:
 
-```ts
-const global = {
-    WEATHER_API_KEY: "YOUR_WEATHER_API_KEY",
-    WEATHER_URL: "YOUR_WEATHER_URL",
-    UNSPLASH_API_KEY: "YOUR_UNSPLASH_API_KEY",
-    UNSPLASH_URL: "YOUR_UNSPLASH_URL"
-};
-
-export default global;
-
+```env
+OPENWEATHER_API_KEY=XXXXXXXXX
+OPENWEATHER_URL=XXXXXXXXX
+UNSPLASH_API_KEY=XXXXXXXXX
+UNSPLASH_URL=XXXXXXXXX
 ```
 
 Once done this run `yarn install` to install the dependencies and... That's it!
