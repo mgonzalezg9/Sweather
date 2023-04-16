@@ -8,7 +8,11 @@ export const get = async (endpoint: string, filters: Record<string, any>) => {
     }
   });
 
+  // console.log(`Requesting ${url}`)
   const response = await fetch(url);
 
-  return await response.json();
+  const json = await response.json();
+  // console.log(json)
+
+  return json
 };

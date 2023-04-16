@@ -25,13 +25,13 @@ export const getLocationBackground = async ({
     return null;
   }
 
-  const choosenPhotoIndex = Math.floor(Math.random() * data.results.length);
+  const chosenPhotoIndex = Math.floor(Math.random() * data.results.length);
   return {
-    uri: data.results[choosenPhotoIndex].urls.regular,
+    uri: data.results[chosenPhotoIndex].urls.regular,
   };
 };
 
 export const getLocalBackground = () => {
-  const choosenPhotoIndex = Math.floor(Math.random() * BACKGROUND_LIST.length);
-  return BACKGROUND_LIST[choosenPhotoIndex];
+  const chosenPhotoIndex = Math.floor(Math.random() * BACKGROUND_LIST.length);
+  return BACKGROUND_LIST[chosenPhotoIndex];
 };

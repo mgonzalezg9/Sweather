@@ -35,7 +35,6 @@ export default function LocationRequestScreen({
         getCurrentWeather(location),
         getHourlyForecast(location),
       ]);
-      console.log({weather, forecast})
     } catch (error) {
       console.error("Unable to retrieve weather at location");
       setError(error);
@@ -55,7 +54,7 @@ export default function LocationRequestScreen({
 
         navigation.navigate("LocationDetails", { weather, forecast, wallpaper });
       } catch (error) {
-        console.log("Unable to retrieve wallpaper from location");
+        console.error("Unable to retrieve wallpaper from location");
         // ? This should not be seen as a fatal error
         // Weather can be displayed without background
         setError(error);
