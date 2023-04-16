@@ -24,26 +24,44 @@ export default function LocationRequestScreen({
   const [error, setError] = useState<unknown>();
 
   const weatherSearch = async (location: any) => {
+    let weather, forecast;
     setError(false);
-    setLoading(true);
 
     try {
       console.log("Requesting weather at location", location);
-      const [weather, forecast] = await Promise.all([
+      setLoading(true);
+
+      [weather, forecast] = await Promise.all([
         getCurrentWeather(location),
         getHourlyForecast(location),
       ]);
-
-      console.log("Searching wallpaper");
-      const wallpaper = await getLocationBackground({
-        query: weather.geolocation.city,
-      });
-      setLoading(false);
-
-      navigation.navigate("LocationDetails", { weather, forecast, wallpaper });
+      console.log({weather, forecast})
     } catch (error) {
-      console.log("Unknown weather at location");
+      console.error("Unable to retrieve weather at location");
       setError(error);
+    } finally {
+      setLoading(false);
+    }
+
+    if (weather && forecast) {
+      try {
+        console.log("Searching wallpaper");
+        setLoading(true);
+
+        const wallpaper = await getLocationBackground({
+          query: weather.geolocation.city,
+        });
+        setLoading(false);
+
+        navigation.navigate("LocationDetails", { weather, forecast, wallpaper });
+      } catch (error) {
+        console.log("Unable to retrieve wallpaper from location");
+        // ? This should not be seen as a fatal error
+        // Weather can be displayed without background
+        setError(error);
+      } finally {
+        setLoading(false);
+      }
     }
   };
 

@@ -1,10 +1,7 @@
 import { get } from "../../utils/httpClient";
-import config from "../../config/global";
 import { Coordinates, Forecast, Weather } from "./types";
 import * as Localization from "expo-localization";
-
-const WEATHER_API_KEY = config.WEATHER_API_KEY as string;
-const WEATHER_URL = config.WEATHER_URL as string;
+import {WEATHER_API_KEY, WEATHER_URL} from '@env'
 
 const FORECAST_MAX_HOURS = 5;
 const UNIT_SYSTEM = "metric";
