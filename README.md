@@ -35,8 +35,8 @@ Install the project node and npm version via `nvm` by using `nvm install`.
 Then install `yarn` in case you don't have it and add the following `.env` file:
 
 ```env
-WEATHER_API_KEY=XXXXXXXXX
-WEATHER_URL=XXXXXXXXX
+OPENWEATHER_API_KEY=XXXXXXXXX
+OPENWEATHER_URL=XXXXXXXXX
 UNSPLASH_API_KEY=XXXXXXXXX
 UNSPLASH_URL=XXXXXXXXX
 ```

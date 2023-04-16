@@ -1,7 +1,7 @@
 import { get } from "../../utils/httpClient";
 import { Coordinates, Forecast, Weather } from "./types";
 import * as Localization from "expo-localization";
-import { WEATHER_API_KEY, WEATHER_URL } from "@env";
+import { OPENWEATHER_API_KEY, OPENWEATHER_URL } from "@env";
 
 const FORECAST_MAX_HOURS = 5;
 const UNIT_SYSTEM = "metric";
@@ -28,11 +28,11 @@ export const getCurrentWeather = async ({
     throw new Error("Either location or coordinates must be provided");
   }
 
-  const data = await get(`${WEATHER_URL}/data/2.5/weather`, {
+  const data = await get(`${OPENWEATHER_URL}/data/2.5/weather`, {
     ...createQuery({ location, coordinates }),
     units: UNIT_SYSTEM,
     lang: Localization.locale,
-    appid: WEATHER_API_KEY,
+    appid: OPENWEATHER_API_KEY,
   });
 
   return {
@@ -61,11 +61,11 @@ export const getHourlyForecast = async ({
   location,
   coordinates,
 }: GetWeatherProps): Promise<Forecast> => {
-  const data = await get(`${WEATHER_URL}/data/2.5/forecast`, {
+  const data = await get(`${OPENWEATHER_URL}/data/2.5/forecast`, {
     ...createQuery({ location, coordinates }),
     units: UNIT_SYSTEM,
     lang: Localization.locale,
-    appid: WEATHER_API_KEY,
+    appid: OPENWEATHER_API_KEY,
   });
 
   return {
