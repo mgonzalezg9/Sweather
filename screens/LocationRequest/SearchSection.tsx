@@ -17,7 +17,7 @@ type SearchSection = {
 
 const SearchSection = ({ onSearch, errorMsg }: SearchSection) => {
   const [coordinates, setCoordinates] = useState<Location.LocationObject>();
-  const [location, setLocation] = useState<string>();
+  const [location, setLocation] = useState<string>('');
   const [locationDenied, setLocationDenied] = useState<boolean>(false);
 
   const getWeatherDetails = () => {
