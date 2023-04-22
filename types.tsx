@@ -5,7 +5,7 @@
 
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import { Uri } from "./services/wallpaper/types";
-import { Forecast, Weather } from "./services/weather/types";
+import { Coordinates, Forecast, Weather } from "./services/weather/types";
 
 declare global {
   namespace ReactNavigation {
@@ -16,9 +16,8 @@ declare global {
 export type RootStackParamList = {
   LocationRequest: undefined;
   LocationDetails: {
-    weather: Weather;
-    forecast: Forecast;
-    wallpaper: Uri | null;
+    location: string;
+    coordinates: Coordinates;
   };
   NotFound: undefined;
 };

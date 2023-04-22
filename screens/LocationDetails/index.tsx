@@ -1,26 +1,23 @@
-import { useEffect, useState } from "react";
 import { ImageBackground, StyleSheet } from "react-native";
 import { View } from "../../components/view/View";
-import { getLocalBackground } from "../../services/wallpaper";
+import useWallpaper from "../../hooks/wallpaper/useWallpaper";
+import useWeatherForecast from "../../hooks/weather/useWeatherForecast";
 import { RootStackScreenProps } from "../../types";
 import WeatherSection from "./WeatherSection";
-
-const localBackground = getLocalBackground();
 
 export default function LocationDetailsScreen({
   route: { params },
 }: RootStackScreenProps<"LocationDetails">) {
-  // In case no bg is provided, it takes one from local
-  const background = params.wallpaper || localBackground;
-  const { weather, forecast } = params;
+  const { weather, forecast, loading: loadingWeather } = useWeatherForecast(params)
+  const { wallpaper, loading: loadingWallpaper } = useWallpaper(weather?.geolocation?.city)
 
-  return (
+  return !loadingWeather && !loadingWallpaper ? (
     <View style={styles.container}>
-      <ImageBackground source={background} style={styles.backgroundImage}>
+      <ImageBackground source={wallpaper} style={styles.backgroundImage}>
         <WeatherSection weather={weather} forecast={forecast} />
       </ImageBackground>
     </View>
-  );
+  ) : null;
 }
 
 const styles = StyleSheet.create({

@@ -11,10 +11,8 @@ import SearchSection from "./SearchSection";
 import { Text } from "../../components/text/Text";
 import { View } from "../../components/view/View";
 import OpenweatherBanner from "../../assets/images/openweather.png";
-import { getCurrentWeather, getHourlyForecast } from "../../services/weather";
 import { useState } from "react";
 import Colors from "../../constants/Colors";
-import { getLocationBackground } from "../../services/wallpaper";
 import I18n from "i18n-js";
 
 export default function LocationRequestScreen({
@@ -23,45 +21,8 @@ export default function LocationRequestScreen({
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<unknown>();
 
-  const weatherSearch = async (location: any) => {
-    let weather, forecast;
-    setError(false);
-
-    try {
-      console.log("Requesting weather at location", location);
-      setLoading(true);
-
-      [weather, forecast] = await Promise.all([
-        getCurrentWeather(location),
-        getHourlyForecast(location),
-      ]);
-    } catch (error) {
-      console.error("Unable to retrieve weather at location");
-      setError(error);
-    } finally {
-      setLoading(false);
-    }
-
-    if (weather && forecast) {
-      try {
-        console.log("Searching wallpaper");
-        setLoading(true);
-
-        const wallpaper = await getLocationBackground({
-          query: weather.geolocation.city,
-        });
-        setLoading(false);
-
-        navigation.navigate("LocationDetails", { weather, forecast, wallpaper });
-      } catch (error) {
-        console.error("Unable to retrieve wallpaper from location");
-        // ? This should not be seen as a fatal error
-        // Weather can be displayed without background
-        setError(error);
-      } finally {
-        setLoading(false);
-      }
-    }
+  const goToLocationDetails = async (location: any) => {
+    navigation.navigate("LocationDetails", location);
   };
 
   return (
@@ -75,7 +36,7 @@ export default function LocationRequestScreen({
             color={Colors.light.tint}
           />
         ) : (
-          <SearchSection onSearch={weatherSearch} errorMsg={error} />
+          <SearchSection onSearch={goToLocationDetails} errorMsg={error} />
         )}
       </DefaultView>
       <DefaultView style={styles.poweredContainer}>
