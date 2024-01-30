@@ -1,19 +1,19 @@
-import AppTitle from "./AppTitle";
 import {
   ActivityIndicator,
   Image,
   StyleSheet,
-  View as DefaultView,
+  View as DefaultView
 } from "react-native";
+import AppTitle from "./AppTitle";
 
-import { RootStackScreenProps } from "../../types";
-import SearchSection from "./SearchSection";
+import { useState } from "react";
+import OpenweatherBanner from "../../assets/images/openweather.png";
 import { Text } from "../../components/text/Text";
 import { View } from "../../components/view/View";
-import OpenweatherBanner from "../../assets/images/openweather.png";
-import { useState } from "react";
 import Colors from "../../constants/Colors";
-import { i18n } from "../../App";
+import i18n from "../../i18n";
+import { RootStackScreenProps } from "../../types";
+import SearchSection from "./SearchSection";
 
 export default function LocationRequestScreen({
   navigation,

@@ -1,11 +1,11 @@
 import React from "react";
 import { StyleSheet, View as DefaultView } from "react-native";
-import { i18n } from "../../App";
 import { Icon } from "../../components/icons";
 import { Text } from "../../components/text/Text";
 import ConditionIcon, {
-  Condition,
+  Condition
 } from "../../components/weather/ConditionIcon";
+import i18n from "../../i18n";
 
 type ConditionRow = {
   text?: string;

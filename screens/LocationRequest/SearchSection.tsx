@@ -1,14 +1,14 @@
+import * as Location from "expo-location";
 import { useState } from "react";
 import { StyleSheet } from "react-native";
 import SquareButton from "../../components/buttons/SquareButton";
 import LocationPin from "../../components/icons/LocationPin";
-import * as Location from "expo-location";
 import Search from "../../components/icons/Search";
-import { View } from "../../components/view/View";
-import { Text } from "../../components/text/Text";
 import { TextInput } from "../../components/input/TextInput";
+import { Text } from "../../components/text/Text";
+import { View } from "../../components/view/View";
 import Colors from "../../constants/Colors";
-import { i18n } from "../../App";
+import i18n from "../../i18n";
 
 type SearchSection = {
   onSearch: (result: any) => void;
