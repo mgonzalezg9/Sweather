@@ -1,16 +1,16 @@
-import { StyleSheet, Text, View } from "react-native";
 import React from "react";
+import { StyleSheet } from "react-native";
+import Colors from "../../constants/Colors";
 import { Icon } from "../icons";
 import Cloud from "../icons/Cloud";
+import Fog from "../icons/Fog";
+import Moon from "../icons/Moon";
 import Rain from "../icons/Rain";
 import Snow from "../icons/Snow";
-import Sun from "../icons/Sun";
 import Storm from "../icons/Storm";
-import Wind from "../icons/Wind";
-import Colors from "../../constants/Colors";
-import Moon from "../icons/Moon";
-import Fog from "../icons/Fog";
+import Sun from "../icons/Sun";
 import Tornado from "../icons/Tornado";
+import Wind from "../icons/Wind";
 
 export type Condition = keyof typeof DayIconsMap;
 

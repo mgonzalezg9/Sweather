@@ -1,11 +1,11 @@
-import { get } from "../../utils/httpClient";
-import { BackgroundQuery, Uri } from "./types.d";
+import { UNSPLASH_API_KEY, UNSPLASH_URL } from '@env';
 import bg1 from "../../assets/images/background_1.jpg";
 import bg2 from "../../assets/images/background_2.jpg";
 import bg3 from "../../assets/images/background_3.jpg";
 import bg4 from "../../assets/images/background_4.jpg";
 import bg5 from "../../assets/images/background_5.jpg";
-import { UNSPLASH_API_KEY, UNSPLASH_URL } from '@env';
+import { get } from "../../utils/httpClient";
+import { BackgroundQuery, Uri } from "./types";
 
 const PER_PAGE = 3; // retrieves 3 wallpaper and choose one of them
 const ORIENTATION = "portrait";

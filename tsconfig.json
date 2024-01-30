@@ -4,6 +4,6 @@
     "strict": true
   },
   "typeRoots": [
-    "./types"
+    "./src/types"
   ],
 }

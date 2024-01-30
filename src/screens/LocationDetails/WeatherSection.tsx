@@ -1,11 +1,10 @@
 import React from "react";
-import { StyleSheet, View as DefaultView } from "react-native";
+import { StyleSheet } from "react-native";
 import { View } from "../../components/view/View";
-import CityTitle from "./CityTitle";
-import WeatherDetails from "./WeatherDetails";
-import { countries } from "country-data";
 import ForecastRow from "../../components/weather/ForecastRow";
 import { Forecast, Weather } from "../../services/weather/types";
+import CityTitle from "./CityTitle";
+import WeatherDetails from "./WeatherDetails";
 
 type WeatherSectionProps = {
   weather: Weather;

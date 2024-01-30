@@ -1,7 +1,7 @@
+import { OPENWEATHER_API_KEY, OPENWEATHER_URL } from "@env";
+import * as Localization from "expo-localization";
 import { get } from "../../utils/httpClient";
 import { Coordinates, Forecast, Weather } from "./types";
-import * as Localization from "expo-localization";
-import { OPENWEATHER_API_KEY, OPENWEATHER_URL } from "@env";
 
 const FORECAST_MAX_HOURS = 5;
 const UNIT_SYSTEM = "metric";
@@ -15,9 +15,9 @@ const createQuery = ({ location, coordinates }: GetWeatherProps) => {
   return location
     ? { q: location }
     : {
-        lat: coordinates?.latitude,
-        lon: coordinates?.longitude,
-      };
+      lat: coordinates?.latitude,
+      lon: coordinates?.longitude,
+    };
 };
 
 export const getCurrentWeather = async ({

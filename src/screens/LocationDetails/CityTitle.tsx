@@ -1,10 +1,10 @@
-import React from "react";
-import { StyleSheet, View as DefaultView } from "react-native";
-import { Text } from "../../components/text/Text";
-import LocationPin from "../../components/icons/LocationPin";
 import { countries } from "country-data";
 import { getCountry } from "country-list-spanish";
 import * as Localization from "expo-localization";
+import React from "react";
+import { StyleSheet, View as DefaultView } from "react-native";
+import LocationPin from "../../components/icons/LocationPin";
+import { Text } from "../../components/text/Text";
 
 type CityTitleProps = {
   city: string;
