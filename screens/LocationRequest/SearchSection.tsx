@@ -8,7 +8,7 @@ import { View } from "../../components/view/View";
 import { Text } from "../../components/text/Text";
 import { TextInput } from "../../components/input/TextInput";
 import Colors from "../../constants/Colors";
-import I18n from "i18n-js";
+import { i18n } from "../../App";
 
 type SearchSection = {
   onSearch: (result: any) => void;
@@ -37,7 +37,7 @@ const SearchSection = ({ onSearch, errorMsg }: SearchSection) => {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.chooseText}>{I18n.t("nameCity")}</Text>
+      <Text style={styles.chooseText}>{i18n.t("nameCity")}</Text>
       <View style={styles.searchBox}>
         <TextInput
           style={styles.locationInput}
@@ -53,7 +53,7 @@ const SearchSection = ({ onSearch, errorMsg }: SearchSection) => {
             setLocation(value);
           }}
           onSubmitEditing={getWeatherDetails}
-          placeholder={I18n.t("sampleCityInput")}
+          placeholder={i18n.t("sampleCityInput")}
           clearButtonMode="while-editing"
         />
         <SquareButton
@@ -81,10 +81,10 @@ const SearchSection = ({ onSearch, errorMsg }: SearchSection) => {
       </View>
       <Text style={styles.errorText}>
         {errorMsg
-          ? I18n.t("weatherServiceError")
+          ? i18n.t("weatherServiceError")
           : locationDenied
-          ? I18n.t("locationDisabledError")
-          : null}
+            ? i18n.t("locationDisabledError")
+            : null}
       </Text>
     </View>
   );

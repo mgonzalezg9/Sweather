@@ -9,7 +9,7 @@ import { Coordinates, Forecast, Weather } from "./services/weather/types";
 
 declare global {
   namespace ReactNavigation {
-    interface RootParamList extends RootStackParamList {}
+    interface RootParamList extends RootStackParamList { }
   }
 }
 

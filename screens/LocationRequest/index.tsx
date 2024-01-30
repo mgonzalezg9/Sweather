@@ -13,7 +13,7 @@ import { View } from "../../components/view/View";
 import OpenweatherBanner from "../../assets/images/openweather.png";
 import { useState } from "react";
 import Colors from "../../constants/Colors";
-import I18n from "i18n-js";
+import { i18n } from "../../App";
 
 export default function LocationRequestScreen({
   navigation,
@@ -40,7 +40,7 @@ export default function LocationRequestScreen({
         )}
       </DefaultView>
       <DefaultView style={styles.poweredContainer}>
-        <Text style={styles.poweredText}>{I18n.t("poweredBy")}:</Text>
+        <Text style={styles.poweredText}>{i18n.t("poweredBy")}:</Text>
         <Image source={OpenweatherBanner} style={styles.openweatherImage} />
       </DefaultView>
     </View>

@@ -2,13 +2,13 @@ import { StyleSheet, Image } from "react-native";
 import AppLogo from "../../assets/images/banner.png";
 import { View } from "../../components/view/View";
 import { Text } from "../../components/text/Text";
-import I18n from "i18n-js";
+import { i18n } from "../../App";
 
 const AppTitle = () => {
   return (
     <View style={styles.container}>
       <Image style={styles.logo} source={AppLogo} />
-      <Text style={styles.title}>{I18n.t("appTitle")}</Text>
+      <Text style={styles.title}>{i18n.t("appTitle")}</Text>
     </View>
   );
 };
