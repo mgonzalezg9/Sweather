@@ -1,4 +1,4 @@
-import { StyleSheet, TouchableOpacity } from "react-native";
+import { Pressable, StyleSheet } from "react-native";
 import { Text } from "../components/text/Text";
 import { View } from "../components/view/View";
 
@@ -10,12 +10,12 @@ export default function NotFoundScreen({
   return (
     <View style={styles.container}>
       <Text style={styles.title}>This screen doesn't exist.</Text>
-      <TouchableOpacity
+      <Pressable
         onPress={() => navigation.replace("LocationRequest")}
         style={styles.link}
       >
         <Text style={styles.linkText}>Go to home screen!</Text>
-      </TouchableOpacity>
+      </Pressable>
     </View>
   );
 }

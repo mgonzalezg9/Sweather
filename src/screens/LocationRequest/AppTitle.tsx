@@ -7,7 +7,7 @@ import i18n from "../../i18n";
 const AppTitle = () => {
   return (
     <View style={styles.container}>
-      <Image style={styles.logo} source={AppLogo} />
+      <Image style={styles.logo} source={AppLogo} resizeMode="contain" />
       <Text style={styles.title}>{i18n.t("appTitle")}</Text>
     </View>
   );
@@ -23,7 +23,6 @@ const styles = StyleSheet.create({
   logo: {
     width: "100%",
     height: 200,
-    resizeMode: "contain",
   },
   title: {
     fontSize: 24,

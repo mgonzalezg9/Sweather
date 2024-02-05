@@ -1,5 +1,5 @@
 import React from "react";
-import { StyleSheet, TouchableOpacity, View } from "react-native";
+import { Pressable, StyleSheet, View } from "react-native";
 import { useThemeColor } from "../Themed";
 
 type SquareButtonType = {
@@ -11,13 +11,13 @@ const SquareButton = ({ icon, onClick, ...props }: SquareButtonType) => {
   const backgroundColor = useThemeColor({}, "tint");
 
   return (
-    <TouchableOpacity
+    <Pressable
       style={[styles.outline, { backgroundColor }]}
       onPress={onClick}
       {...props}
     >
       <View style={styles.button}>{icon}</View>
-    </TouchableOpacity>
+    </Pressable>
   );
 };
 

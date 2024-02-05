@@ -1,8 +1,8 @@
 import {
   ActivityIndicator,
+  View as DefaultView,
   Image,
-  StyleSheet,
-  View as DefaultView
+  StyleSheet
 } from "react-native";
 import AppTitle from "./AppTitle";
 
@@ -41,7 +41,7 @@ export default function LocationRequestScreen({
       </DefaultView>
       <DefaultView style={styles.poweredContainer}>
         <Text style={styles.poweredText}>{i18n.t("poweredBy")}:</Text>
-        <Image source={OpenweatherBanner} style={styles.openweatherImage} />
+        <Image source={OpenweatherBanner} style={styles.openweatherImage} resizeMode="contain" />
       </DefaultView>
     </View>
   );
@@ -69,7 +69,6 @@ const styles = StyleSheet.create({
     justifyContent: "flex-start",
   },
   openweatherImage: {
-    resizeMode: "contain",
     height: 100,
     width: 100,
     marginLeft: 15,
