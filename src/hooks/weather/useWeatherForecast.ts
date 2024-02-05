@@ -1,8 +1,18 @@
 import { useEffect, useState } from 'react';
 import { getCurrentWeather, getHourlyForecast } from '../../services/weather';
 import { Forecast, Weather } from '../../services/weather/types';
+import { LocationQuery } from '../../types';
 
-export default function useWeatherForecast({ location, coordinates }) {
+const getWeatherAndForecast = async ({ location, coordinates }: LocationQuery) => {
+    const [weather, forecast] = await Promise.all([
+        getCurrentWeather({ location, coordinates }),
+        getHourlyForecast({ location, coordinates })
+    ])
+
+    return { weather, forecast };
+}
+
+export default function useWeatherForecast({ location, coordinates }: LocationQuery) {
     const [weather, setWeather] = useState<Weather>();
     const [forecast, setForecast] = useState<Forecast>();
 
@@ -10,20 +20,22 @@ export default function useWeatherForecast({ location, coordinates }) {
     const [isError, setError] = useState<unknown>();
 
     useEffect(() => {
-        try {
-            console.log("Requesting weather at location", location || coordinates);
-            setLoading(true);
-
-            getCurrentWeather({ location, coordinates }).then(w => setWeather(w))
-            getHourlyForecast({ location, coordinates }).then(f => setForecast(f))
-
-            setWeather(weather)
-        } catch (error) {
-            console.error("Unable to retrieve weather at location");
-            setError(error);
-        } finally {
-            setLoading(false);
+        if (!location && !coordinates) {
+            return;
         }
+
+        console.log("Requesting weather at location", location || coordinates);
+        setLoading(true);
+
+        getWeatherAndForecast({ location, coordinates }).then(({ weather, forecast }) => {
+            setWeather(weather);
+            setForecast(forecast);
+        }).catch(error => {
+            console.error(`Unable to retrieve weather at location ${location || coordinates}`);
+            setError(error);
+        }).finally(() => {
+            setLoading(false);
+        });
     }, [location, coordinates]);
 
     return {

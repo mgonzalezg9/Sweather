@@ -6,37 +6,47 @@ import {
 } from "react-native";
 import AppTitle from "./AppTitle";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import OpenweatherBanner from "../../assets/images/openweather.png";
 import { Text } from "../../components/text/Text";
 import { View } from "../../components/view/View";
 import Colors from "../../constants/Colors";
+import useWallpaper from "../../hooks/wallpaper/useWallpaper";
+import useWeatherForecast from "../../hooks/weather/useWeatherForecast";
 import i18n from "../../i18n";
-import { RootStackScreenProps } from "../../types";
+import { LocationQuery, RootStackScreenProps } from "../../types";
 import SearchSection from "./SearchSection";
 
 export default function LocationRequestScreen({
   navigation,
 }: RootStackScreenProps<"LocationRequest">) {
-  const [loading, setLoading] = useState<boolean>(false);
-  const [error, setError] = useState<unknown>();
+  const [location, setLocation] = useState({} as LocationQuery)
 
-  const goToLocationDetails = async (location: any) => {
-    navigation.navigate("LocationDetails", location);
-  };
+  const { weather, forecast, loading: loadingWeather, error: errorWeather } = useWeatherForecast(location)
+  const { wallpaper, loading: loadingWallpaper } = useWallpaper(weather?.geolocation?.city)
+
+  useEffect(() => {
+    if (weather && forecast && wallpaper) {
+      navigation.navigate("LocationDetails", {
+        weather,
+        forecast,
+        wallpaper
+      });
+    }
+  }, [weather, forecast, wallpaper, navigation])
 
   return (
     <View style={styles.container}>
       <DefaultView style={styles.locationInput}>
         <AppTitle />
-        {loading && !error ? (
+        {(loadingWeather || loadingWallpaper) ? (
           <ActivityIndicator
             style={styles.spinner}
-            size="large"
             color={Colors.light.tint}
+            size="large"
           />
         ) : (
-          <SearchSection onSearch={goToLocationDetails} errorMsg={error} />
+          <SearchSection onSearch={setLocation} errorMsg={errorWeather} />
         )}
       </DefaultView>
       <DefaultView style={styles.poweredContainer}>

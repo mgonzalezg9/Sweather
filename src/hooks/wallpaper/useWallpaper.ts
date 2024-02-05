@@ -1,9 +1,10 @@
 import { useEffect, useState } from 'react';
 import { getLocalBackground, getLocationBackground } from '../../services/wallpaper';
 import { Uri } from '../../services/wallpaper/types';
+import { LocationQuery } from '../../types';
 
-export default function useWallpaper(location?: string) {
-  const [wallpaper, setWallpaper] = useState<Uri>(getLocalBackground());
+export default function useWallpaper(location?: LocationQuery['location']) {
+  const [wallpaper, setWallpaper] = useState<Uri>();
   const [isLoading, setLoading] = useState<boolean>(false);
   const [isError, setError] = useState<unknown>();
 
@@ -13,7 +14,7 @@ export default function useWallpaper(location?: string) {
     }
 
     try {
-      console.log("Searching wallpaper");
+      console.log(`Searching wallpaper for ${location}`);
       setLoading(true);
 
       getLocationBackground({
@@ -21,11 +22,11 @@ export default function useWallpaper(location?: string) {
       }).then(uri => {
         if (uri) setWallpaper(uri)
       });
-      setLoading(false);
-
     } catch (error) {
       console.error("Unable to retrieve wallpaper from location");
       setError(error);
+
+      setWallpaper(getLocalBackground());
     } finally {
       setLoading(false);
     }
