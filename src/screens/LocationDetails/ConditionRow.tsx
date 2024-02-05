@@ -1,5 +1,5 @@
 import React from "react";
-import { StyleSheet, View as DefaultView } from "react-native";
+import { View as DefaultView, StyleSheet } from "react-native";
 import { Icon } from "../../components/icons";
 import { Text } from "../../components/text/Text";
 import ConditionIcon, {
@@ -11,9 +11,9 @@ type ConditionRow = {
   text?: string;
   condition?: Condition;
   icon?: (p: Icon) => JSX.Element;
-  time?: Date;
-  sunrise?: Date;
-  sunset?: Date;
+  time?: string;
+  sunrise?: string;
+  sunset?: string;
 };
 
 const ConditionRow = ({

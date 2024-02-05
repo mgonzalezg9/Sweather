@@ -1,15 +1,14 @@
 import React from "react";
-import { StyleSheet, View as DefaultView } from "react-native";
-import { formatTwoDigits } from "../../utils/date";
+import { View as DefaultView, StyleSheet } from "react-native";
 import { Text } from "../text/Text";
 import ConditionIcon, { Condition } from "./ConditionIcon";
 
 type TimeWeatherProps = {
-  time: Date;
+  time: string;
   temperature: number;
   condition: Condition;
-  sunrise?: Date;
-  sunset?: Date;
+  sunrise?: string;
+  sunset?: string;
 };
 
 const TimeWeather = ({
@@ -20,14 +19,11 @@ const TimeWeather = ({
   sunset,
   ...props
 }: TimeWeatherProps) => {
-  const computedTime = `${formatTwoDigits(time.getHours())}:${formatTwoDigits(
-    time.getMinutes()
-  )}`;
   const computedTemperature = Math.ceil(temperature);
 
   return (
     <DefaultView style={styles.container} {...props}>
-      <Text style={styles.timeContainer}>{computedTime}</Text>
+      <Text style={styles.timeContainer}>{time}</Text>
       <ConditionIcon
         width={25}
         height={25}

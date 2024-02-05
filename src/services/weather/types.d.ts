@@ -13,22 +13,22 @@ export type Weather = {
         countryCode: string;
     };
     time: {
-        now: Date;
-        sunrise: Date;
-        sunset: Date;
+        now: string;
+        sunrise: string;
+        sunset: string;
     };
 };
 
 type TimeForecast = {
-    time: Date;
+    time: string;
     condition: Condition;
     temperature: number;
 }
 
 export type Forecast = {
     hours: TimeForecast[];
-    sunrise: Date;
-    sunset: Date;
+    sunrise: string;
+    sunset: string;
 };
 
 export type Coordinates = {

@@ -1,18 +1,15 @@
 import React from "react";
-import { StyleSheet, View as DefaultView } from "react-native";
+import { View as DefaultView, StyleSheet } from "react-native";
 import { Text } from "../../components/text/Text";
 import { Condition } from "../../components/weather/ConditionIcon";
+import { Weather } from "../../services/weather/types";
 import ConditionRow from "./ConditionRow";
 
 type WeatherDetailsProps = {
   temperature: number;
   condition: string;
   windSpeed: number;
-  time: {
-    now: Date;
-    sunrise: Date;
-    sunset: Date;
-  };
+  time: Weather['time'];
 };
 
 const WeatherDetails = ({

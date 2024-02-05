@@ -1,10 +1,18 @@
 import { OPENWEATHER_API_KEY, OPENWEATHER_URL } from "@env";
-import * as Localization from "expo-localization";
+import { locale } from "../../i18n/localization";
 import { get } from "../../utils/httpClient";
 import { Coordinates, Forecast, Weather } from "./types";
 
 const FORECAST_MAX_HOURS = 5;
 const UNIT_SYSTEM = "metric";
+
+const timeFormatter = new Intl.DateTimeFormat(
+  // TODO Hardcoded
+  'es-ES',
+  {
+    hour: '2-digit',
+    minute: '2-digit',
+  });
 
 type GetWeatherProps = {
   location?: string;
@@ -31,7 +39,7 @@ export const getCurrentWeather = async ({
   const data = await get(`${OPENWEATHER_URL}/data/2.5/weather`, {
     ...createQuery({ location, coordinates }),
     units: UNIT_SYSTEM,
-    lang: Localization.locale,
+    lang: locale,
     appid: OPENWEATHER_API_KEY,
   });
 
@@ -50,9 +58,9 @@ export const getCurrentWeather = async ({
       countryCode: data.sys.country,
     },
     time: {
-      now: new Date((data.dt + data.timezone) * 1000),
-      sunrise: new Date((data.sys.sunrise + data.timezone) * 1000),
-      sunset: new Date((data.sys.sunset + data.timezone) * 1000),
+      now: timeFormatter.format(new Date((data.dt + data.timezone) * 1000)),
+      sunrise: timeFormatter.format(new Date((data.sys.sunrise + data.timezone) * 1000)),
+      sunset: timeFormatter.format(new Date((data.sys.sunset + data.timezone) * 1000)),
     },
   };
 };
@@ -64,17 +72,17 @@ export const getHourlyForecast = async ({
   const data = await get(`${OPENWEATHER_URL}/data/2.5/forecast`, {
     ...createQuery({ location, coordinates }),
     units: UNIT_SYSTEM,
-    lang: Localization.locale,
+    lang: locale,
     appid: OPENWEATHER_API_KEY,
   });
 
   return {
     hours: data.list.slice(0, FORECAST_MAX_HOURS).map((f: any) => ({
-      time: new Date((f.dt + data.city.timezone) * 1000),
+      time: timeFormatter.format(new Date((f.dt + data.city.timezone) * 1000)),
       temperature: f.main.temp,
       condition: f.weather[0].main,
     })),
-    sunrise: new Date((data.city.sunrise + data.city.timezone) * 1000),
-    sunset: new Date((data.city.sunset + data.city.timezone) * 1000),
+    sunrise: timeFormatter.format(new Date((data.city.sunrise + data.city.timezone) * 1000)),
+    sunset: timeFormatter.format(new Date((data.city.sunset + data.city.timezone) * 1000)),
   };
 };

@@ -1,5 +1,5 @@
 import React from "react";
-import { StyleSheet, View as DefaultView } from "react-native";
+import { View as DefaultView, StyleSheet } from "react-native";
 import { Forecast } from "../../services/weather/types";
 import TimeWeather from "./TimeWeather";
 
@@ -12,7 +12,7 @@ const ForecastRow = ({ hours, sunrise, sunset }: Partial<Forecast>) => {
     <DefaultView style={styles.container}>
       {hours.map((f) => (
         <TimeWeather
-          key={f.time.getTime()}
+          key={f.time}
           temperature={f.temperature}
           condition={f.condition}
           time={f.time}

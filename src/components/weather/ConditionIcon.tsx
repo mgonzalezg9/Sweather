@@ -16,9 +16,9 @@ export type Condition = keyof typeof DayIconsMap;
 
 type ConditionIconProps = {
   condition: Condition;
-  time?: Date;
-  sunrise?: Date;
-  sunset?: Date;
+  time?: string;
+  sunrise?: string;
+  sunset?: string;
 } & Icon;
 
 const ICON_SIZE = 17;
