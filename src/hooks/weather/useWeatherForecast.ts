@@ -1,7 +1,11 @@
 import { useEffect, useState } from 'react';
 import { getCurrentWeather, getHourlyForecast } from '../../services/weather';
-import { Forecast, Weather } from '../../services/weather/types';
-import { LocationQuery } from '../../types';
+import { Coordinates, Forecast, Weather } from '../../services/weather/types';
+
+export type LocationQuery = {
+    location: string;
+    coordinates: Coordinates;
+};
 
 const getWeatherAndForecast = async ({ location, coordinates }: LocationQuery) => {
     const [weather, forecast] = await Promise.all([

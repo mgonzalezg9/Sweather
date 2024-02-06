@@ -1,6 +1,6 @@
 import { ImageBackground, StyleSheet } from "react-native";
 import { View } from "../../components/view/View";
-import { RootStackScreenProps } from "../../types";
+import { RootStackScreenProps } from "../../navigation/types.d";
 import WeatherSection from "./WeatherSection";
 
 export default function LocationDetailsScreen({

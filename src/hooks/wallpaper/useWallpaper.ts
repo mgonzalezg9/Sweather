@@ -1,9 +1,8 @@
 import { useEffect, useState } from 'react';
 import { getLocalBackground, getLocationBackground } from '../../services/wallpaper';
 import { Uri } from '../../services/wallpaper/types';
-import { LocationQuery } from '../../types';
 
-export default function useWallpaper(location?: LocationQuery['location']) {
+export default function useWallpaper(location?: string) {
   const [wallpaper, setWallpaper] = useState<Uri>();
   const [isLoading, setLoading] = useState<boolean>(false);
   const [isError, setError] = useState<unknown>();

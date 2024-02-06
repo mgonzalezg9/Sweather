@@ -4,13 +4,8 @@
  */
 
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
-import { Uri } from "./services/wallpaper/types";
-import { Coordinates, Forecast, Weather } from "./services/weather/types";
-
-export type LocationQuery = {
-  location: string;
-  coordinates: Coordinates;
-};
+import { Uri } from "../services/wallpaper/types";
+import { Forecast, Weather } from "../services/weather/types";
 
 declare global {
   namespace ReactNavigation {

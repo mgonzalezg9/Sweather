@@ -14,13 +14,13 @@ import Colors from "../../constants/Colors";
 import useWallpaper from "../../hooks/wallpaper/useWallpaper";
 import useWeatherForecast from "../../hooks/weather/useWeatherForecast";
 import i18n from "../../i18n";
-import { LocationQuery, RootStackScreenProps } from "../../types";
+import { RootStackScreenProps } from "../../navigation/types.d";
 import SearchSection from "./SearchSection";
 
 export default function LocationRequestScreen({
   navigation,
 }: RootStackScreenProps<"LocationRequest">) {
-  const [location, setLocation] = useState({} as LocationQuery)
+  const [location, setLocation] = useState({} as never)
 
   const { weather, forecast, loading: loadingWeather, error: errorWeather } = useWeatherForecast(location)
   const { wallpaper, loading: loadingWallpaper } = useWallpaper(weather?.geolocation?.city)

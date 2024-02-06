@@ -66,6 +66,10 @@ Sweather architecture is composed by the following folders:
     - `useCachedResources`: This hook loads resources before the app starts and shows an splash screen.
     - `useColorScheme`: Retrieves if the system has a light or dark mode enabled.
 
+    Wrappers for Weather and Wallpaper API calls:
+    - `useWeatherForecast`: Retrieves weather and forecast data.
+    - `useWallpaper`: Retrieves the wallpaper for a given location.
+
 -   Navigation:
     It contains the navigation stack along with the routes.
 
