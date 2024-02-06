@@ -1,6 +1,7 @@
 import React from "react";
-import { StyleSheet } from "react-native";
 import Colors from "../../constants/Colors";
+import { ICON_DEFAULT_PROPS } from "../../constants/Icon";
+import { Condition, Weather } from "../../services/weather/types";
 import { Icon } from "../icons";
 import Cloud from "../icons/Cloud";
 import Fog from "../icons/Fog";
@@ -12,25 +13,11 @@ import Sun from "../icons/Sun";
 import Tornado from "../icons/Tornado";
 import Wind from "../icons/Wind";
 
-export type Condition = keyof typeof DayIconsMap;
-
 type ConditionIconProps = {
-  condition: Condition;
-  time?: string;
-  sunrise?: string;
-  sunset?: string;
-} & Icon;
+  condition: Weather['condition'];
+} & Partial<Weather['time']> & Icon;
 
-const ICON_SIZE = 17;
-
-const ICON_DEFAULT_PROPS = {
-  width: ICON_SIZE,
-  height: ICON_SIZE,
-  lightColor: Colors.palette.white,
-  darkColor: Colors.palette.black,
-};
-
-const DayIconsMap = {
+const DayIconsMap: Record<Condition, React.FC<Icon>> = {
   Clouds: Cloud,
   Smoke: Cloud,
   Fog: Fog,
@@ -49,7 +36,12 @@ const DayIconsMap = {
   Tornado: Tornado,
 };
 
-const DayProps = {
+type ThemeSetup = {
+  lightStroke: string;
+  darkStroke: string;
+}
+
+const DayProps: Record<Condition, ThemeSetup> = {
   Clouds: {
     lightStroke: Colors.palette.grey,
     darkStroke: Colors.palette.grey,
@@ -116,7 +108,7 @@ const DayProps = {
   },
 };
 
-const NightIconsMap = {
+const NightIconsMap: Record<Condition, React.FC<Icon>> = {
   Clouds: Cloud,
   Smoke: Cloud,
   Fog: Fog,
@@ -133,9 +125,9 @@ const NightIconsMap = {
   Sand: Wind,
   Ash: Wind,
   Tornado: Tornado,
-};
+} as const;
 
-const NightProps = {
+const NightProps: Record<Condition, ThemeSetup> = {
   Clouds: {
     lightStroke: Colors.palette.grey,
     darkStroke: Colors.palette.grey,
@@ -200,16 +192,16 @@ const NightProps = {
     lightStroke: Colors.palette.lightGrey,
     darkStroke: Colors.palette.lightGrey,
   },
-};
+} as const;
 
 const ConditionIcon = ({
   condition,
+  now,
   sunrise,
   sunset,
-  time,
   ...props
 }: ConditionIconProps) => {
-  const isDay = time && sunrise && sunset && time < sunset;
+  const isDay = now && sunrise && sunset && now < sunset;
   const Icon = isDay ? DayIconsMap[condition] : NightIconsMap[condition];
   const Props = isDay ? DayProps[condition] : NightProps[condition];
 
@@ -217,5 +209,3 @@ const ConditionIcon = ({
 };
 
 export default ConditionIcon;
-
-const styles = StyleSheet.create({});

@@ -1,14 +1,13 @@
 import React from "react";
 import { View as DefaultView, StyleSheet } from "react-native";
 import { Text } from "../../components/text/Text";
-import { Condition } from "../../components/weather/ConditionIcon";
 import { Weather } from "../../services/weather/types";
 import ConditionRow from "./ConditionRow";
 
 type WeatherDetailsProps = {
-  temperature: number;
-  condition: string;
-  windSpeed: number;
+  temperature: Weather['temperature']['current'];
+  windSpeed: Weather['wind'];
+  condition: Weather['condition'];
   time: Weather['time'];
 };
 
@@ -25,8 +24,8 @@ const WeatherDetails = ({
       <Text style={styles.temperatureText}>{temperatureText}º</Text>
       <DefaultView style={styles.main}>
         <ConditionRow
-          condition={condition as Condition}
-          time={time?.now}
+          condition={condition}
+          now={time?.now}
           sunrise={time?.sunrise}
           sunset={time?.sunset}
         />

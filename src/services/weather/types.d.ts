@@ -1,3 +1,22 @@
+export type Condition =
+    'Clouds' |
+    'Smoke' |
+    'Fog' |
+    'Haze' |
+    'Mist' |
+    'Rain' |
+    'Squall' |
+    'Drizzle' |
+    'Snow' |
+    'Clear' |
+    'Thunderstorm' |
+    'Wind' |
+    'Dust' |
+    'Sand' |
+    'Ash' |
+    'Tornado'
+    ;
+
 export type Weather = {
     temperature: {
         current: number;
@@ -5,7 +24,7 @@ export type Weather = {
         min: number;
         max: number;
     };
-    condition: string;
+    condition: Condition;
     wind: number;
     humidity: number;
     geolocation: {

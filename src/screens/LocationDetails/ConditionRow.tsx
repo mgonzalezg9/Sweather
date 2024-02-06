@@ -2,27 +2,24 @@ import React from "react";
 import { View as DefaultView, StyleSheet } from "react-native";
 import { Icon } from "../../components/icons";
 import { Text } from "../../components/text/Text";
-import ConditionIcon, {
-  Condition
-} from "../../components/weather/ConditionIcon";
+import ConditionIcon from "../../components/weather/ConditionIcon";
+import { ICON_DEFAULT_PROPS } from "../../constants/Icon";
 import i18n from "../../i18n";
+import { Weather } from "../../services/weather/types";
 
 type ConditionRow = {
   text?: string;
-  condition?: Condition;
+  condition?: Weather['condition'];
   icon?: (p: Icon) => JSX.Element;
-  time?: string;
-  sunrise?: string;
-  sunset?: string;
-};
+} & Partial<Weather['time']>;
 
 const ConditionRow = ({
   icon,
   text,
   condition,
+  now,
   sunrise,
   sunset,
-  time,
 }: ConditionRow) => {
   if (!condition && !text) {
     return null;
@@ -36,13 +33,13 @@ const ConditionRow = ({
       {condition ? (
         <ConditionIcon
           condition={condition}
-          time={time}
+          now={now}
           sunset={sunset}
           sunrise={sunrise}
         />
-      ) : (
-        icon
-      )}
+      ) : icon ? (
+        icon(ICON_DEFAULT_PROPS)
+      ) : null}
       <Text style={styles.conditionText}>{computedText}</Text>
     </DefaultView>
   );

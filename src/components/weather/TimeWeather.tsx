@@ -1,20 +1,18 @@
 import React from "react";
 import { View as DefaultView, StyleSheet } from "react-native";
+import { Weather } from "../../services/weather/types";
 import { Text } from "../text/Text";
-import ConditionIcon, { Condition } from "./ConditionIcon";
+import ConditionIcon from "./ConditionIcon";
 
 type TimeWeatherProps = {
-  time: string;
-  temperature: number;
-  condition: Condition;
-  sunrise?: string;
-  sunset?: string;
-};
+  temperature: Weather['temperature']['current'];
+  condition: Weather['condition'];
+} & Partial<Weather['time']>;
 
 const TimeWeather = ({
-  time,
-  condition,
   temperature,
+  condition,
+  now,
   sunrise,
   sunset,
   ...props
@@ -23,14 +21,14 @@ const TimeWeather = ({
 
   return (
     <DefaultView style={styles.container} {...props}>
-      <Text style={styles.timeContainer}>{time}</Text>
+      <Text style={styles.timeContainer}>{now}</Text>
       <ConditionIcon
         width={25}
         height={25}
         condition={condition}
+        now={now}
         sunrise={sunrise}
         sunset={sunset}
-        time={time}
       />
       <Text style={styles.temperatureContainer}>{computedTemperature}º</Text>
     </DefaultView>

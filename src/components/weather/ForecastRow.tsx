@@ -15,7 +15,7 @@ const ForecastRow = ({ hours, sunrise, sunset }: Partial<Forecast>) => {
           key={f.time}
           temperature={f.temperature}
           condition={f.condition}
-          time={f.time}
+          now={f.time}
           sunrise={sunrise}
           sunset={sunset}
         />
