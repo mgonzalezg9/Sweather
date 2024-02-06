@@ -1,16 +1,9 @@
 import { StatusBar } from "expo-status-bar";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 
-import useCachedResources from "./hooks/useCachedResources";
-import useColorScheme from "./hooks/useColorScheme";
-import Navigation from "./navigation";
-import * as Localization from "expo-localization";
-import i18n from "i18n-js";
-import { en, es } from "./i18n";
-
-i18n.fallbacks = true;
-i18n.translations = { en, es };
-i18n.locale = Localization.locale;
+import useCachedResources from "./src/hooks/useCachedResources";
+import useColorScheme from "./src/hooks/useColorScheme";
+import Navigation from "./src/navigation";
 
 export default function App() {
   const isLoadingComplete = useCachedResources();

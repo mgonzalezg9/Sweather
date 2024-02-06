@@ -8,6 +8,7 @@
   - [Installation](#installation)
   - [Technologies](#technologies)
   - [Architecture](#architecture)
+  - [Android Build](#android-build)
   - [Further information](#further-information)
 
 ## Introduction
@@ -66,6 +67,10 @@ Sweather architecture is composed by the following folders:
     - `useCachedResources`: This hook loads resources before the app starts and shows an splash screen.
     - `useColorScheme`: Retrieves if the system has a light or dark mode enabled.
 
+    Wrappers for Weather and Wallpaper API calls:
+    - `useWeatherForecast`: Retrieves weather and forecast data.
+    - `useWallpaper`: Retrieves the wallpaper for a given location.
+
 -   Navigation:
     It contains the navigation stack along with the routes.
 
@@ -84,6 +89,26 @@ Sweather architecture is composed by the following folders:
   
 -   Assets:
     The font and the images used in the app.
+
+## Android Build
+
+First, login in Expo Associated Services (EAS). The below commands should finally output the user's name.
+
+```bash
+npm i -g eas-cli
+eas login
+eas whoami
+```
+
+The default build format is enhanced for the Play Store, this is Android App Bundle (`.aab`). In case you want to generate an `apk` please create `eas.json` file.
+
+Now you can run your build with the following command:
+
+```bash
+eas build -p android --profile preview
+```
+
+Note: you can name the profile whatever you like. We named the profile preview. However, you can call it local, emulator, or whatever makes the most sense for you.
 
 ## Further information
 To learn more about React and React native, you can check the docs at the [Technologies](#technologies) section.
