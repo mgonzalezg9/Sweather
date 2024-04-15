@@ -31,7 +31,7 @@ export const getLocationBackground = async ({
   };
 };
 
-export const getLocalBackground = () => {
-  const chosenPhotoIndex = Math.floor(Math.random() * BACKGROUND_LIST.length);
-  return BACKGROUND_LIST[chosenPhotoIndex];
+export const getLocalBackground = (options: Uri[] = BACKGROUND_LIST): Uri => {
+  const chosenPhotoIndex = Math.floor(Math.random() * options.length);
+  return options[chosenPhotoIndex];
 };

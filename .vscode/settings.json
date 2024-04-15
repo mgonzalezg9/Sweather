@@ -1,0 +1,17 @@
+{
+    "javascript.updateImportsOnFileMove.enabled": "always", // These are all my auto-save configs
+    "editor.formatOnSave": true, // turn it off for JS and JSX, we will do this via eslint
+    "editor.codeActionsOnSave": {
+        "source.fixAll": "explicit",
+        "source.organizeImports": "explicit"
+    },
+    "search.useIgnoreFiles": false,
+    "jest.jestCommandLine": "yarn test",
+    "jest.autoRun": {
+        "watch": false,
+        "onSave": [
+            "test-file"
+        ]
+    },
+    "typescript.tsdk": "node_modules/typescript/lib",
+}
