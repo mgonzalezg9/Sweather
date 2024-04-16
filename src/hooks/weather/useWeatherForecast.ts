@@ -1,6 +1,6 @@
+import { getCurrentWeather, getHourlyForecast } from '@/services/weather';
+import { Coordinates, Forecast, Weather } from '@/services/weather/types';
 import { useEffect, useState } from 'react';
-import { getCurrentWeather, getHourlyForecast } from '../../services/weather';
-import { Coordinates, Forecast, Weather } from '../../services/weather/types';
 
 export type LocationQuery = {
     location: string;

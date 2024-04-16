@@ -1,7 +1,7 @@
+import { Text } from "@/components/text/Text";
+import { View } from "@/components/view/View";
+import { RootStackScreenProps } from "@/navigation/types.d";
 import { Pressable, StyleSheet } from "react-native";
-import { Text } from "../components/text/Text";
-import { View } from "../components/view/View";
-import { RootStackScreenProps } from "../navigation/types.d";
 
 export default function NotFoundScreen({
   navigation,

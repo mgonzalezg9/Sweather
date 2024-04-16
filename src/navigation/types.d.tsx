@@ -3,9 +3,9 @@
  * https://reactnavigation.org/docs/typescript/
  */
 
+import { Uri } from "@/services/wallpaper/types";
+import { Forecast, Weather } from "@/services/weather/types";
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
-import { Uri } from "../services/wallpaper/types";
-import { Forecast, Weather } from "../services/weather/types";
 
 declare global {
   namespace ReactNavigation {

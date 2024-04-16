@@ -1,37 +1,37 @@
+import { View } from "@/components/view/View";
+import ForecastRow from "@/components/weather/ForecastRow";
+import { Forecast, Weather } from "@/services/weather/types";
 import React from "react";
 import { StyleSheet } from "react-native";
-import { View } from "../../components/view/View";
-import ForecastRow from "../../components/weather/ForecastRow";
-import { Forecast, Weather } from "../../services/weather/types";
 import CityTitle from "./CityTitle";
 import WeatherDetails from "./WeatherDetails";
 
-type WeatherSectionProps = {
+interface WeatherSectionProps {
   weather: Weather;
   forecast: Forecast;
 };
 
-const WeatherSection = ({
+const WeatherSection: React.FC<WeatherSectionProps> = ({
   weather,
   forecast,
-}: Partial<WeatherSectionProps>) => {
+}) => {
   return (
     <View style={styles.container}>
       <CityTitle
         style={styles.title}
-        city={weather?.geolocation.city}
-        countryCode={weather?.geolocation.countryCode}
+        city={weather.geolocation.city}
+        countryCode={weather.geolocation.countryCode}
       />
       <WeatherDetails
-        temperature={weather?.temperature.current}
-        condition={weather?.condition}
-        windSpeed={weather?.wind}
-        time={weather?.time}
+        temperature={weather.temperature.current}
+        condition={weather.condition}
+        windSpeed={weather.wind}
+        time={weather.time}
       />
       <ForecastRow
-        hours={forecast?.hours}
-        sunrise={forecast?.sunrise}
-        sunset={forecast?.sunset}
+        hours={forecast.hours}
+        sunrise={forecast.sunrise}
+        sunset={forecast.sunset}
       />
     </View>
   );

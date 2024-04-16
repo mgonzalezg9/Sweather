@@ -1,6 +1,6 @@
+import { Weather } from "@/services/weather/types";
 import React from "react";
 import { View as DefaultView, StyleSheet } from "react-native";
-import { Weather } from "../../services/weather/types";
 import { Text } from "../text/Text";
 import ConditionIcon from "./ConditionIcon";
 

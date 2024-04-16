@@ -1,6 +1,6 @@
+import { getLocalBackground, getLocationBackground } from '@/services/wallpaper';
+import { Uri } from '@/services/wallpaper/types';
 import { useEffect, useState } from 'react';
-import { getLocalBackground, getLocationBackground } from '../../services/wallpaper';
-import { Uri } from '../../services/wallpaper/types';
 
 export default function useWallpaper(location?: string) {
   const [wallpaper, setWallpaper] = useState<Uri>();

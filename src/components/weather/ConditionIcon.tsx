@@ -1,7 +1,7 @@
+import Colors from "@/constants/Colors";
+import { ICON_DEFAULT_PROPS } from "@/constants/Icon";
+import { Condition, Weather } from "@/services/weather/types";
 import React from "react";
-import Colors from "../../constants/Colors";
-import { ICON_DEFAULT_PROPS } from "../../constants/Icon";
-import { Condition, Weather } from "../../services/weather/types";
 import { Icon } from "../icons";
 import Cloud from "../icons/Cloud";
 import Fog from "../icons/Fog";

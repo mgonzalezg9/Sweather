@@ -1,11 +1,11 @@
+import { Icon } from "@/components/icons";
+import { Text } from "@/components/text/Text";
+import ConditionIcon from "@/components/weather/ConditionIcon";
+import { ICON_DEFAULT_PROPS } from "@/constants/Icon";
+import i18n from "@/i18n";
+import { Weather } from "@/services/weather/types";
 import React from "react";
 import { View as DefaultView, StyleSheet } from "react-native";
-import { Icon } from "../../components/icons";
-import { Text } from "../../components/text/Text";
-import ConditionIcon from "../../components/weather/ConditionIcon";
-import { ICON_DEFAULT_PROPS } from "../../constants/Icon";
-import i18n from "../../i18n";
-import { Weather } from "../../services/weather/types";
 
 type ConditionRow = {
   text?: string;

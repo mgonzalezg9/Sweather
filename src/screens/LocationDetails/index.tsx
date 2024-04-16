@@ -1,12 +1,12 @@
+import { View } from "@/components/view/View";
+import { RootStackScreenProps } from "@/navigation/types.d";
 import { ImageBackground, StyleSheet } from "react-native";
-import { View } from "../../components/view/View";
-import { RootStackScreenProps } from "../../navigation/types.d";
 import WeatherSection from "./WeatherSection";
 
 export default function LocationDetailsScreen({
   route: { params },
 }: RootStackScreenProps<"LocationDetails">) {
-  const { weather, forecast, wallpaper } = params
+  const { weather, forecast, wallpaper } = params;
 
   return (
     <View style={styles.container}>

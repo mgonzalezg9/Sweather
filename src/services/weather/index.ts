@@ -1,6 +1,6 @@
+import { locale } from "@/i18n/localization";
+import { get } from "@/utils/httpClient";
 import { OPENWEATHER_API_KEY, OPENWEATHER_URL } from "@env";
-import { locale } from "../../i18n/localization";
-import { get } from "../../utils/httpClient";
 import { formatMilliseconds } from "./time-formatter";
 import { Coordinates, Forecast, Weather } from "./types";
 
