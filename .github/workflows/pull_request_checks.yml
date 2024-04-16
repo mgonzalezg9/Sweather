@@ -16,5 +16,8 @@ jobs:
     - name: Install dependencies
       run: yarn install
 
+    - name: Run Typescript
+      run: yarn tsc
+
     - name: Run unit tests
       run: yarn test
