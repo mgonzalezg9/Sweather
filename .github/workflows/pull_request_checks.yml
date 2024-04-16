@@ -25,10 +25,6 @@ jobs:
 
     # Fetch master branch and run changing test cases 
     - name: Run Unit tests
-      run: |
-        git fetch --no-tags --depth=1 origin master
-        git checkout -b master
-        git checkout -
-        yarn test
+      run: yarn test:ci
       env:
         CI: true

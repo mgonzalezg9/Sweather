@@ -9,6 +9,7 @@
     "web": "expo start --web",
     "eject": "expo eject",
     "test": "jest --coverage=false --changedSince=origin/master",
+    "test:ci": "jest --ci --coverage",
     "test:debug": "jest -o --watch --coverage=false",
     "test:updateSnapshots": "jest -u --coverage=false"
   },
