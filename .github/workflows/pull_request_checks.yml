@@ -24,11 +24,11 @@ jobs:
         CI: true
 
     # Fetch master branch and run changing test cases 
-    - name: Run unit tests
+    - name: Run Unit tests
       run: |
         git fetch --no-tags --depth=1 origin master
         git checkout -b master
-        git checkout ${{ github.event.pull_request.head.sha }}
+        git checkout -
         yarn test
       env:
         CI: true
