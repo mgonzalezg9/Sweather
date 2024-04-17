@@ -1,7 +1,7 @@
+import { Text } from "@/components/text/Text";
+import { Weather } from "@/services/weather/types";
 import React from "react";
 import { View as DefaultView, StyleSheet } from "react-native";
-import { Text } from "../../components/text/Text";
-import { Weather } from "../../services/weather/types";
 import ConditionRow from "./ConditionRow";
 
 type WeatherDetailsProps = {

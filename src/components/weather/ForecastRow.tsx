@@ -1,6 +1,6 @@
+import { Forecast } from "@/services/weather/types";
 import React from "react";
 import { View as DefaultView, StyleSheet } from "react-native";
-import { Forecast } from "../../services/weather/types";
 import TimeWeather from "./TimeWeather";
 
 const ForecastRow = ({ hours, sunrise, sunset }: Partial<Forecast>) => {

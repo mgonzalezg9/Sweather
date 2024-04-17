@@ -6,15 +6,15 @@ import {
 } from "react-native";
 import AppTitle from "./AppTitle";
 
+import OpenweatherBanner from "@/assets/images/openweather.png";
+import { Text } from "@/components/text/Text";
+import { View } from "@/components/view/View";
+import Colors from "@/constants/Colors";
+import useWallpaper from "@/hooks/wallpaper/useWallpaper";
+import useWeatherForecast from "@/hooks/weather/useWeatherForecast";
+import i18n from "@/i18n";
+import { RootStackScreenProps } from "@/navigation/types.d";
 import { useEffect, useState } from "react";
-import OpenweatherBanner from "../../assets/images/openweather.png";
-import { Text } from "../../components/text/Text";
-import { View } from "../../components/view/View";
-import Colors from "../../constants/Colors";
-import useWallpaper from "../../hooks/wallpaper/useWallpaper";
-import useWeatherForecast from "../../hooks/weather/useWeatherForecast";
-import i18n from "../../i18n";
-import { RootStackScreenProps } from "../../navigation/types.d";
 import SearchSection from "./SearchSection";
 
 export default function LocationRequestScreen({

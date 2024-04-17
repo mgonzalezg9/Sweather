@@ -1,21 +1,22 @@
+import LocationPin from "@/components/icons/LocationPin";
+import { Text } from "@/components/text/Text";
+import { locale } from "@/i18n/localization";
 import { countries } from "country-data";
 import { getCountry } from "country-list-spanish";
 import React from "react";
-import { View as DefaultView, StyleSheet } from "react-native";
-import LocationPin from "../../components/icons/LocationPin";
-import { Text } from "../../components/text/Text";
-import { locale } from "../../i18n/localization";
+import { View as DefaultView, StyleProp, StyleSheet, ViewStyle } from "react-native";
 
-type CityTitleProps = {
+interface CityTitleProps {
   city: string;
   countryCode: string;
+  style: StyleProp<ViewStyle>
 };
 
-const CityTitle = ({
+const CityTitle: React.FC<CityTitleProps> = ({
   city,
   countryCode,
-  ...props
-}: Partial<CityTitleProps>) => {
+  style,
+}) => {
   let regionName = "-";
   if (countryCode) {
     regionName = locale.includes("es")
@@ -24,7 +25,7 @@ const CityTitle = ({
   }
 
   return (
-    <DefaultView {...props}>
+    <DefaultView style={style}>
       <Text style={styles.cityText} numberOfLines={1}>
         {city}
       </Text>

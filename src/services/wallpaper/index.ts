@@ -1,10 +1,10 @@
+import bg1 from "@/assets/images/background_1.jpg";
+import bg2 from "@/assets/images/background_2.jpg";
+import bg3 from "@/assets/images/background_3.jpg";
+import bg4 from "@/assets/images/background_4.jpg";
+import bg5 from "@/assets/images/background_5.jpg";
+import { get } from "@/utils/httpClient";
 import { UNSPLASH_API_KEY, UNSPLASH_URL } from '@env';
-import bg1 from "../../assets/images/background_1.jpg";
-import bg2 from "../../assets/images/background_2.jpg";
-import bg3 from "../../assets/images/background_3.jpg";
-import bg4 from "../../assets/images/background_4.jpg";
-import bg5 from "../../assets/images/background_5.jpg";
-import { get } from "../../utils/httpClient";
 import { BackgroundQuery, Uri } from "./types";
 
 const PER_PAGE = 3; // retrieves 3 wallpaper and choose one of them
@@ -31,7 +31,7 @@ export const getLocationBackground = async ({
   };
 };
 
-export const getLocalBackground = () => {
-  const chosenPhotoIndex = Math.floor(Math.random() * BACKGROUND_LIST.length);
-  return BACKGROUND_LIST[chosenPhotoIndex];
+export const getLocalBackground = (options: Uri[] = BACKGROUND_LIST): Uri => {
+  const chosenPhotoIndex = Math.floor(Math.random() * options.length);
+  return options[chosenPhotoIndex];
 };

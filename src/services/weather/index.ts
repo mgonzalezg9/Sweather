@@ -1,18 +1,24 @@
+import { get } from "@/utils/httpClient";
 import { OPENWEATHER_API_KEY, OPENWEATHER_URL } from "@env";
-import { locale } from "../../i18n/localization";
-import { get } from "../../utils/httpClient";
 import { formatMilliseconds } from "./time-formatter";
 import { Coordinates, Forecast, Weather } from "./types";
 
 const FORECAST_MAX_HOURS = 5;
 const UNIT_SYSTEM = "metric";
 
-type GetWeatherProps = {
-  location?: string;
-  coordinates?: Coordinates;
+type DeviceProps = {
+  device: {
+    locale: string,
+    timeZone?: string,
+  }
 };
 
-const createQuery = ({ location, coordinates }: GetWeatherProps) => {
+type CreateQueryProps = {
+  location?: string;
+  coordinates?: Coordinates;
+}
+
+const createQuery = ({ location, coordinates }: CreateQueryProps) => {
   return location
     ? { q: location }
     : {
@@ -21,9 +27,11 @@ const createQuery = ({ location, coordinates }: GetWeatherProps) => {
     };
 };
 
+type GetWeatherProps = DeviceProps & CreateQueryProps;
 export const getCurrentWeather = async ({
   location,
   coordinates,
+  device
 }: GetWeatherProps): Promise<Weather> => {
   if (!location && !coordinates?.latitude && !coordinates?.longitude) {
     throw new Error("Either location or coordinates must be provided");
@@ -32,7 +40,7 @@ export const getCurrentWeather = async ({
   const data = await get(`${OPENWEATHER_URL}/data/2.5/weather`, {
     ...createQuery({ location, coordinates }),
     units: UNIT_SYSTEM,
-    lang: locale,
+    lang: device.locale,
     appid: OPENWEATHER_API_KEY,
   });
 
@@ -51,31 +59,57 @@ export const getCurrentWeather = async ({
       countryCode: data.sys.country,
     },
     time: {
-      now: formatMilliseconds(((data.dt + data.timezone) * 1000)),
-      sunrise: formatMilliseconds(((data.sys.sunrise + data.timezone) * 1000)),
-      sunset: formatMilliseconds(((data.sys.sunset + data.timezone) * 1000)),
+      now: formatMilliseconds({
+        time: (data.dt + data.timezone) * 1000,
+        locale: device.locale,
+        timeZone: device.timeZone
+      }),
+      sunrise: formatMilliseconds({
+        time: (data.sys.sunrise + data.timezone) * 1000,
+        locale: device.locale,
+        timeZone: device.timeZone
+      }),
+      sunset: formatMilliseconds({
+        time: (data.sys.sunset + data.timezone) * 1000,
+        locale: device.locale,
+        timeZone: device.timeZone
+      }),
     },
   };
 };
 
+type GetHourlyForecastProps = DeviceProps & CreateQueryProps;
 export const getHourlyForecast = async ({
   location,
   coordinates,
-}: GetWeatherProps): Promise<Forecast> => {
+  device
+}: GetHourlyForecastProps): Promise<Forecast> => {
   const data = await get(`${OPENWEATHER_URL}/data/2.5/forecast`, {
     ...createQuery({ location, coordinates }),
     units: UNIT_SYSTEM,
-    lang: locale,
+    lang: device.locale,
     appid: OPENWEATHER_API_KEY,
   });
 
   return {
     hours: data.list.slice(0, FORECAST_MAX_HOURS).map((f: any) => ({
-      time: formatMilliseconds(((f.dt + data.city.timezone) * 1000)),
+      time: formatMilliseconds({
+        time: (f.dt + data.city.timezone) * 1000,
+        locale: device.locale,
+        timeZone: device.timeZone
+      }),
       temperature: f.main.temp,
       condition: f.weather[0].main,
     })),
-    sunrise: formatMilliseconds(((data.city.sunrise + data.city.timezone) * 1000)),
-    sunset: formatMilliseconds(((data.city.sunset + data.city.timezone) * 1000)),
+    sunrise: formatMilliseconds({
+      time: (data.city.sunrise + data.city.timezone) * 1000,
+      locale: device.locale,
+      timeZone: device.timeZone
+    }),
+    sunset: formatMilliseconds({
+      time: (data.city.sunset + data.city.timezone) * 1000,
+      locale: device.locale,
+      timeZone: device.timeZone
+    }),
   };
 };

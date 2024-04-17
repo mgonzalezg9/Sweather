@@ -1,0 +1,30 @@
+name: PR checks
+
+on:
+  pull_request:
+    branches:
+      - master
+
+jobs:
+  pr_checks:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+    
+    - name: Install dependencies
+      run: yarn install
+      env:
+        CI: true
+
+    - name: Run Typescript
+      run: yarn tsc
+      env:
+        CI: true
+
+    # Fetch master branch and run changing test cases 
+    - name: Run Unit tests
+      run: yarn test:ci
+      env:
+        CI: true

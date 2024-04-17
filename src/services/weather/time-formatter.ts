@@ -1,10 +1,18 @@
-const timeFormatter = new Intl.DateTimeFormat(
-    // TODO Hardcoded
-    'es-ES',
-    {
-        hour: '2-digit',
-        minute: '2-digit',
-    }
-);
+interface formatMillisecondsOptions {
+    time: number;
+    locale: string;
+    timeZone?: string;
+}
 
-export const formatMilliseconds = (ms: number) => timeFormatter.format(new Date(ms));
+export const formatMilliseconds = ({ time, locale, timeZone = 'UTC' }: formatMillisecondsOptions) => {
+    const timeFormatter = new Intl.DateTimeFormat(
+        locale,
+        {
+            hour: '2-digit',
+            minute: '2-digit',
+            timeZone
+        }
+    );
+
+    return timeFormatter.format(new Date(time));
+}

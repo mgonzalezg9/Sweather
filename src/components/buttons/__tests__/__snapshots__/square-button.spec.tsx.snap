@@ -1,0 +1,64 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SquareButton renders correctly 1`] = `
+<View
+  accessibilityState={
+    {
+      "busy": undefined,
+      "checked": undefined,
+      "disabled": undefined,
+      "expanded": undefined,
+      "selected": undefined,
+    }
+  }
+  accessibilityValue={
+    {
+      "max": undefined,
+      "min": undefined,
+      "now": undefined,
+      "text": undefined,
+    }
+  }
+  accessible={true}
+  collapsable={false}
+  focusable={true}
+  onBlur={[Function]}
+  onClick={[Function]}
+  onFocus={[Function]}
+  onResponderGrant={[Function]}
+  onResponderMove={[Function]}
+  onResponderRelease={[Function]}
+  onResponderTerminate={[Function]}
+  onResponderTerminationRequest={[Function]}
+  onStartShouldSetResponder={[Function]}
+  style={
+    [
+      {
+        "borderRadius": 10,
+        "height": 50,
+        "padding": 5,
+        "width": 50,
+      },
+      {
+        "backgroundColor": "#EC7357",
+      },
+    ]
+  }
+>
+  <View
+    style={
+      {
+        "alignItems": "center",
+        "display": "flex",
+        "height": "100%",
+        "justifyContent": "center",
+        "padding": 5,
+      }
+    }
+  >
+    <Text>
+      Hello World
+    </Text>
+  </View>
+</View>
+`;
