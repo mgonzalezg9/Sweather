@@ -7,7 +7,8 @@ const i18n = new I18n({
     en,
     es
 })
-i18n.defaultLocale = locale;
+i18n.locale = locale;
+i18n.defaultLocale = 'en';
 i18n.enableFallback = true;
 
 export default i18n;
