@@ -4,18 +4,16 @@ import { locale } from "@/i18n/localization";
 import { countries } from "country-data";
 import { getCountry } from "country-list-spanish";
 import React from "react";
-import { View as DefaultView, StyleProp, StyleSheet, ViewStyle } from "react-native";
+import { View as DefaultView, StyleSheet } from "react-native";
 
 interface CityTitleProps {
   city: string;
   countryCode: string;
-  style: StyleProp<ViewStyle>
 };
 
 const CityTitle: React.FC<CityTitleProps> = ({
   city,
   countryCode,
-  style,
 }) => {
   let regionName = "-";
   if (countryCode) {
@@ -25,7 +23,7 @@ const CityTitle: React.FC<CityTitleProps> = ({
   }
 
   return (
-    <DefaultView style={style}>
+    <DefaultView>
       <Text style={styles.cityText} numberOfLines={1}>
         {city}
       </Text>
@@ -46,9 +44,6 @@ const styles = StyleSheet.create({
     fontSize: 36,
     maxWidth: 250,
   },
-  countryText: {
-    fontSize: 16,
-  },
   countryContainer: {
     flexDirection: "row",
     marginTop: 5,
@@ -56,5 +51,8 @@ const styles = StyleSheet.create({
   },
   locationPin: {
     marginHorizontal: 5,
+  },
+  countryText: {
+    fontSize: 16,
   },
 });

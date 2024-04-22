@@ -1,4 +1,4 @@
-import { View } from "@/components/view/View";
+import { View as ThemedView } from "@/components/view/View";
 import ForecastRow from "@/components/weather/ForecastRow";
 import { Forecast, Weather } from "@/services/weather/types";
 import React from "react";
@@ -16,9 +16,8 @@ const WeatherSection: React.FC<WeatherSectionProps> = ({
   forecast,
 }) => {
   return (
-    <View style={styles.container}>
+    <ThemedView style={[styles.curvedBox, styles.weatherContainer]}>
       <CityTitle
-        style={styles.title}
         city={weather.geolocation.city}
         countryCode={weather.geolocation.countryCode}
       />
@@ -33,23 +32,23 @@ const WeatherSection: React.FC<WeatherSectionProps> = ({
         sunrise={forecast.sunrise}
         sunset={forecast.sunset}
       />
-    </View>
+    </ThemedView>
   );
 };
 
 export default WeatherSection;
 
 const styles = StyleSheet.create({
-  container: {
+  curvedBox: {
     position: "absolute",
     top: "35%",
     width: "100%",
     height: "67%",
-    borderTopRightRadius: 500,
+    borderTopRightRadius: 400,
   },
-  title: {
-    position: "absolute",
-    top: 75,
-    left: 5,
-  },
+  weatherContainer: {
+    justifyContent: "center",
+    gap: 25,
+    padding: 10
+  }
 });

@@ -28,10 +28,7 @@ export default ForecastRow;
 
 const styles = StyleSheet.create({
   container: {
-    position: "relative",
-    top: 40,
-    marginLeft: 5,
-    flex: 1,
     flexDirection: "row",
+    justifyContent: "space-between",
   },
 });

@@ -39,18 +39,15 @@ export default TimeWeather;
 
 const styles = StyleSheet.create({
   container: {
-    display: "flex",
     flexDirection: "column",
     alignItems: "center",
-    padding: 5,
-    marginHorizontal: 10,
+    justifyContent: 'space-between',
+    height: 115,
   },
   timeContainer: {
-    marginBottom: 25,
     fontSize: 16,
   },
   temperatureContainer: {
-    marginTop: 25,
     fontSize: 16,
   },
 });
