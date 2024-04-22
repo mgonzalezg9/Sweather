@@ -1,8 +1,11 @@
 import AppLogo from "@/assets/images/banner.png";
 import { Text } from "@/components/text/Text";
-import { View } from "@/components/view/View";
 import i18n from "@/i18n";
-import { Image, StyleSheet } from "react-native";
+import {
+  Image,
+  StyleSheet,
+  View
+} from "react-native";
 
 const AppTitle = () => {
   return (

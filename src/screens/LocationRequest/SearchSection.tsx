@@ -3,22 +3,20 @@ import LocationPin from "@/components/icons/LocationPin";
 import Search from "@/components/icons/Search";
 import { TextInput } from "@/components/input/TextInput";
 import { Text } from "@/components/text/Text";
-import { View } from "@/components/view/View";
 import Colors from "@/constants/Colors";
 import i18n from "@/i18n";
 import * as Location from "expo-location";
 import { useState } from "react";
-import { StyleSheet } from "react-native";
+import { StyleSheet, View } from "react-native";
 
 type SearchSection = {
   onSearch: (result: any) => void;
-  errorMsg: unknown;
+  onLocationDeny: () => void;
 };
 
-const SearchSection = ({ onSearch, errorMsg }: SearchSection) => {
+const SearchSection = ({ onSearch, onLocationDeny }: SearchSection) => {
   const [coordinates, setCoordinates] = useState<Location.LocationObject>();
   const [location, setLocation] = useState<string>('');
-  const [locationDenied, setLocationDenied] = useState<boolean>(false);
 
   const getWeatherDetails = () => {
     onSearch(location ? { location } : { coordinates: coordinates?.coords });
@@ -27,7 +25,7 @@ const SearchSection = ({ onSearch, errorMsg }: SearchSection) => {
   const requestUserLocation = async () => {
     let { status } = await Location.requestForegroundPermissionsAsync();
     if (status !== "granted") {
-      setLocationDenied(true);
+      onLocationDeny();
       return;
     }
 
@@ -79,13 +77,6 @@ const SearchSection = ({ onSearch, errorMsg }: SearchSection) => {
           }
         />
       </View>
-      <Text style={styles.errorText}>
-        {errorMsg
-          ? i18n.t("weatherServiceError")
-          : locationDenied
-            ? i18n.t("locationDisabledError")
-            : null}
-      </Text>
     </View>
   );
 };

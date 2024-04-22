@@ -1,4 +1,6 @@
-export default {
+import { SweatherLocale } from "./types";
+
+const en: SweatherLocale = {
     appTitle: 'Sweather',
     nameCity: 'Name your town or city',
     sampleCityInput: 'Eg. London',
@@ -23,4 +25,6 @@ export default {
         Ash: "Ash",
         Tornado: "Tornado",
     }
-}
+};
+
+export default en;

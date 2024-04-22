@@ -21,7 +21,7 @@ const TimeWeather = ({
 
   return (
     <DefaultView style={styles.container} {...props}>
-      <Text style={styles.timeContainer}>{now}</Text>
+      <Text style={styles.timeWeatherText}>{now}</Text>
       <ConditionIcon
         width={25}
         height={25}
@@ -30,7 +30,7 @@ const TimeWeather = ({
         sunrise={sunrise}
         sunset={sunset}
       />
-      <Text style={styles.temperatureContainer}>{computedTemperature}º</Text>
+      <Text style={styles.timeWeatherText}>{computedTemperature}º</Text>
     </DefaultView>
   );
 };
@@ -39,18 +39,12 @@ export default TimeWeather;
 
 const styles = StyleSheet.create({
   container: {
-    display: "flex",
     flexDirection: "column",
     alignItems: "center",
-    padding: 5,
-    marginHorizontal: 10,
+    justifyContent: 'space-between',
+    height: 115,
   },
-  timeContainer: {
-    marginBottom: 25,
-    fontSize: 16,
-  },
-  temperatureContainer: {
-    marginTop: 25,
+  timeWeatherText: {
     fontSize: 16,
   },
 });

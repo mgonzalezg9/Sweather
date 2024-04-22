@@ -39,10 +39,6 @@ export default WeatherDetails;
 
 const styles = StyleSheet.create({
   container: {
-    position: "relative",
-    top: 150,
-    marginLeft: 5,
-    flex: 1,
     flexDirection: "row",
   },
   temperatureText: {
