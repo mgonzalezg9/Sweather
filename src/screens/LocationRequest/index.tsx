@@ -28,7 +28,7 @@ const styles = StyleSheet.create({
   },
   bodyContent: {
     gap: 20,
-    marginTop: '5%'
+    marginTop: '10%'
   },
   footer: {
     width: '100%',
