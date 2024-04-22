@@ -1,0 +1,10 @@
+// REST Client VS Code extension https://marketplace.visualstudio.com/items?itemName=humao.rest-client
+
+###
+# Get Wallpaper given query string
+# @prompt query Query string
+
+@perPage = 3
+@orientation = portrait
+
+GET {{$dotenv UNSPLASH_URL}}/search/photos?query={{query}}&per_page={{perPage}}&orientation={{orientation}}&client_id={{$dotenv UNSPLASH_API_KEY}} HTTP/1.1

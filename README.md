@@ -6,6 +6,10 @@
   - [Introduction](#introduction)
   - [Features](#features)
   - [Installation](#installation)
+  - [Usage](#usage)
+  - [Testing](#testing)
+    - [Unit tests](#unit-tests)
+    - [HTTP Requests](#http-requests)
   - [Technologies](#technologies)
   - [Architecture](#architecture)
   - [Android Build](#android-build)
@@ -44,7 +48,24 @@ UNSPLASH_URL=XXXXXXXXX
 
 Once done this run `yarn install` to install the dependencies and... That's it!
 
+## Usage
+
 Feel free to run the app with `yarn start`.
+
+## Testing
+
+### Unit tests
+
+You can run the unit tests using the command: 
+
+```bash
+yarn test
+```
+
+### HTTP Requests
+
+With the [REST Client Extension](https://marketplace.visualstudio.com/items?itemName=humao.rest-client) you can test OpenWeather and Unsplash APIs. 
+Please find them at [the tests folder](./tests/).
 
 ## Technologies
 
