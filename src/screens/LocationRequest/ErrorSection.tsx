@@ -17,7 +17,7 @@ const ErrorSection: React.FC<ErrorSectionProps> = ({ error }) => {
 
   return (
     <Text style={styles.errorText}>
-      {i18n.t(textKey)}
+      {textKey && i18n.t(textKey)}
     </Text>
   )
 };

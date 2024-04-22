@@ -21,7 +21,7 @@ const TimeWeather = ({
 
   return (
     <DefaultView style={styles.container} {...props}>
-      <Text style={styles.timeContainer}>{now}</Text>
+      <Text style={styles.timeWeatherText}>{now}</Text>
       <ConditionIcon
         width={25}
         height={25}
@@ -30,7 +30,7 @@ const TimeWeather = ({
         sunrise={sunrise}
         sunset={sunset}
       />
-      <Text style={styles.temperatureContainer}>{computedTemperature}º</Text>
+      <Text style={styles.timeWeatherText}>{computedTemperature}º</Text>
     </DefaultView>
   );
 };
@@ -44,10 +44,7 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     height: 115,
   },
-  timeContainer: {
-    fontSize: 16,
-  },
-  temperatureContainer: {
+  timeWeatherText: {
     fontSize: 16,
   },
 });
