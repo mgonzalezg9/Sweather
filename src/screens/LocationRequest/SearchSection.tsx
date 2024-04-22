@@ -12,13 +12,12 @@ import { StyleSheet } from "react-native";
 
 type SearchSection = {
   onSearch: (result: any) => void;
-  errorMsg: unknown;
+  onLocationDeny: () => void;
 };
 
-const SearchSection = ({ onSearch, errorMsg }: SearchSection) => {
+const SearchSection = ({ onSearch, onLocationDeny }: SearchSection) => {
   const [coordinates, setCoordinates] = useState<Location.LocationObject>();
   const [location, setLocation] = useState<string>('');
-  const [locationDenied, setLocationDenied] = useState<boolean>(false);
 
   const getWeatherDetails = () => {
     onSearch(location ? { location } : { coordinates: coordinates?.coords });
@@ -27,7 +26,7 @@ const SearchSection = ({ onSearch, errorMsg }: SearchSection) => {
   const requestUserLocation = async () => {
     let { status } = await Location.requestForegroundPermissionsAsync();
     if (status !== "granted") {
-      setLocationDenied(true);
+      onLocationDeny();
       return;
     }
 
@@ -79,13 +78,6 @@ const SearchSection = ({ onSearch, errorMsg }: SearchSection) => {
           }
         />
       </View>
-      <Text style={styles.errorText}>
-        {errorMsg
-          ? i18n.t("weatherServiceError")
-          : locationDenied
-            ? i18n.t("locationDisabledError")
-            : null}
-      </Text>
     </View>
   );
 };
