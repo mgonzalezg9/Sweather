@@ -17,11 +17,11 @@ import ErrorSection from "./ErrorSection";
 
 const LocationRequestBody: React.FC = () => {
   const navigation = useNavigation();
-  const [location, setLocation] = useState({} as never)
+  const [location, setLocation] = useState({} as never);
   const [locationDenied, setLocationDenied] = useState(false);
 
-  const { weather, forecast, loading: loadingWeather, error: errorWeather } = useWeatherForecast(location)
-  const { wallpaper, loading: loadingWallpaper } = useWallpaper(weather?.geolocation?.city)
+  const { weather, forecast, loading: loadingWeather, error: errorWeather } = useWeatherForecast(location);
+  const { wallpaper, loading: loadingWallpaper } = useWallpaper(weather?.geolocation?.city);
 
   useEffect(() => {
     if (weather && forecast && wallpaper) {

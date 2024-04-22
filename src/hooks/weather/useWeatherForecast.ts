@@ -36,7 +36,7 @@ export default function useWeatherForecast({ location, coordinates }: LocationQu
     const [weather, setWeather] = useState<Weather>();
     const [forecast, setForecast] = useState<Forecast>();
     const [isLoading, setLoading] = useState<boolean>(false);
-    const [isError, setError] = useState<SweatherErrorCode>();
+    const [isError, setError] = useState<SweatherErrorCode | null>(null);
 
     useEffect(() => {
         const loadWeather = async () => {
@@ -59,6 +59,7 @@ export default function useWeatherForecast({ location, coordinates }: LocationQu
 
                 setWeather(weather);
                 setForecast(forecast);
+                setError(null);
             } catch (error) {
                 console.error(`Unable to retrieve weather at location ${location || coordinates}`);
                 setError(SweatherErrorCode.WEATHER_SERVICE_ERROR);

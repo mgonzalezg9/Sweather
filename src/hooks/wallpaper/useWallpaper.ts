@@ -1,3 +1,4 @@
+import { SweatherErrorCode } from '@/logic/error';
 import { getLocalBackground, getLocationBackground } from '@/services/wallpaper';
 import { Uri } from '@/services/wallpaper/types';
 import { useEffect, useState } from 'react';
@@ -5,30 +6,37 @@ import { useEffect, useState } from 'react';
 export default function useWallpaper(location?: string) {
   const [wallpaper, setWallpaper] = useState<Uri>();
   const [isLoading, setLoading] = useState<boolean>(false);
-  const [isError, setError] = useState<unknown>();
+  const [isError, setError] = useState<SweatherErrorCode | null>(null);
 
   useEffect(() => {
     if (!location) {
       return;
     }
 
-    try {
-      console.log(`Searching wallpaper for ${location}`);
-      setLoading(true);
+    const loadWallpaper = async () => {
+      try {
+        console.log(`Searching wallpaper for ${location}`);
+        setLoading(true);
 
-      getLocationBackground({
-        query: location,
-      }).then(uri => {
-        if (uri) setWallpaper(uri)
-      });
-    } catch (error) {
-      console.error("Unable to retrieve wallpaper from location");
-      setError(error);
+        const uri = await getLocationBackground({
+          query: location,
+        })
 
-      setWallpaper(getLocalBackground());
-    } finally {
-      setLoading(false);
+        if (uri) {
+          setWallpaper(uri)
+          setError(null)
+        }
+      } catch (error) {
+        console.error("Unable to retrieve wallpaper from location");
+        setError(SweatherErrorCode.WALLPAPER_SERVICE_ERROR);
+
+        setWallpaper(getLocalBackground());
+      } finally {
+        setLoading(false);
+      }
     }
+
+    loadWallpaper();
   }, [location]);
 
   return { wallpaper, loading: isLoading, error: isError };
