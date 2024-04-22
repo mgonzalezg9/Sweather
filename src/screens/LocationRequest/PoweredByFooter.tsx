@@ -2,7 +2,9 @@ import {
   View as DefaultView,
   Image,
   ImageSourcePropType,
-  StyleSheet
+  StyleProp,
+  StyleSheet,
+  ViewStyle
 } from "react-native";
 
 import { Text } from "@/components/text/Text";
@@ -10,10 +12,11 @@ import i18n from "@/i18n";
 
 interface PoweredByFooterProps {
   image: ImageSourcePropType;
+  style?: StyleProp<ViewStyle>;
 }
 
-const PoweredByFooter: React.FC<PoweredByFooterProps> = ({ image }) => (
-  <DefaultView style={styles.poweredContainer}>
+const PoweredByFooter: React.FC<PoweredByFooterProps> = ({ image, style }) => (
+  <DefaultView style={[styles.poweredContainer, style]}>
     <Text style={styles.poweredText}>{i18n.t("poweredBy")}:</Text>
     <Image source={image} style={styles.poweredImage} resizeMode="contain" />
   </DefaultView>
@@ -23,6 +26,7 @@ const styles = StyleSheet.create({
   poweredContainer: {
     flexDirection: "row",
     alignItems: "center",
+    justifyContent: 'center'
   },
   poweredText: {
     fontSize: 18,

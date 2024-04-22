@@ -1,7 +1,7 @@
 import OpenweatherBanner from "@/assets/images/openweather.png";
-import { View } from "@/components/view/View";
 import {
   View as DefaultView,
+  SafeAreaView,
   StyleSheet
 } from "react-native";
 import AppTitle from "./AppTitle";
@@ -10,26 +10,27 @@ import PoweredByFooter from "./PoweredByFooter";
 
 export default function LocationRequestScreen() {
   return (
-    <View style={styles.container}>
-      <DefaultView style={styles.locationInput}>
+    <SafeAreaView style={styles.container}>
+      <DefaultView style={styles.bodyContent}>
         <AppTitle />
         <LocationRequestBody />
       </DefaultView>
-      <PoweredByFooter image={OpenweatherBanner} />
-    </View>
+      <PoweredByFooter image={OpenweatherBanner} style={styles.footer} />
+    </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    alignItems: "center",
-    justifyContent: "space-around",
+    justifyContent: 'space-between',
     padding: 20,
+    height: "100%",
   },
-  locationInput: {
-    width: "100%",
-    marginLeft: 40,
-    marginRight: 40,
+  bodyContent: {
+    gap: 20,
+    marginTop: '5%'
+  },
+  footer: {
+    width: '100%',
   }
 });

@@ -1,7 +1,7 @@
 import {
   ActivityIndicator,
-  View as DefaultView,
   StyleSheet,
+  View,
 } from "react-native";
 
 import Colors from "@/constants/Colors";
@@ -40,7 +40,7 @@ const LocationRequestBody: React.FC = () => {
   }, [location])
 
   return (
-    <DefaultView style={styles.searchContainer}>
+    <View style={styles.searchContainer}>
       {(loadingWeather || loadingWallpaper) ? (
         <ActivityIndicator
           style={styles.spinner}
@@ -57,7 +57,7 @@ const LocationRequestBody: React.FC = () => {
           }
         </>
       )}
-    </DefaultView>
+    </View>
   )
 };
 
