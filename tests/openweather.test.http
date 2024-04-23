@@ -1,25 +1,26 @@
 // REST Client VS Code extension https://marketplace.visualstudio.com/items?itemName=humao.rest-client
 
 @unitSystem = metrics
+@lang = en
 
 ###
 # Get Weather at coordinates
 # @prompt lat Latitude coordinate
 # @prompt lon Longitude coordinate
-GET {{$dotenv OPENWEATHER_URL}}/data/2.5/weather?lat={{lat}}&lon={{lon}}&units={{unitSystem}}&appid={{$dotenv OPENWEATHER_API_KEY}} HTTP/1.1
+GET {{$dotenv OPENWEATHER_URL}}/data/2.5/weather?lat={{lat}}&lon={{lon}}&units={{unitSystem}}&lang={{lang}}&appid={{$dotenv OPENWEATHER_API_KEY}} HTTP/1.1
 
 ###
 # Get Weather at location string
 # @prompt location Location string
-GET {{$dotenv OPENWEATHER_URL}}/data/2.5/weather?q={{location}}&units={{unitSystem}}&appid={{$dotenv OPENWEATHER_API_KEY}} HTTP/1.1
+GET {{$dotenv OPENWEATHER_URL}}/data/2.5/weather?q={{location}}&units={{unitSystem}}&lang={{lang}}&appid={{$dotenv OPENWEATHER_API_KEY}} HTTP/1.1
 
 ###
 # Get Forecast at coordinates
 # @prompt lat Latitude coordinate
 # @prompt lon Longitude coordinate
-GET {{$dotenv OPENWEATHER_URL}}/data/2.5/forecast?lat={{lat}}&lon={{lon}}&units={{unitSystem}}&appid={{$dotenv OPENWEATHER_API_KEY}} HTTP/1.1
+GET {{$dotenv OPENWEATHER_URL}}/data/2.5/forecast?lat={{lat}}&lon={{lon}}&units={{unitSystem}}&lang={{lang}}&appid={{$dotenv OPENWEATHER_API_KEY}} HTTP/1.1
 
 ###
 # Get Forecast at location string
 # @prompt location Location string
-GET {{$dotenv OPENWEATHER_URL}}/data/2.5/forecast?q={{location}}&units={{unitSystem}}&appid={{$dotenv OPENWEATHER_API_KEY}} HTTP/1.1
+GET {{$dotenv OPENWEATHER_URL}}/data/2.5/forecast?q={{location}}&units={{unitSystem}}&lang={{lang}}&appid={{$dotenv OPENWEATHER_API_KEY}} HTTP/1.1

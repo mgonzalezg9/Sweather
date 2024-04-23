@@ -43,6 +43,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: 'space-between',
     height: 115,
+    minWidth: 75
   },
   timeWeatherText: {
     fontSize: 16,
