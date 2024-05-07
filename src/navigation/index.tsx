@@ -3,9 +3,11 @@
  * https://reactnavigation.org/docs/getting-started
  *
  */
+import { hasEnvironmentVariables } from "@/config/dotenv";
 import LocationDetailsScreen from "@/screens/LocationDetails";
 import LocationRequestScreen from "@/screens/LocationRequest";
 import NotFoundScreen from "@/screens/NotFoundScreen";
+import { OPENWEATHER_API_KEY, OPENWEATHER_URL, UNSPLASH_API_KEY, UNSPLASH_URL } from "@env";
 import {
   DarkTheme, DefaultTheme, NavigationContainer
 } from "@react-navigation/native";
@@ -19,6 +21,11 @@ import { RootStackParamList } from "./types.d";
 LogBox.ignoreLogs([
   "Non-serializable values were found in the navigation state",
 ]);
+
+// Parse environment variables
+if (!hasEnvironmentVariables({ OPENWEATHER_API_KEY, OPENWEATHER_URL, UNSPLASH_API_KEY, UNSPLASH_URL })) {
+  throw new Error('Please provide all the required environment variables')
+}
 
 export default function Navigation({
   colorScheme,
