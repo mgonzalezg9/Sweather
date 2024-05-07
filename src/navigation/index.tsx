@@ -3,6 +3,7 @@
  * https://reactnavigation.org/docs/getting-started
  *
  */
+import { hasEnvironmentVariables } from "@/config/dotenv";
 import LocationDetailsScreen from "@/screens/LocationDetails";
 import LocationRequestScreen from "@/screens/LocationRequest";
 import NotFoundScreen from "@/screens/NotFoundScreen";
@@ -19,6 +20,11 @@ import { RootStackParamList } from "./types.d";
 LogBox.ignoreLogs([
   "Non-serializable values were found in the navigation state",
 ]);
+
+// Parse environment variables
+if (!hasEnvironmentVariables(process.env)) {
+  throw new Error('Please provide all the required environment variables')
+}
 
 export default function Navigation({
   colorScheme,

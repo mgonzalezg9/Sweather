@@ -7,4 +7,4 @@
 @perPage = 3
 @orientation = portrait
 
-GET {{$dotenv UNSPLASH_URL}}/search/photos?query={{query}}&per_page={{perPage}}&orientation={{orientation}}&client_id={{$dotenv UNSPLASH_API_KEY}} HTTP/1.1
+GET {{$dotenv EXPO_PUBLIC_UNSPLASH_URL}}/search/photos?query={{query}}&per_page={{perPage}}&orientation={{orientation}}&client_id={{$dotenv EXPO_PUBLIC_UNSPLASH_API_KEY}} HTTP/1.1
