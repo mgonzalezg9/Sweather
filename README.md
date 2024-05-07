@@ -40,10 +40,10 @@ Install the project node and npm version via `nvm` by using `nvm install`.
 Then install `yarn` in case you don't have it and add the following `.env` file:
 
 ```env
-OPENWEATHER_API_KEY=XXXXXXXXX
-OPENWEATHER_URL=XXXXXXXXX
-UNSPLASH_API_KEY=XXXXXXXXX
-UNSPLASH_URL=XXXXXXXXX
+EXPO_PUBLIC_OPENWEATHER_API_KEY=XXXXXXXXX
+EXPO_PUBLIC_OPENWEATHER_URL=XXXXXXXXX
+EXPO_PUBLIC_UNSPLASH_API_KEY=XXXXXXXXX
+EXPO_PUBLIC_UNSPLASH_URL=XXXXXXXXX
 ```
 
 Once done this run `yarn install` to install the dependencies and... That's it!

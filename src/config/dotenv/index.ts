@@ -4,15 +4,10 @@
  * @returns If all the required keys have been defined
  */
 export const hasEnvironmentVariables = (vars: NodeJS.ProcessEnv) => {
-  // All environment variables are required
-  if (
-    !vars.OPENWEATHER_API_KEY ||
-    !vars.OPENWEATHER_URL ||
-    !vars.UNSPLASH_API_KEY ||
-    !vars.UNSPLASH_URL
-  ) {
-    return false;
-  }
-
-  return true;
+  return (
+    vars.EXPO_PUBLIC_OPENWEATHER_API_KEY &&
+    vars.EXPO_PUBLIC_OPENWEATHER_URL &&
+    vars.EXPO_PUBLIC_UNSPLASH_API_KEY &&
+    vars.EXPO_PUBLIC_UNSPLASH_URL
+  );
 };

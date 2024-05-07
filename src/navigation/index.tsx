@@ -7,7 +7,6 @@ import { hasEnvironmentVariables } from "@/config/dotenv";
 import LocationDetailsScreen from "@/screens/LocationDetails";
 import LocationRequestScreen from "@/screens/LocationRequest";
 import NotFoundScreen from "@/screens/NotFoundScreen";
-import { OPENWEATHER_API_KEY, OPENWEATHER_URL, UNSPLASH_API_KEY, UNSPLASH_URL } from "@env";
 import {
   DarkTheme, DefaultTheme, NavigationContainer
 } from "@react-navigation/native";
@@ -23,7 +22,7 @@ LogBox.ignoreLogs([
 ]);
 
 // Parse environment variables
-if (!hasEnvironmentVariables({ OPENWEATHER_API_KEY, OPENWEATHER_URL, UNSPLASH_API_KEY, UNSPLASH_URL })) {
+if (!hasEnvironmentVariables(process.env)) {
   throw new Error('Please provide all the required environment variables')
 }
 
