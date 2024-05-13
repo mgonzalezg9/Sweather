@@ -38,7 +38,8 @@
     },
     "plugins": [
       "expo-font",
-      "expo-localization"
+      "expo-localization",
+      "expo-asset"
     ]
   }
 }
