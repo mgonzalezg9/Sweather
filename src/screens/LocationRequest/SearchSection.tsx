@@ -7,7 +7,7 @@ import Colors from "@/constants/Colors";
 import i18n from "@/i18n";
 import * as Location from "expo-location";
 import { useState } from "react";
-import { StyleSheet, View } from "react-native";
+import { ActivityIndicator, StyleSheet, View } from "react-native";
 
 type SearchSection = {
   onSearch: (result: any) => void;
@@ -16,13 +16,16 @@ type SearchSection = {
 
 const SearchSection = ({ onSearch, onLocationDeny }: SearchSection) => {
   const [coordinates, setCoordinates] = useState<Location.LocationObject>();
-  const [location, setLocation] = useState<string>('');
+  const [location, setLocation] = useState<string>("");
+  const [requestLocation, setRequestLocation] = useState(false);
 
   const getWeatherDetails = () => {
     onSearch(location ? { location } : { coordinates: coordinates?.coords });
   };
 
   const requestUserLocation = async () => {
+    setRequestLocation(true);
+
     let { status } = await Location.requestForegroundPermissionsAsync();
     if (status !== "granted") {
       onLocationDeny();
@@ -31,6 +34,8 @@ const SearchSection = ({ onSearch, onLocationDeny }: SearchSection) => {
 
     const location = await Location.getCurrentPositionAsync({});
     setCoordinates(location);
+
+    setRequestLocation(false);
   };
 
   return (
@@ -66,6 +71,8 @@ const SearchSection = ({ onSearch, onLocationDeny }: SearchSection) => {
                 darkColor={Colors.palette.black}
                 darkStroke={Colors.palette.black}
               />
+            ) : requestLocation ? (
+              <ActivityIndicator color={Colors.palette.black} />
             ) : (
               <LocationPin
                 lightColor={Colors.palette.white}
