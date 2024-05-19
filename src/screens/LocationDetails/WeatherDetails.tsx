@@ -5,10 +5,10 @@ import { View as DefaultView, StyleSheet } from "react-native";
 import ConditionRow from "./ConditionRow";
 
 type WeatherDetailsProps = {
-  temperature: Weather['temperature']['current'];
-  windSpeed: Weather['wind'];
-  condition: Weather['condition'];
-  time: Weather['time'];
+  temperature: Weather["temperature"]["current"];
+  windSpeed: Weather["wind"];
+  condition: Weather["condition"];
+  time: Weather["time"];
 };
 
 const WeatherDetails = ({
@@ -42,7 +42,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
   },
   temperatureText: {
-    fontSize: 100,
+    fontSize: 115,
     marginLeft: 15,
   },
   main: {
