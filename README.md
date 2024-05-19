@@ -37,14 +37,8 @@ that provides users valuable data. The [Figma design](https://www.figma.com/file
 ## Installation
 
 Install the project node and npm version via `nvm` by using `nvm install`. 
-Then install `yarn` in case you don't have it and add the following `.env` file:
 
-```env
-EXPO_PUBLIC_OPENWEATHER_API_KEY=XXXXXXXXX
-EXPO_PUBLIC_OPENWEATHER_URL=XXXXXXXXX
-EXPO_PUBLIC_UNSPLASH_API_KEY=XXXXXXXXX
-EXPO_PUBLIC_UNSPLASH_URL=XXXXXXXXX
-```
+Then install `yarn` in case you don't have it and create a `.env` file, following the contents at [.env.template](.env.template)
 
 Once done this run `yarn install` to install the dependencies and... That's it!
 
