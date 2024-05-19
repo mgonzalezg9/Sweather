@@ -1,9 +1,9 @@
-import { Icon } from "@/interfaces";
 import * as React from "react";
 import Svg, { Path } from "react-native-svg";
-import { useThemeColor } from "../Themed";
+import { useThemeColor } from "../../../components/Themed";
+import { Icon } from "../../../components/icons/index";
 
-const Search = ({
+const Wind = ({
   width,
   height,
   darkColor,
@@ -25,17 +25,19 @@ const Search = ({
     <Svg
       width={width}
       height={height}
-      viewBox="0 0 18 18"
-      fill="none"
-      stroke={strokeName}
+      viewBox="0 0 24 24"
+      fill={colorName}
       {...props}
     >
       <Path
-        d="M11.71 11.5h.583l4.49 4.5-.783.783-4.5-4.49V11.508l-.14-.145-.081-.084.084.08.145.141h.202zm-.958-.748l-.348.299A5.971 5.971 0 016.5 12.5a6 6 0 116-6 5.971 5.971 0 01-1.45 3.904l-.298.348zM1.5 6.5c0 2.766 2.234 5 5 5s5-2.234 5-5-2.234-5-5-5-5 2.234-5 5z"
-        stroke={colorName}
+        d="M17.73 7.73A2.5 2.5 0 1119.5 12H2m7.59-7.41A2 2 0 1111 8H2l7.59-3.41zm3 14.82A2 2 0 1014 16H2l10.59 3.41z"
+        stroke={strokeName}
+        strokeWidth={2}
+        strokeLinecap="round"
+        strokeLinejoin="round"
       />
     </Svg>
   );
 };
 
-export default Search;
+export default Wind;

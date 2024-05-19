@@ -1,47 +1,47 @@
-import {
-  ActivityIndicator,
-  StyleSheet,
-  View,
-} from "react-native";
-
 import Colors from "@/constants/Colors";
-import useWallpaper from "@/hooks/wallpaper/useWallpaper";
-import useWeatherForecast from "@/hooks/weather/useWeatherForecast";
-import { useEffect, useState } from "react";
-import SearchSection from "./SearchSection";
-
-import { SweatherErrorCode } from "@/logic/error";
+import { SweatherErrorCode } from "@/error/error-logic";
+import useWallpaper from "@/wallpaper/hooks/useWallpaper";
+import useWeatherForecast from "@/weather/hooks/useWeatherForecast";
 import { useNavigation } from "@react-navigation/native";
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { ActivityIndicator, StyleSheet, View } from "react-native";
 import ErrorSection from "./ErrorSection";
+import SearchSection from "./SearchSection";
 
 const LocationRequestBody: React.FC = () => {
   const navigation = useNavigation();
   const [location, setLocation] = useState({} as never);
   const [locationDenied, setLocationDenied] = useState(false);
 
-  const { weather, forecast, loading: loadingWeather, error: errorWeather } = useWeatherForecast(location);
-  const { wallpaper, loading: loadingWallpaper } = useWallpaper(weather?.geolocation?.city);
+  const {
+    weather,
+    forecast,
+    loading: loadingWeather,
+    error: errorWeather,
+  } = useWeatherForecast(location);
+  const { wallpaper, loading: loadingWallpaper } = useWallpaper(
+    weather?.geolocation?.city
+  );
 
   useEffect(() => {
     if (weather && forecast && wallpaper) {
       navigation.navigate("LocationDetails", {
         weather,
         forecast,
-        wallpaper
+        wallpaper,
       });
     }
-  }, [weather, forecast, wallpaper, navigation])
+  }, [weather, forecast, wallpaper, navigation]);
 
   useEffect(() => {
     if (locationDenied) {
       setLocationDenied(false);
     }
-  }, [location])
+  }, [location]);
 
   return (
     <View style={styles.searchContainer}>
-      {(loadingWeather || loadingWallpaper) ? (
+      {loadingWeather || loadingWallpaper ? (
         <ActivityIndicator
           style={styles.spinner}
           color={Colors.light.tint}
@@ -49,18 +49,20 @@ const LocationRequestBody: React.FC = () => {
         />
       ) : (
         <>
-          <SearchSection onSearch={setLocation} onLocationDeny={() => setLocationDenied(true)} />
-          {
-            errorWeather || locationDenied ?
-              <ErrorSection error={errorWeather || SweatherErrorCode.USER_LOCATION_DENIED} />
-              : null
-          }
+          <SearchSection
+            onSearch={setLocation}
+            onLocationDeny={() => setLocationDenied(true)}
+          />
+          {errorWeather || locationDenied ? (
+            <ErrorSection
+              error={errorWeather || SweatherErrorCode.USER_LOCATION_DENIED}
+            />
+          ) : null}
         </>
       )}
     </View>
-  )
+  );
 };
-
 
 const styles = StyleSheet.create({
   spinner: {
@@ -68,7 +70,7 @@ const styles = StyleSheet.create({
   },
   searchContainer: {
     gap: 20,
-  }
+  },
 });
 
 export default LocationRequestBody;

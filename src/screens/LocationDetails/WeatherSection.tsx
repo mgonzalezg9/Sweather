@@ -1,10 +1,10 @@
 import { View as ThemedView } from "@/components/view/View";
-import ForecastRow from "@/components/weather/ForecastRow";
-import { Forecast, Weather } from "@/services/weather/types";
+import CityTitle from "@/weather/components/CityTitle";
+import ForecastRow from "@/weather/components/ForecastRow";
+import WeatherDetails from "@/weather/components/WeatherDetails";
+import { Forecast, Weather } from "@/weather/interfaces";
 import React from "react";
 import { StyleSheet, View } from "react-native";
-import CityTitle from "./CityTitle";
-import WeatherDetails from "./WeatherDetails";
 
 interface WeatherSectionProps {
   weather: Weather;

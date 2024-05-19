@@ -1,0 +1,38 @@
+import { get } from "@/utils/httpClient";
+import bg1 from "../assets/images/background_1.jpg";
+import bg2 from "../assets/images/background_2.jpg";
+import bg3 from "../assets/images/background_3.jpg";
+import bg4 from "../assets/images/background_4.jpg";
+import bg5 from "../assets/images/background_5.jpg";
+import { BackgroundQuery, Uri } from "../interfaces";
+
+const { EXPO_PUBLIC_UNSPLASH_URL, EXPO_PUBLIC_UNSPLASH_API_KEY } = process.env;
+
+const PER_PAGE = 3; // retrieves 3 wallpaper and choose one of them
+const ORIENTATION = "portrait";
+const BACKGROUND_LIST = [bg1, bg2, bg3, bg4, bg5];
+
+export const getLocationBackground = async ({
+  query,
+}: BackgroundQuery): Promise<Uri | null> => {
+  const data = await get(`${EXPO_PUBLIC_UNSPLASH_URL}/search/photos`, {
+    query,
+    per_page: PER_PAGE,
+    orientation: ORIENTATION,
+    client_id: EXPO_PUBLIC_UNSPLASH_API_KEY,
+  });
+
+  if (data.total === 0) {
+    return null;
+  }
+
+  const chosenPhotoIndex = Math.floor(Math.random() * data.results.length);
+  return {
+    uri: data.results[chosenPhotoIndex].urls.regular,
+  };
+};
+
+export const getLocalBackground = (options: Uri[] = BACKGROUND_LIST): Uri => {
+  const chosenPhotoIndex = Math.floor(Math.random() * options.length);
+  return options[chosenPhotoIndex];
+};
