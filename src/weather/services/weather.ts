@@ -1,12 +1,10 @@
-import { get } from "@/utils/httpClient";
+import { weatherApi } from "../api";
+import { WeatherEndpoint } from "../api/endpoints";
 import type { Coordinates, Forecast, Weather } from "../interfaces";
 import { formatMilliseconds } from "../utils/time-formatter";
 
 const FORECAST_MAX_HOURS = 10;
 const UNIT_SYSTEM = "metric";
-
-const { EXPO_PUBLIC_OPENWEATHER_API_KEY, EXPO_PUBLIC_OPENWEATHER_URL } =
-  process.env;
 
 type DeviceProps = {
   device: {
@@ -39,11 +37,10 @@ export const getCurrentWeather = async ({
     throw new Error("Either location or coordinates must be provided");
   }
 
-  const data = await get(`${EXPO_PUBLIC_OPENWEATHER_URL}/data/2.5/weather`, {
+  const data = await weatherApi.get(WeatherEndpoint.GetCurrentWeather, {
     ...createQuery({ location, coordinates }),
     units: UNIT_SYSTEM,
     lang: device.locale,
-    appid: EXPO_PUBLIC_OPENWEATHER_API_KEY,
   });
 
   return {
@@ -86,11 +83,10 @@ export const getHourlyForecast = async ({
   coordinates,
   device,
 }: GetHourlyForecastProps): Promise<Forecast> => {
-  const data = await get(`${EXPO_PUBLIC_OPENWEATHER_URL}/data/2.5/forecast`, {
+  const data = await weatherApi.get(WeatherEndpoint.GetHourlyForecast, {
     ...createQuery({ location, coordinates }),
     units: UNIT_SYSTEM,
     lang: device.locale,
-    appid: EXPO_PUBLIC_OPENWEATHER_API_KEY,
   });
 
   return {
