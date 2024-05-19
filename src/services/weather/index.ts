@@ -2,7 +2,7 @@ import { get } from "@/utils/httpClient";
 import { formatMilliseconds } from "./time-formatter";
 import { Coordinates, Forecast, Weather } from "./types";
 
-const FORECAST_MAX_HOURS = 5;
+const FORECAST_MAX_HOURS = 10;
 const UNIT_SYSTEM = "metric";
 
 const { EXPO_PUBLIC_OPENWEATHER_API_KEY, EXPO_PUBLIC_OPENWEATHER_URL } =

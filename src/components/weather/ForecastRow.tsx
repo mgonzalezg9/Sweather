@@ -1,6 +1,6 @@
 import { Forecast } from "@/services/weather/types";
 import React from "react";
-import { View as DefaultView, StyleSheet } from "react-native";
+import { View as DefaultView, FlatList, StyleSheet } from "react-native";
 import TimeWeather from "./TimeWeather";
 
 const ForecastRow = ({ hours, sunrise, sunset }: Partial<Forecast>) => {
@@ -9,17 +9,21 @@ const ForecastRow = ({ hours, sunrise, sunset }: Partial<Forecast>) => {
   }
 
   return (
-    <DefaultView style={styles.container}>
-      {hours.map((f) => (
-        <TimeWeather
-          key={f.time}
-          temperature={f.temperature}
-          condition={f.condition}
-          now={f.time}
-          sunrise={sunrise}
-          sunset={sunset}
-        />
-      ))}
+    <DefaultView style={styles.forecastRow}>
+      <FlatList
+        data={hours}
+        renderItem={({ item }) => (
+          <TimeWeather
+            key={item.time}
+            temperature={item.temperature}
+            condition={item.condition}
+            now={item.time}
+            sunrise={sunrise}
+            sunset={sunset}
+          />
+        )}
+        horizontal
+      />
     </DefaultView>
   );
 };
@@ -27,8 +31,7 @@ const ForecastRow = ({ hours, sunrise, sunset }: Partial<Forecast>) => {
 export default ForecastRow;
 
 const styles = StyleSheet.create({
-  container: {
-    flexDirection: "row",
-    justifyContent: "space-between",
+  forecastRow: {
+    paddingHorizontal: 10,
   },
 });
