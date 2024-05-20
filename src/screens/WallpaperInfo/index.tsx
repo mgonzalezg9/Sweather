@@ -1,4 +1,5 @@
 import { RootStackScreenProps } from "@/navigation/types.d";
+import { useWallpaperStorage } from "@/wallpaper/hooks/useWallpaperStorage";
 import { useNavigation } from "@react-navigation/native";
 import { ImageBackground, StatusBar, StyleSheet } from "react-native";
 import { BackButton } from "./BackButton";
@@ -9,21 +10,18 @@ const statusBarHeight = StatusBar.currentHeight ?? 0;
 export default function WallpaperInfoScreen({
   route: { params },
 }: RootStackScreenProps<"WallpaperInfo">) {
-  const { wallpaper } = params;
   const navigator = useNavigation();
+  const { storeWallpaper } = useWallpaperStorage();
 
-  const goBack = () => {
-    navigator.goBack();
-  };
-
-  const downloadWallpaper = () => {
-    console.log("Downloading wallpaper...");
-  };
+  const { wallpaper } = params;
 
   return (
     <ImageBackground source={wallpaper} style={styles.backgroundImage}>
-      <BackButton style={styles.goBackIcon} onClick={goBack} />
-      <DownloadButton style={styles.downloadIcon} onClick={downloadWallpaper} />
+      <BackButton style={styles.goBackIcon} onClick={navigator.goBack} />
+      <DownloadButton
+        style={styles.downloadIcon}
+        onClick={() => storeWallpaper(wallpaper)}
+      />
     </ImageBackground>
   );
 }
