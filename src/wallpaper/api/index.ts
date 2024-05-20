@@ -7,7 +7,10 @@ const {
 } = process.env;
 
 export const wallpaperApi = {
-  get: (endpoint: WallpaperEndpoint, filters: Record<string, any>) =>
+  get: <T>(
+    endpoint: WallpaperEndpoint,
+    filters: Record<string, any>
+  ): Promise<T> =>
     httpClient.get(API_URL + endpoint, {
       ...filters,
       client_id: API_KEY,

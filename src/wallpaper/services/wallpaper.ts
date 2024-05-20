@@ -5,7 +5,7 @@ import bg2 from "../assets/images/background_2.jpg";
 import bg3 from "../assets/images/background_3.jpg";
 import bg4 from "../assets/images/background_4.jpg";
 import bg5 from "../assets/images/background_5.jpg";
-import { BackgroundQuery, Uri } from "../interfaces";
+import { BackgroundQuery, Uri, WallpaperResponse } from "../interfaces";
 
 const PER_PAGE = 3; // retrieves 3 wallpaper and choose one of them
 const ORIENTATION = "portrait";
@@ -14,11 +14,14 @@ const BACKGROUND_LIST = [bg1, bg2, bg3, bg4, bg5];
 export const getLocationBackground = async ({
   query,
 }: BackgroundQuery): Promise<Uri | null> => {
-  const data = await wallpaperApi.get(WallpaperEndpoint.GetLocationWallpaper, {
-    query,
-    per_page: PER_PAGE,
-    orientation: ORIENTATION,
-  });
+  const data = await wallpaperApi.get<WallpaperResponse>(
+    WallpaperEndpoint.GetLocationWallpaper,
+    {
+      query,
+      per_page: PER_PAGE,
+      orientation: ORIENTATION,
+    }
+  );
 
   if (data.total === 0) {
     return null;
