@@ -1,26 +1,23 @@
-import { Info } from "@/components/icons/Info";
+import { DownloadArrow } from "@/components/icons/DownloadArrow";
 import Colors from "@/constants/Colors";
 import { StyleProp, TouchableOpacity, ViewStyle } from "react-native";
 
-const INFO_BUTTON_SIZE = 40;
+const DONWLOAD_BUTTON_SIZE = 30;
 
-interface InformationButtonProps {
+interface DownloadButtonProps {
   onClick: () => void;
   style?: StyleProp<ViewStyle>;
 }
 
-export const InformationButton = ({
-  onClick,
-  style,
-}: InformationButtonProps) => (
+export const DownloadButton = ({ onClick, style }: DownloadButtonProps) => (
   <TouchableOpacity onPress={onClick} style={style}>
-    <Info
+    <DownloadArrow
       lightColor={Colors.palette.black}
       lightStroke={Colors.palette.black}
       darkColor={Colors.palette.black}
       darkStroke={Colors.palette.black}
-      width={INFO_BUTTON_SIZE}
-      height={INFO_BUTTON_SIZE}
+      width={DONWLOAD_BUTTON_SIZE}
+      height={DONWLOAD_BUTTON_SIZE}
     />
   </TouchableOpacity>
 );

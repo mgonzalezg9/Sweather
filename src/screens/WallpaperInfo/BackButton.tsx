@@ -1,26 +1,23 @@
-import { Info } from "@/components/icons/Info";
+import { ArrowLeft } from "@/components/icons/ArrowLeft";
 import Colors from "@/constants/Colors";
 import { StyleProp, TouchableOpacity, ViewStyle } from "react-native";
 
-const INFO_BUTTON_SIZE = 40;
+const BACK_BUTTON_SIZE = 30;
 
-interface InformationButtonProps {
+interface BackButtonProps {
   onClick: () => void;
   style?: StyleProp<ViewStyle>;
 }
 
-export const InformationButton = ({
-  onClick,
-  style,
-}: InformationButtonProps) => (
+export const BackButton = ({ onClick, style }: BackButtonProps) => (
   <TouchableOpacity onPress={onClick} style={style}>
-    <Info
+    <ArrowLeft
       lightColor={Colors.palette.black}
       lightStroke={Colors.palette.black}
       darkColor={Colors.palette.black}
       darkStroke={Colors.palette.black}
-      width={INFO_BUTTON_SIZE}
-      height={INFO_BUTTON_SIZE}
+      width={BACK_BUTTON_SIZE}
+      height={BACK_BUTTON_SIZE}
     />
   </TouchableOpacity>
 );

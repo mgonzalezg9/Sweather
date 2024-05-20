@@ -7,8 +7,11 @@ import { hasEnvironmentVariables } from "@/config/dotenv";
 import LocationDetailsScreen from "@/screens/LocationDetails";
 import LocationRequestScreen from "@/screens/LocationRequest";
 import NotFoundScreen from "@/screens/NotFoundScreen";
+import WallpaperInfo from "@/screens/WallpaperInfo";
 import {
-  DarkTheme, DefaultTheme, NavigationContainer
+  DarkTheme,
+  DefaultTheme,
+  NavigationContainer,
 } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import * as React from "react";
@@ -23,7 +26,7 @@ LogBox.ignoreLogs([
 
 // Parse environment variables
 if (!hasEnvironmentVariables(process.env)) {
-  throw new Error('Please provide all the required environment variables')
+  throw new Error("Please provide all the required environment variables");
 }
 
 export default function Navigation({
@@ -59,6 +62,11 @@ function RootNavigator() {
         name="LocationDetails"
         component={LocationDetailsScreen}
         options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="WallpaperInfo"
+        component={WallpaperInfo}
+        options={{ headerShown: false, presentation: "modal" }}
       />
       <Stack.Screen
         name="NotFound"

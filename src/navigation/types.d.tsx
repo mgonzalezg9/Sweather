@@ -18,7 +18,10 @@ export type RootStackParamList = {
   LocationDetails: {
     weather: Weather;
     forecast: Forecast;
-    wallpaper?: Uri;
+    wallpaper: Uri;
+  };
+  WallpaperInfo: {
+    wallpaper: Uri;
   };
   NotFound: undefined;
 };

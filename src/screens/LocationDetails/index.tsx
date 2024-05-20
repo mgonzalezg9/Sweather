@@ -1,20 +1,29 @@
 import { RootStackScreenProps } from "@/navigation/types.d";
+import { useNavigation } from "@react-navigation/native";
 import { ImageBackground, StatusBar, StyleSheet } from "react-native";
 import { InformationButton } from "./InformationButton";
 import WeatherSection from "./WeatherSection";
+
+const statusBarHeight = StatusBar.currentHeight ?? 0;
 
 export default function LocationDetailsScreen({
   route: { params },
 }: RootStackScreenProps<"LocationDetails">) {
   const { weather, forecast, wallpaper } = params;
+  const navigation = useNavigation();
 
-  const handleClick = () => {
-    console.log("Download clicked");
+  const goToWallpaperInfo = () => {
+    navigation.navigate("WallpaperInfo", {
+      wallpaper,
+    });
   };
 
   return (
     <ImageBackground source={wallpaper} style={styles.backgroundImage}>
-      <InformationButton style={styles.downloadIcon} onClick={handleClick} />
+      <InformationButton
+        style={styles.informationIcon}
+        onClick={goToWallpaperInfo}
+      />
       <WeatherSection weather={weather} forecast={forecast} />
     </ImageBackground>
   );
@@ -28,9 +37,9 @@ const styles = StyleSheet.create({
     fontSize: 18,
     padding: 10,
   },
-  downloadIcon: {
+  informationIcon: {
     position: "absolute",
-    top: StatusBar.currentHeight,
+    top: statusBarHeight + 10,
     right: 24,
   },
 });
