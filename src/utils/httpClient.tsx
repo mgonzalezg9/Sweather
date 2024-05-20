@@ -1,12 +1,19 @@
-export const get = async (endpoint: string, filters: Record<string, any>) => {
-  let url = endpoint;
+const stringifyFilters = (filters: Record<string, any>) => {
+  let result = "";
+
   Object.keys(filters).forEach((key: string, index: number) => {
     if (index === 0) {
-      url += `?${key}=${filters[key]}`;
+      result += `?${key}=${filters[key]}`;
     } else {
-      url += `&${key}=${filters[key]}`;
+      result += `&${key}=${filters[key]}`;
     }
   });
+
+  return result;
+};
+
+export const get = async (endpoint: string, filters: Record<string, any>) => {
+  let url = endpoint + stringifyFilters(filters);
 
   // console.log(`Requesting ${url}`)
   const response = await fetch(url);
@@ -14,5 +21,5 @@ export const get = async (endpoint: string, filters: Record<string, any>) => {
   const json = await response.json();
   // console.log(json)
 
-  return json
+  return json;
 };

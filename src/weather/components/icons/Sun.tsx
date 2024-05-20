@@ -1,15 +1,15 @@
-import { Icon } from "@/interfaces";
+import { useThemeColor } from "@/components/Themed";
+import { Icon } from "@/interfaces/icon";
 import * as React from "react";
 import Svg, { Path } from "react-native-svg";
-import { useThemeColor } from "../Themed";
 
-const LocationPin = ({
+const Sun = ({
   width,
   height,
   darkColor,
   lightColor,
-  lightStroke,
   darkStroke,
+  lightStroke,
   ...props
 }: Icon) => {
   const colorName = useThemeColor(
@@ -25,17 +25,19 @@ const LocationPin = ({
     <Svg
       width={width}
       height={height}
-      viewBox="0 0 20 29"
+      viewBox="0 0 24 24"
       fill="none"
-      stroke={strokeName}
       {...props}
     >
       <Path
-        d="M10 0C4.471 0 0 4.538 0 10.15 0 17.762 10 29 10 29s10-11.238 10-18.85C20 4.538 15.529 0 10 0zm0 13.775c-1.971 0-3.571-1.624-3.571-3.625S8.029 6.525 10 6.525s3.571 1.624 3.571 3.625-1.6 3.625-3.571 3.625z"
-        fill={colorName === "#fff" ? "#fffffe" : colorName}
+        d="M12 17a5 5 0 100-10 5 5 0 000 10zM12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"
+        stroke={strokeName}
+        strokeWidth={2}
+        strokeLinecap="round"
+        strokeLinejoin="round"
       />
     </Svg>
   );
 };
 
-export default LocationPin;
+export default Sun;

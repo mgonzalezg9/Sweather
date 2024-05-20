@@ -3,13 +3,13 @@
  * https://reactnavigation.org/docs/typescript/
  */
 
-import { Uri } from "@/services/wallpaper/types";
-import { Forecast, Weather } from "@/services/weather/types";
+import { Uri } from "@/wallpaper/interfaces";
+import { Forecast, Weather } from "@/weather/interfaces";
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
 
 declare global {
   namespace ReactNavigation {
-    interface RootParamList extends RootStackParamList { }
+    interface RootParamList extends RootStackParamList {}
   }
 }
 

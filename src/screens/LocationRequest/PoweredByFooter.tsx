@@ -1,14 +1,13 @@
+import { Text } from "@/components/text/Text";
+import i18n from "@/i18n";
 import {
   View as DefaultView,
   Image,
   ImageSourcePropType,
   StyleProp,
   StyleSheet,
-  ViewStyle
+  ViewStyle,
 } from "react-native";
-
-import { Text } from "@/components/text/Text";
-import i18n from "@/i18n";
 
 interface PoweredByFooterProps {
   image: ImageSourcePropType;
@@ -26,7 +25,7 @@ const styles = StyleSheet.create({
   poweredContainer: {
     flexDirection: "row",
     alignItems: "center",
-    justifyContent: 'center'
+    justifyContent: "center",
   },
   poweredText: {
     fontSize: 18,

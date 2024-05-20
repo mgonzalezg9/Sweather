@@ -1,54 +1,67 @@
 import { View as ThemedView } from "@/components/view/View";
-import ForecastRow from "@/components/weather/ForecastRow";
-import { Forecast, Weather } from "@/services/weather/types";
+import CityTitle from "@/weather/components/CityTitle";
+import ForecastRow from "@/weather/components/ForecastRow";
+import WeatherDetails from "@/weather/components/WeatherDetails";
+import { Forecast, Weather } from "@/weather/interfaces";
 import React from "react";
-import { StyleSheet } from "react-native";
-import CityTitle from "./CityTitle";
-import WeatherDetails from "./WeatherDetails";
+import { StyleSheet, View } from "react-native";
 
 interface WeatherSectionProps {
   weather: Weather;
   forecast: Forecast;
-};
+}
 
 const WeatherSection: React.FC<WeatherSectionProps> = ({
   weather,
   forecast,
 }) => {
   return (
-    <ThemedView style={[styles.curvedBox, styles.weatherContainer]}>
-      <CityTitle
-        city={weather.geolocation.city}
-        countryCode={weather.geolocation.countryCode}
-      />
-      <WeatherDetails
-        temperature={weather.temperature.current}
-        condition={weather.condition}
-        windSpeed={weather.wind}
-        time={weather.time}
-      />
-      <ForecastRow
-        hours={forecast.hours}
-        sunrise={forecast.sunrise}
-        sunset={forecast.sunset}
-      />
-    </ThemedView>
+    <View style={[styles.weatherPosition, styles.weatherContainer]}>
+      <ThemedView style={[styles.weatherCityTemp, styles.curve]}>
+        <CityTitle
+          city={weather.geolocation.city}
+          countryCode={weather.geolocation.countryCode}
+        />
+        <WeatherDetails
+          temperature={weather.temperature.current}
+          condition={weather.condition}
+          windSpeed={weather.wind}
+          time={weather.time}
+        />
+      </ThemedView>
+      <ThemedView style={[styles.weatherForecast]}>
+        <ForecastRow
+          hours={forecast.hours}
+          sunrise={forecast.sunrise}
+          sunset={forecast.sunset}
+        />
+      </ThemedView>
+    </View>
   );
 };
 
 export default WeatherSection;
 
 const styles = StyleSheet.create({
-  curvedBox: {
+  weatherPosition: {
     position: "absolute",
-    top: "35%",
+    bottom: 0,
     width: "100%",
     height: "67%",
-    borderTopRightRadius: 400,
   },
   weatherContainer: {
+    flexDirection: "column",
     justifyContent: "center",
-    gap: 25,
-    padding: 10
-  }
+  },
+  weatherCityTemp: {
+    flex: 1,
+    justifyContent: "center",
+    gap: 15,
+  },
+  curve: {
+    borderTopRightRadius: 400,
+  },
+  weatherForecast: {
+    minHeight: 200,
+  },
 });
