@@ -1,5 +1,6 @@
 import { RootStackScreenProps } from "@/navigation/types.d";
-import { ImageBackground, StyleSheet } from "react-native";
+import { ImageBackground, StatusBar, StyleSheet } from "react-native";
+import { DownloadButton } from "./DownloadButton";
 import WeatherSection from "./WeatherSection";
 
 export default function LocationDetailsScreen({
@@ -7,8 +8,13 @@ export default function LocationDetailsScreen({
 }: RootStackScreenProps<"LocationDetails">) {
   const { weather, forecast, wallpaper } = params;
 
+  const handleClick = () => {
+    console.log("Download clicked");
+  };
+
   return (
     <ImageBackground source={wallpaper} style={styles.backgroundImage}>
+      <DownloadButton style={styles.downloadIcon} onClick={handleClick} />
       <WeatherSection weather={weather} forecast={forecast} />
     </ImageBackground>
   );
@@ -21,5 +27,10 @@ const styles = StyleSheet.create({
   text: {
     fontSize: 18,
     padding: 10,
+  },
+  downloadIcon: {
+    position: "absolute",
+    top: StatusBar.currentHeight,
+    right: 24,
   },
 });
