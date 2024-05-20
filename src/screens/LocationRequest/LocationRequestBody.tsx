@@ -1,7 +1,10 @@
 import Colors from "@/constants/Colors";
 import { SweatherErrorCode } from "@/error/error-logic";
+import useDeviceLocales from "@/i18n/hooks/useDeviceLocales";
 import useWallpaper from "@/wallpaper/hooks/useWallpaper";
-import useWeatherForecast from "@/weather/hooks/useWeatherForecast";
+import useWeatherForecast, {
+  LocationQuery,
+} from "@/weather/hooks/useWeatherForecast";
 import { useNavigation } from "@react-navigation/native";
 import React, { useEffect, useState } from "react";
 import { ActivityIndicator, StyleSheet, View } from "react-native";
@@ -10,15 +13,24 @@ import SearchSection from "./SearchSection";
 
 const LocationRequestBody: React.FC = () => {
   const navigation = useNavigation();
-  const [location, setLocation] = useState({} as never);
+  const [geoData, setGeoData] = useState<Omit<LocationQuery, "device">>(
+    {} as never
+  );
   const [locationDenied, setLocationDenied] = useState(false);
 
+  const { locale, timeZone } = useDeviceLocales();
   const {
     weather,
     forecast,
     loading: loadingWeather,
     error: errorWeather,
-  } = useWeatherForecast(location);
+  } = useWeatherForecast({
+    ...geoData,
+    device: {
+      locale,
+      timeZone,
+    },
+  });
   const { wallpaper, loading: loadingWallpaper } = useWallpaper(
     weather?.geolocation?.city
   );
@@ -37,7 +49,7 @@ const LocationRequestBody: React.FC = () => {
     if (locationDenied) {
       setLocationDenied(false);
     }
-  }, [location]);
+  }, [geoData]);
 
   return (
     <View style={styles.searchContainer}>
@@ -50,7 +62,7 @@ const LocationRequestBody: React.FC = () => {
       ) : (
         <>
           <SearchSection
-            onSearch={setLocation}
+            onSearch={setGeoData}
             onLocationDeny={() => setLocationDenied(true)}
           />
           {errorWeather || locationDenied ? (

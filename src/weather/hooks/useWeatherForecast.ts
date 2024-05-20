@@ -1,5 +1,4 @@
 import { SweatherErrorCode } from "@/error/error-logic";
-import useDeviceLocales from "@/i18n/hooks/useDeviceLocales";
 import {
   getCurrentWeather,
   getHourlyForecast,
@@ -40,9 +39,8 @@ const getWeatherAndForecast = async ({
 export default function useWeatherForecast({
   location,
   coordinates,
+  device: { locale, timeZone },
 }: LocationQuery) {
-  const { timeZone, locale } = useDeviceLocales();
-
   const [weather, setWeather] = useState<Weather>();
   const [forecast, setForecast] = useState<Forecast>();
   const [isLoading, setLoading] = useState<boolean>(false);
