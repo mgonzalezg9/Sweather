@@ -1,6 +1,6 @@
 import { RootStackScreenProps } from "@/navigation/types.d";
 import { ImageBackground, StatusBar, StyleSheet } from "react-native";
-import { DownloadButton } from "./DownloadButton";
+import { InformationButton } from "./InformationButton";
 import WeatherSection from "./WeatherSection";
 
 export default function LocationDetailsScreen({
@@ -14,7 +14,7 @@ export default function LocationDetailsScreen({
 
   return (
     <ImageBackground source={wallpaper} style={styles.backgroundImage}>
-      <DownloadButton style={styles.downloadIcon} onClick={handleClick} />
+      <InformationButton style={styles.downloadIcon} onClick={handleClick} />
       <WeatherSection weather={weather} forecast={forecast} />
     </ImageBackground>
   );
