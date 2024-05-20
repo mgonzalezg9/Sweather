@@ -7,7 +7,10 @@ const {
 } = process.env;
 
 export const weatherApi = {
-  get: (endpoint: WeatherEndpoint, filters: Record<string, any>) =>
+  get: <T>(
+    endpoint: WeatherEndpoint,
+    filters: Record<string, any>
+  ): Promise<T> =>
     httpClient.get(API_URL + endpoint, {
       ...filters,
       appid: API_KEY,

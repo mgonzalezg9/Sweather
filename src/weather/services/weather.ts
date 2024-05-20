@@ -1,6 +1,12 @@
 import { weatherApi } from "../api";
 import { WeatherEndpoint } from "../api/endpoints";
-import type { Coordinates, Forecast, Weather } from "../interfaces";
+import type {
+  Coordinates,
+  Forecast,
+  ForecastResponse,
+  Weather,
+  WeatherResponse,
+} from "../interfaces";
 import { formatMilliseconds } from "../utils/time-formatter";
 
 const FORECAST_MAX_HOURS = 10;
@@ -37,11 +43,14 @@ export const getCurrentWeather = async ({
     throw new Error("Either location or coordinates must be provided");
   }
 
-  const data = await weatherApi.get(WeatherEndpoint.GetCurrentWeather, {
-    ...createQuery({ location, coordinates }),
-    units: UNIT_SYSTEM,
-    lang: device.locale,
-  });
+  const data = await weatherApi.get<WeatherResponse>(
+    WeatherEndpoint.GetCurrentWeather,
+    {
+      ...createQuery({ location, coordinates }),
+      units: UNIT_SYSTEM,
+      lang: device.locale,
+    }
+  );
 
   return {
     temperature: {
@@ -83,11 +92,14 @@ export const getHourlyForecast = async ({
   coordinates,
   device,
 }: GetHourlyForecastProps): Promise<Forecast> => {
-  const data = await weatherApi.get(WeatherEndpoint.GetHourlyForecast, {
-    ...createQuery({ location, coordinates }),
-    units: UNIT_SYSTEM,
-    lang: device.locale,
-  });
+  const data = await weatherApi.get<ForecastResponse>(
+    WeatherEndpoint.GetHourlyForecast,
+    {
+      ...createQuery({ location, coordinates }),
+      units: UNIT_SYSTEM,
+      lang: device.locale,
+    }
+  );
 
   return {
     hours: data.list.slice(0, FORECAST_MAX_HOURS).map((f: any) => ({
