@@ -1,7 +1,7 @@
+import { useThemeColor } from "@/components/Themed";
 import { Icon } from "@/interfaces/icon";
 import * as React from "react";
 import Svg, { Path } from "react-native-svg";
-import { useThemeColor } from "../../../components/Themed";
 
 const Wind = ({
   width,
