@@ -4,10 +4,10 @@ import {
   getLocationBackground,
 } from "@/wallpaper/services/wallpaper";
 import { useEffect, useState } from "react";
-import { Uri } from "../interfaces";
+import { Wallpaper } from "../interfaces";
 
 export default function useWallpaper(location?: string) {
-  const [wallpaper, setWallpaper] = useState<Uri>();
+  const [wallpaper, setWallpaper] = useState<Wallpaper>();
   const [isLoading, setLoading] = useState<boolean>(false);
   const [isError, setError] = useState<SweatherErrorCode | null>(null);
 
@@ -21,12 +21,12 @@ export default function useWallpaper(location?: string) {
         console.log(`Searching wallpaper for ${location}`);
         setLoading(true);
 
-        const uri = await getLocationBackground({
+        const wallpaper = await getLocationBackground({
           query: location,
         });
 
-        if (uri) {
-          setWallpaper(uri);
+        if (wallpaper) {
+          setWallpaper(wallpaper);
           setError(null);
         } else {
           throw new Error(`No wallpaper found for ${location}`);

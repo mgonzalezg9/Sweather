@@ -5,15 +5,19 @@ import bg2 from "../assets/images/background_2.jpg";
 import bg3 from "../assets/images/background_3.jpg";
 import bg4 from "../assets/images/background_4.jpg";
 import bg5 from "../assets/images/background_5.jpg";
-import { BackgroundQuery, Uri, WallpaperResponse } from "../interfaces";
+import { Wallpaper, WallpaperResponse } from "../interfaces";
 
 const PER_PAGE = 3; // retrieves 3 wallpaper and choose one of them
 const ORIENTATION = "portrait";
 const BACKGROUND_LIST = [bg1, bg2, bg3, bg4, bg5];
 
+type BackgroundQuery = {
+  query: string;
+};
+
 export const getLocationBackground = async ({
   query,
-}: BackgroundQuery): Promise<Uri | null> => {
+}: BackgroundQuery): Promise<Wallpaper | null> => {
   const data = await wallpaperApi.get<WallpaperResponse>(
     WallpaperEndpoint.GetLocationWallpaper,
     {
@@ -33,7 +37,9 @@ export const getLocationBackground = async ({
   };
 };
 
-export const getLocalBackground = (options: Uri[] = BACKGROUND_LIST): Uri => {
+export const getLocalBackground = (
+  options: Wallpaper[] = BACKGROUND_LIST
+): Wallpaper => {
   const chosenPhotoIndex = Math.floor(Math.random() * options.length);
   return options[chosenPhotoIndex];
 };

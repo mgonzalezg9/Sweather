@@ -1,7 +1,7 @@
 import * as FileSystem from "expo-file-system";
 import * as MediaLibrary from "expo-media-library";
 import { useState } from "react";
-import { Uri } from "../interfaces";
+import { Wallpaper } from "../interfaces";
 
 const ALBUM_NAME = "Sweather Wallpaper";
 const WALLPAPER_NAME = "wallpaper.jpg";
@@ -31,7 +31,7 @@ export const useWallpaperStorage = () => {
     }
   };
 
-  const storeWallpaper = async (wallpaper: Uri) => {
+  const storeWallpaper = async (wallpaper: Wallpaper) => {
     const fileUri = FileSystem.documentDirectory + WALLPAPER_NAME;
 
     try {
