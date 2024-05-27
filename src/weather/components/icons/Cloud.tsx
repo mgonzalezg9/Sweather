@@ -1,50 +1,14 @@
 import { useThemeColor } from "@/components/Themed";
 import { Icon } from "@/interfaces";
+import Feather from "@expo/vector-icons/Feather";
 import * as React from "react";
-import Svg, { ClipPath, Defs, G, Path } from "react-native-svg";
 
-const Cloud = ({
-  width,
-  height,
-  darkColor,
-  lightColor,
-  darkStroke,
-  lightStroke,
-  ...props
-}: Icon) => {
+const Cloud = ({ size, darkColor, lightColor, ...props }: Icon) => {
   const colorName = useThemeColor(
     { light: lightColor, dark: darkColor },
     "text"
   );
-  const strokeName = useThemeColor(
-    { light: lightStroke, dark: darkStroke },
-    "text"
-  );
-
-  return (
-    <Svg
-      width={width}
-      height={height}
-      viewBox="0 0 24 24"
-      fill={colorName}
-      {...props}
-    >
-      <G clipPath="url(#clip0_103_116)">
-        <Path
-          d="M18.006 10h-1.26a8 8 0 10-7.74 10h9a5 5 0 000-10z"
-          stroke={strokeName}
-          strokeWidth={2}
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        />
-      </G>
-      <Defs>
-        <ClipPath id="clip0_103_116">
-          <Path fill={colorName} d="M0 0H24V24H0z" />
-        </ClipPath>
-      </Defs>
-    </Svg>
-  );
+  return <Feather name="cloud" size={size} color={colorName} {...props} />;
 };
 
 export default Cloud;

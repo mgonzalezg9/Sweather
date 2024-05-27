@@ -13,11 +13,8 @@ export const DownloadButton = ({ onClick, style }: DownloadButtonProps) => (
   <TouchableOpacity onPress={onClick} style={style}>
     <DownloadArrow
       lightColor={Colors.palette.black}
-      lightStroke={Colors.palette.black}
-      darkColor={Colors.palette.black}
-      darkStroke={Colors.palette.black}
-      width={DONWLOAD_BUTTON_SIZE}
-      height={DONWLOAD_BUTTON_SIZE}
+      darkColor={Colors.palette.white}
+      size={DONWLOAD_BUTTON_SIZE}
     />
   </TouchableOpacity>
 );

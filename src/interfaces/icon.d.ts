@@ -1,11 +1,8 @@
 import { StyleProp } from "react-native";
 
 export type Icon = {
-  width?: number;
-  height?: number;
+  size?: number;
   lightColor?: string;
   darkColor?: string;
-  lightStroke?: string;
-  darkStroke?: string;
   style?: StyleProp;
 };

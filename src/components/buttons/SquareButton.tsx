@@ -33,7 +33,6 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     height: "100%",
-    padding: 5,
   },
 });
 

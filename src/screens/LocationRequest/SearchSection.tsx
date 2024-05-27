@@ -9,6 +9,8 @@ import * as Location from "expo-location";
 import { useState } from "react";
 import { ActivityIndicator, StyleSheet, View } from "react-native";
 
+const SEARCH_BUTTON_SIZE = 32;
+
 type SearchSection = {
   onSearch: (result: any) => void;
   onLocationDeny: () => void;
@@ -66,19 +68,17 @@ const SearchSection = ({ onSearch, onLocationDeny }: SearchSection) => {
           icon={
             location || coordinates ? (
               <Search
+                size={SEARCH_BUTTON_SIZE}
                 lightColor={Colors.palette.white}
-                lightStroke={Colors.palette.white}
                 darkColor={Colors.palette.black}
-                darkStroke={Colors.palette.black}
               />
             ) : requestLocation ? (
               <ActivityIndicator color={Colors.palette.black} />
             ) : (
               <LocationPin
+                size={SEARCH_BUTTON_SIZE}
                 lightColor={Colors.palette.white}
-                lightStroke={Colors.palette.white}
                 darkColor={Colors.palette.black}
-                darkStroke={Colors.palette.black}
               />
             )
           }

@@ -25,7 +25,7 @@ const CityTitle: React.FC<CityTitleProps> = ({ city, countryCode }) => {
         {city}
       </Text>
       <DefaultView style={styles.countryContainer}>
-        <LocationPin style={styles.locationPin} width={20} />
+        <LocationPin style={styles.locationPin} size={32} />
         <Text style={styles.countryText} numberOfLines={1}>
           {regionName}
         </Text>

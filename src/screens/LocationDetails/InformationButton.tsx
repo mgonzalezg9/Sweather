@@ -16,11 +16,8 @@ export const InformationButton = ({
   <TouchableOpacity onPress={onClick} style={style}>
     <Info
       lightColor={Colors.palette.black}
-      lightStroke={Colors.palette.black}
-      darkColor={Colors.palette.black}
-      darkStroke={Colors.palette.black}
-      width={INFO_BUTTON_SIZE}
-      height={INFO_BUTTON_SIZE}
+      darkColor={Colors.palette.white}
+      size={INFO_BUTTON_SIZE}
     />
   </TouchableOpacity>
 );

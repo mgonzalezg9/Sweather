@@ -23,8 +23,7 @@ const TimeWeather = ({
     <DefaultView style={styles.container} {...props}>
       <Text style={styles.timeWeatherText}>{now}</Text>
       <ConditionIcon
-        width={25}
-        height={25}
+        size={32}
         condition={condition}
         now={now}
         sunrise={sunrise}
