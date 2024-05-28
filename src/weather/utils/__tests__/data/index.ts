@@ -26,70 +26,70 @@ export const EN_LOCALE_TEST_SUITE = [
 
 export const IS_DAY_TEST_SUITE = [
   {
-    time: new Date(Date.UTC(2022, 1, 1, 0, 0, 0)), // 00:00
-    sunrise: new Date(Date.UTC(2022, 1, 1, 6, 0, 0)), // 06:00
-    sunset: new Date(Date.UTC(2022, 1, 1, 18, 0, 0)), // 18:00
+    time: new Date(2022, 1, 1, 0, 0, 0), // 00:00
+    sunrise: new Date(2022, 1, 1, 6, 0, 0), // 06:00
+    sunset: new Date(2022, 1, 1, 18, 0, 0), // 18:00
     result: false,
   },
   {
-    time: new Date(Date.UTC(2022, 1, 1, 12, 0, 0)), // 12:00
-    sunrise: new Date(Date.UTC(2022, 1, 1, 6, 0, 0)), // 06:00
-    sunset: new Date(Date.UTC(2022, 1, 1, 18, 0, 0)), // 18:00
+    time: new Date(2022, 1, 1, 12, 0, 0), // 12:00
+    sunrise: new Date(2022, 1, 1, 6, 0, 0), // 06:00
+    sunset: new Date(2022, 1, 1, 18, 0, 0), // 18:00
     result: true,
   },
   {
-    time: new Date(Date.UTC(2022, 1, 1, 23, 59, 59)), // 23:59
-    sunrise: new Date(Date.UTC(2022, 1, 1, 6, 0, 0)), // 06:00
-    sunset: new Date(Date.UTC(2022, 1, 1, 18, 0, 0)), // 18:00
+    time: new Date(2022, 1, 1, 23, 59, 59), // 23:59
+    sunrise: new Date(2022, 1, 1, 6, 0, 0), // 06:00
+    sunset: new Date(2022, 1, 1, 18, 0, 0), // 18:00
     result: false,
   },
   {
-    time: new Date(Date.UTC(2022, 1, 2, 0, 0, 0)), // 00:00
-    sunrise: new Date(Date.UTC(2022, 1, 1, 6, 0, 0)), // 06:00
-    sunset: new Date(Date.UTC(2022, 1, 1, 18, 0, 0)), // 18:00
+    time: new Date(2022, 1, 2, 0, 0, 0), // 00:00
+    sunrise: new Date(2022, 1, 1, 6, 0, 0), // 06:00
+    sunset: new Date(2022, 1, 1, 18, 0, 0), // 18:00
     result: false,
   },
   {
-    time: new Date(Date.UTC(2022, 1, 1, 5, 59, 59)), // 05:59
-    sunrise: new Date(Date.UTC(2022, 1, 1, 6, 0, 0)), // 06:00
-    sunset: new Date(Date.UTC(2022, 1, 1, 18, 0, 0)), // 18:00
+    time: new Date(2022, 1, 1, 5, 59, 59), // 05:59
+    sunrise: new Date(2022, 1, 1, 6, 0, 0), // 06:00
+    sunset: new Date(2022, 1, 1, 18, 0, 0), // 18:00
     result: false,
   },
   {
-    time: new Date(Date.UTC(2022, 1, 1, 18, 0, 1)), // 18:00
-    sunrise: new Date(Date.UTC(2022, 1, 1, 6, 0, 0)), // 06:00
-    sunset: new Date(Date.UTC(2022, 1, 1, 18, 0, 0)), // 18:00
+    time: new Date(2022, 1, 1, 18, 0, 1), // 18:00
+    sunrise: new Date(2022, 1, 1, 6, 0, 0), // 06:00
+    sunset: new Date(2022, 1, 1, 18, 0, 0), // 18:00
     result: false,
   },
   {
-    time: new Date(Date.UTC(2022, 1, 1, 18, 0, 0)), // 18:00
-    sunrise: new Date(Date.UTC(2022, 1, 1, 6, 0, 0)), // 06:00
-    sunset: new Date(Date.UTC(2022, 1, 1, 18, 0, 0)), // 18:00
+    time: new Date(2022, 1, 1, 18, 0, 0), // 18:00
+    sunrise: new Date(2022, 1, 1, 6, 0, 0), // 06:00
+    sunset: new Date(2022, 1, 1, 18, 0, 0), // 18:00
     result: true,
   },
   {
-    time: new Date(Date.UTC(2022, 1, 1, 5, 0, 0)), // 05:00
-    sunrise: new Date(Date.UTC(2022, 1, 1, 6, 0, 0)), // 06:00
-    sunset: new Date(Date.UTC(2022, 1, 1, 18, 0, 0)), // 18:00
+    time: new Date(2022, 1, 1, 5, 0, 0), // 05:00
+    sunrise: new Date(2022, 1, 1, 6, 0, 0), // 06:00
+    sunset: new Date(2022, 1, 1, 18, 0, 0), // 18:00
     result: false,
   },
   {
-    time: new Date(Date.UTC(2022, 1, 1, 19, 0, 0)), // 19:00
-    sunrise: new Date(Date.UTC(2022, 1, 1, 6, 0, 0)), // 06:00
-    sunset: new Date(Date.UTC(2022, 1, 1, 18, 0, 0)), // 18:00
+    time: new Date(2022, 1, 1, 19, 0, 0), // 19:00
+    sunrise: new Date(2022, 1, 1, 6, 0, 0), // 06:00
+    sunset: new Date(2022, 1, 1, 18, 0, 0), // 18:00
     result: false,
   },
   // Different year dates
   {
-    time: new Date(Date.UTC(2023, 1, 1, 12, 0, 0)), // 12:00
-    sunrise: new Date(Date.UTC(2022, 1, 1, 6, 0, 0)), // 06:00
-    sunset: new Date(Date.UTC(2022, 1, 1, 18, 0, 0)), // 18:00
+    time: new Date(2023, 1, 1, 12, 0, 0), // 12:00
+    sunrise: new Date(2022, 1, 1, 6, 0, 0), // 06:00
+    sunset: new Date(2022, 1, 1, 18, 0, 0), // 18:00
     result: true,
   },
   {
-    time: new Date(Date.UTC(2023, 1, 1, 0, 0, 0)), // 0:00
-    sunrise: new Date(Date.UTC(2022, 1, 1, 6, 0, 0)), // 06:00
-    sunset: new Date(Date.UTC(2022, 1, 1, 18, 0, 0)), // 18:00
+    time: new Date(2023, 1, 1, 0, 0, 0), // 0:00
+    sunrise: new Date(2022, 1, 1, 6, 0, 0), // 06:00
+    sunset: new Date(2022, 1, 1, 18, 0, 0), // 18:00
     result: false,
   },
 ] as const;
