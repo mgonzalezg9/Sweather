@@ -1,6 +1,7 @@
 import SquareButton from "@/components/buttons/SquareButton";
 import { DownloadArrow } from "@/components/icons/DownloadArrow";
 import { Text } from "@/components/text/Text";
+import Colors from "@/constants/Colors";
 import i18n from "@/i18n";
 import React from "react";
 import { StyleSheet, View } from "react-native";
@@ -24,8 +25,13 @@ export const DownloadWallpaperButton = ({
       onClick={() => storeWallpaper(wallpaper)}
     >
       <View style={styles.buttonContent}>
-        <DownloadArrow size={BUTTON_ICON_SIZE} />
-        <Text>{i18n.t("downloadWallpaper")}</Text>
+        <DownloadArrow
+          size={BUTTON_ICON_SIZE}
+          lightColor={Colors.palette.white}
+        />
+        <Text lightColor={Colors.palette.white}>
+          {i18n.t("downloadWallpaper")}
+        </Text>
       </View>
     </SquareButton>
   );

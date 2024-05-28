@@ -73,7 +73,7 @@ const SearchSection = ({ onSearch, onLocationDeny }: SearchSection) => {
               darkColor={Colors.palette.black}
             />
           ) : requestLocation ? (
-            <ActivityIndicator color={Colors.palette.black} />
+            <ActivityIndicator color={Colors.palette.white} />
           ) : (
             <LocationPin
               size={SEARCH_BUTTON_ICON_SIZE}

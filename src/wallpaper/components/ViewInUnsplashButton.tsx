@@ -1,6 +1,7 @@
 import SquareButton from "@/components/buttons/SquareButton";
 import { Globe } from "@/components/icons/Globe";
 import { Text } from "@/components/text/Text";
+import Colors from "@/constants/Colors";
 import i18n from "@/i18n";
 import React from "react";
 import { Linking, StyleSheet, View } from "react-native";
@@ -21,8 +22,10 @@ export const ViewInUnsplashButton = ({
   return (
     <SquareButton style={styles.default} onClick={goToUnsplash}>
       <View style={styles.buttonContent}>
-        <Globe size={BUTTON_ICON_SIZE} />
-        <Text>{i18n.t("viewInUnsplash")}</Text>
+        <Globe size={BUTTON_ICON_SIZE} lightColor={Colors.palette.white} />
+        <Text lightColor={Colors.palette.white}>
+          {i18n.t("viewInUnsplash")}
+        </Text>
       </View>
     </SquareButton>
   );

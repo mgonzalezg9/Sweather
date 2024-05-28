@@ -32,8 +32,12 @@ export const WallpaperAuthorInfo = ({
           style={styles.userImage}
         />
         <View>
-          <Text style={styles.userName}>{details.author.name}</Text>
-          <Text style={styles.userAlias}>@{details.author.username}</Text>
+          <Text style={[styles.userName, styles.clipText]} numberOfLines={1}>
+            {details.author.name}
+          </Text>
+          <Text style={[styles.userAlias, styles.clipText]} numberOfLines={1}>
+            @{details.author.username}
+          </Text>
         </View>
       </View>
       <View style={styles.wallpaperActions}>
@@ -66,6 +70,9 @@ const styles = StyleSheet.create({
   },
   userAlias: {
     fontSize: 14,
+  },
+  clipText: {
+    maxWidth: 225,
   },
   wallpaperActions: {
     flexDirection: "row",
