@@ -1,3 +1,4 @@
+import { CurvedThemedView } from "@/components/view/CurvedView";
 import { View as ThemedView } from "@/components/view/View";
 import CityTitle from "@/weather/components/CityTitle";
 import ForecastRow from "@/weather/components/ForecastRow";
@@ -17,7 +18,7 @@ const WeatherSection: React.FC<WeatherSectionProps> = ({
 }) => {
   return (
     <View style={[styles.weatherPosition, styles.weatherContainer]}>
-      <ThemedView style={[styles.weatherCityTemp, styles.curve]}>
+      <CurvedThemedView style={[styles.weatherCityTemp]}>
         <CityTitle
           city={weather.geolocation.city}
           countryCode={weather.geolocation.countryCode}
@@ -28,7 +29,7 @@ const WeatherSection: React.FC<WeatherSectionProps> = ({
           windSpeed={weather.wind}
           time={weather.time}
         />
-      </ThemedView>
+      </CurvedThemedView>
       <ThemedView style={[styles.weatherForecast]}>
         <ForecastRow
           hours={forecast.hours}
@@ -57,9 +58,6 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     gap: 15,
-  },
-  curve: {
-    borderTopRightRadius: 400,
   },
   weatherForecast: {
     minHeight: 200,
