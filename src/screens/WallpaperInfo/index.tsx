@@ -1,4 +1,5 @@
 import { RootStackScreenProps } from "@/navigation/types.d";
+import { WallpaperAuthorInfo } from "@/wallpaper/components/WallpaperAuthorInfo";
 import { useWallpaperStorage } from "@/wallpaper/hooks/useWallpaperStorage";
 import { useNavigation } from "@react-navigation/native";
 import { ImageBackground, StatusBar, StyleSheet } from "react-native";
@@ -22,6 +23,13 @@ export default function WallpaperInfoScreen({
         style={styles.downloadIcon}
         onClick={() => storeWallpaper(wallpaper)}
       />
+      <WallpaperAuthorInfo
+        style={styles.authorInfo}
+        name="Patricia Rodriguez"
+        alias="patrimv97"
+        profileImage="https://letsenhance.io/static/8f5e523ee6b2479e26ecc91b9c25261e/1015f/MainAfter.jpg"
+        profileUrl="asdf"
+      />
     </ImageBackground>
   );
 }
@@ -39,5 +47,10 @@ const styles = StyleSheet.create({
     position: "absolute",
     top: statusBarHeight + 10,
     left: 24,
+  },
+  authorInfo: {
+    position: "absolute",
+    bottom: 0,
+    width: "100%",
   },
 });

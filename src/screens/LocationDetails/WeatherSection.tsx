@@ -1,4 +1,4 @@
-import { CurvedThemedView } from "@/components/view/CurvedView";
+import { CurvedThemedView } from "@/components/view/CurvedThemeView";
 import { View as ThemedView } from "@/components/view/View";
 import CityTitle from "@/weather/components/CityTitle";
 import ForecastRow from "@/weather/components/ForecastRow";
