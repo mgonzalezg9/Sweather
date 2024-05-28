@@ -17,12 +17,13 @@ interface DownloadWallpaperButtonProps {
 export const DownloadWallpaperButton = ({
   wallpaper,
 }: DownloadWallpaperButtonProps) => {
-  const { storeWallpaper } = useWallpaperStorage();
+  const { storeWallpaper, storingWallpaper } = useWallpaperStorage();
 
   return (
     <SquareButton
       style={styles.default}
       onClick={() => storeWallpaper(wallpaper)}
+      loading={storingWallpaper}
     >
       <View style={styles.buttonContent}>
         <DownloadArrow

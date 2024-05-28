@@ -7,7 +7,7 @@ import Colors from "@/constants/Colors";
 import { useUserLocation } from "@/hooks/useUserLocation";
 import i18n from "@/i18n";
 import { useState } from "react";
-import { ActivityIndicator, StyleSheet, View } from "react-native";
+import { StyleSheet, View } from "react-native";
 
 const SEARCH_BUTTON_ICON_SIZE = 32;
 
@@ -56,6 +56,7 @@ const SearchSection = ({ onSearch, onLocationDeny }: SearchSection) => {
           onClick={
             location || exactLocation ? getWeatherDetails : requestLocation
           }
+          loading={isLoadingLocation}
         >
           {location || exactLocation ? (
             <Search
@@ -63,8 +64,6 @@ const SearchSection = ({ onSearch, onLocationDeny }: SearchSection) => {
               lightColor={Colors.palette.white}
               darkColor={Colors.palette.black}
             />
-          ) : isLoadingLocation ? (
-            <ActivityIndicator color={Colors.palette.white} />
           ) : (
             <LocationPin
               size={SEARCH_BUTTON_ICON_SIZE}

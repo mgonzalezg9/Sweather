@@ -8,6 +8,7 @@ const WALLPAPER_NAME = "wallpaper.jpg";
 
 export const useWallpaperStorage = () => {
   const [error, setError] = useState("");
+  const [storingWallpaper, setStoringWallpaper] = useState(false);
   const [permissionResponse, requestPermission] = MediaLibrary.usePermissions({
     writeOnly: true,
   });
@@ -34,6 +35,8 @@ export const useWallpaperStorage = () => {
   const storeWallpaper = async (wallpaper: Wallpaper) => {
     const fileUri = FileSystem.documentDirectory + WALLPAPER_NAME;
 
+    setStoringWallpaper(true);
+
     try {
       const res = await FileSystem.downloadAsync(wallpaper.uri, fileUri);
 
@@ -46,11 +49,14 @@ export const useWallpaperStorage = () => {
       if (err instanceof Error) {
         setError("Error downloading wallpaper: " + err.message);
       }
+    } finally {
+      setStoringWallpaper(false);
     }
   };
 
   return {
     storeWallpaper,
+    storingWallpaper,
     error,
   };
 };

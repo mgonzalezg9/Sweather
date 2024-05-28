@@ -1,6 +1,7 @@
 import Colors from "@/constants/Colors";
 import React from "react";
 import {
+  ActivityIndicator,
   Pressable,
   StyleProp,
   StyleSheet,
@@ -10,12 +11,14 @@ import {
 
 type SquareButtonProps = {
   style?: StyleProp<ViewStyle>;
+  loading?: boolean;
   isSecondary?: boolean;
   onClick: () => void;
 };
 
 const SquareButton = ({
   onClick,
+  loading,
   isSecondary,
   children,
   style,
@@ -32,7 +35,13 @@ const SquareButton = ({
 
   return (
     <Pressable style={combinedStyle} onPress={onClick} {...props}>
-      <View style={styles.button}>{children}</View>
+      <View style={styles.button}>
+        {loading ? (
+          <ActivityIndicator color={Colors.palette.white} />
+        ) : (
+          children
+        )}
+      </View>
     </Pressable>
   );
 };
