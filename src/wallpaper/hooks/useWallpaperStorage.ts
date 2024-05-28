@@ -4,7 +4,7 @@ import { useState } from "react";
 import { Wallpaper } from "../interfaces";
 
 const ALBUM_NAME = "Sweather Wallpaper";
-const WALLPAPER_NAME = "wallpaper.jpg";
+const WALLPAPER_NAME = "sweather_wallpaper";
 
 export const useWallpaperStorage = () => {
   const [error, setError] = useState("");
@@ -12,6 +12,11 @@ export const useWallpaperStorage = () => {
   const [permissionResponse, requestPermission] = MediaLibrary.usePermissions({
     writeOnly: true,
   });
+
+  const getWallpaperFilename = (wallpaper: Wallpaper) => {
+    const name = wallpaper.details?.slug || WALLPAPER_NAME;
+    return `${name}.jpg`;
+  };
 
   const moveWallpaperToAlbum = async (wallpaper: string, albumName: string) => {
     try {
@@ -33,7 +38,8 @@ export const useWallpaperStorage = () => {
   };
 
   const storeWallpaper = async (wallpaper: Wallpaper) => {
-    const fileUri = FileSystem.documentDirectory + WALLPAPER_NAME;
+    const fileUri =
+      FileSystem.documentDirectory + getWallpaperFilename(wallpaper);
 
     setStoringWallpaper(true);
 

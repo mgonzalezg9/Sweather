@@ -25,11 +25,6 @@ const styles = StyleSheet.create({
   backgroundImage: {
     height: "100%",
   },
-  downloadIcon: {
-    position: "absolute",
-    top: statusBarHeight + 10,
-    right: 24,
-  },
   goBackIcon: {
     position: "absolute",
     top: statusBarHeight + 10,

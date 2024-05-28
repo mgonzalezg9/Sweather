@@ -29,13 +29,16 @@ export const WallpaperAuthorInfo = ({
       <View style={styles.userDetails}>
         <Image
           source={{ uri: details.author.image }}
-          style={styles.userImage}
+          style={styles.authorImage}
         />
         <View>
-          <Text style={[styles.userName, styles.clipText]} numberOfLines={1}>
+          <Text style={[styles.authorName, styles.clipText]} numberOfLines={1}>
             {details.author.name}
           </Text>
-          <Text style={[styles.userAlias, styles.clipText]} numberOfLines={1}>
+          <Text
+            style={[styles.authorUsername, styles.clipText]}
+            numberOfLines={1}
+          >
             @{details.author.username}
           </Text>
         </View>
@@ -59,16 +62,16 @@ const styles = StyleSheet.create({
     alignItems: "center",
     gap: 16,
   },
-  userImage: {
+  authorImage: {
     width: PROFILE_IMAGE_SIZE,
     height: PROFILE_IMAGE_SIZE,
     borderRadius: PROFILE_IMAGE_SIZE / 2,
   },
-  userName: {
+  authorName: {
     fontSize: 18,
     fontWeight: "bold",
   },
-  userAlias: {
+  authorUsername: {
     fontSize: 14,
   },
   clipText: {

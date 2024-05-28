@@ -1,37 +1,39 @@
 import * as Location from "expo-location";
 import { useState } from "react";
 
-interface UseUserLocationProps {
-  onLocationDeny?: () => void;
+interface UseUserCoordinatesProps {
+  onCoordinatesDeny?: () => void;
 }
 
-export const useUserLocation = ({ onLocationDeny }: UseUserLocationProps) => {
+export const useUserCoordinates = ({
+  onCoordinatesDeny,
+}: UseUserCoordinatesProps) => {
   const [loading, setLoading] = useState(false);
-  const [location, setLocation] = useState<Location.LocationObject>();
+  const [coordinates, setCoordinates] = useState<Location.LocationObject>();
 
-  const requestLocation = async () => {
+  const requestCoordinates = async () => {
     setLoading(true);
 
     let { status } = await Location.requestForegroundPermissionsAsync();
     if (status !== "granted") {
-      onLocationDeny && onLocationDeny();
+      onCoordinatesDeny && onCoordinatesDeny();
       return;
     }
 
     const location = await Location.getCurrentPositionAsync({});
 
-    setLocation(location);
+    setCoordinates(location);
     setLoading(false);
   };
 
   const reset = () => {
-    setLocation(undefined);
+    setCoordinates(undefined);
   };
 
   return {
-    requestLocation,
+    requestCoordinates,
     reset,
-    location,
+    coordinates,
     loading,
   };
 };

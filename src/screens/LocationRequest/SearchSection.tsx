@@ -4,7 +4,7 @@ import Search from "@/components/icons/Search";
 import { TextInput } from "@/components/input/TextInput";
 import { Text } from "@/components/text/Text";
 import Colors from "@/constants/Colors";
-import { useUserLocation } from "@/hooks/useUserLocation";
+import { useUserCoordinates } from "@/hooks/useUserCoordinates";
 import i18n from "@/i18n";
 import { useState } from "react";
 import { StyleSheet, View } from "react-native";
@@ -19,16 +19,18 @@ type SearchSection = {
 const SearchSection = ({ onSearch, onLocationDeny }: SearchSection) => {
   const [location, setLocation] = useState<string>("");
   const {
-    requestLocation,
-    reset: resetExactLocation,
-    loading: isLoadingLocation,
-    location: exactLocation,
-  } = useUserLocation({
-    onLocationDeny,
+    requestCoordinates,
+    reset: resetCoordinates,
+    loading: isLoadingCoordinates,
+    coordinates: exactCoordinates,
+  } = useUserCoordinates({
+    onCoordinatesDeny: onLocationDeny,
   });
 
   const getWeatherDetails = () => {
-    onSearch(location ? { location } : { coordinates: exactLocation?.coords });
+    onSearch(
+      location ? { location } : { coordinates: exactCoordinates?.coords }
+    );
   };
 
   return (
@@ -38,13 +40,13 @@ const SearchSection = ({ onSearch, onLocationDeny }: SearchSection) => {
         <TextInput
           style={styles.locationInput}
           value={
-            exactLocation
-              ? `${exactLocation.coords.latitude}, ${exactLocation.coords.longitude}`
+            exactCoordinates
+              ? `${exactCoordinates.coords.latitude}, ${exactCoordinates.coords.longitude}`
               : location
           }
           onChangeText={(value: string) => {
-            if (exactLocation) {
-              resetExactLocation();
+            if (exactCoordinates) {
+              resetCoordinates();
             }
             setLocation(value);
           }}
@@ -54,11 +56,13 @@ const SearchSection = ({ onSearch, onLocationDeny }: SearchSection) => {
         />
         <SquareButton
           onClick={
-            location || exactLocation ? getWeatherDetails : requestLocation
+            location || exactCoordinates
+              ? getWeatherDetails
+              : requestCoordinates
           }
-          loading={isLoadingLocation}
+          loading={isLoadingCoordinates}
         >
-          {location || exactLocation ? (
+          {location || exactCoordinates ? (
             <Search
               size={SEARCH_BUTTON_ICON_SIZE}
               lightColor={Colors.palette.white}
