@@ -4,8 +4,8 @@ import Search from "@/components/icons/Search";
 import { TextInput } from "@/components/input/TextInput";
 import { Text } from "@/components/text/Text";
 import Colors from "@/constants/Colors";
+import { useUserLocation } from "@/hooks/useUserLocation";
 import i18n from "@/i18n";
-import * as Location from "expo-location";
 import { useState } from "react";
 import { ActivityIndicator, StyleSheet, View } from "react-native";
 
@@ -17,27 +17,18 @@ type SearchSection = {
 };
 
 const SearchSection = ({ onSearch, onLocationDeny }: SearchSection) => {
-  const [coordinates, setCoordinates] = useState<Location.LocationObject>();
   const [location, setLocation] = useState<string>("");
-  const [requestLocation, setRequestLocation] = useState(false);
+  const {
+    requestLocation,
+    reset: resetExactLocation,
+    loading: isLoadingLocation,
+    location: exactLocation,
+  } = useUserLocation({
+    onLocationDeny,
+  });
 
   const getWeatherDetails = () => {
-    onSearch(location ? { location } : { coordinates: coordinates?.coords });
-  };
-
-  const requestUserLocation = async () => {
-    setRequestLocation(true);
-
-    let { status } = await Location.requestForegroundPermissionsAsync();
-    if (status !== "granted") {
-      onLocationDeny();
-      return;
-    }
-
-    const location = await Location.getCurrentPositionAsync({});
-    setCoordinates(location);
-
-    setRequestLocation(false);
+    onSearch(location ? { location } : { coordinates: exactLocation?.coords });
   };
 
   return (
@@ -47,13 +38,13 @@ const SearchSection = ({ onSearch, onLocationDeny }: SearchSection) => {
         <TextInput
           style={styles.locationInput}
           value={
-            coordinates
-              ? `${coordinates.coords.latitude}, ${coordinates.coords.longitude}`
+            exactLocation
+              ? `${exactLocation.coords.latitude}, ${exactLocation.coords.longitude}`
               : location
           }
           onChangeText={(value: string) => {
-            if (coordinates) {
-              setCoordinates(undefined);
+            if (exactLocation) {
+              resetExactLocation();
             }
             setLocation(value);
           }}
@@ -63,16 +54,16 @@ const SearchSection = ({ onSearch, onLocationDeny }: SearchSection) => {
         />
         <SquareButton
           onClick={
-            location || coordinates ? getWeatherDetails : requestUserLocation
+            location || exactLocation ? getWeatherDetails : requestLocation
           }
         >
-          {location || coordinates ? (
+          {location || exactLocation ? (
             <Search
               size={SEARCH_BUTTON_ICON_SIZE}
               lightColor={Colors.palette.white}
               darkColor={Colors.palette.black}
             />
-          ) : requestLocation ? (
+          ) : isLoadingLocation ? (
             <ActivityIndicator color={Colors.palette.white} />
           ) : (
             <LocationPin
