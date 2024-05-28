@@ -9,7 +9,7 @@ import * as Location from "expo-location";
 import { useState } from "react";
 import { ActivityIndicator, StyleSheet, View } from "react-native";
 
-const SEARCH_BUTTON_SIZE = 32;
+const SEARCH_BUTTON_ICON_SIZE = 32;
 
 type SearchSection = {
   onSearch: (result: any) => void;
@@ -65,24 +65,23 @@ const SearchSection = ({ onSearch, onLocationDeny }: SearchSection) => {
           onClick={
             location || coordinates ? getWeatherDetails : requestUserLocation
           }
-          icon={
-            location || coordinates ? (
-              <Search
-                size={SEARCH_BUTTON_SIZE}
-                lightColor={Colors.palette.white}
-                darkColor={Colors.palette.black}
-              />
-            ) : requestLocation ? (
-              <ActivityIndicator color={Colors.palette.black} />
-            ) : (
-              <LocationPin
-                size={SEARCH_BUTTON_SIZE}
-                lightColor={Colors.palette.white}
-                darkColor={Colors.palette.black}
-              />
-            )
-          }
-        />
+        >
+          {location || coordinates ? (
+            <Search
+              size={SEARCH_BUTTON_ICON_SIZE}
+              lightColor={Colors.palette.white}
+              darkColor={Colors.palette.black}
+            />
+          ) : requestLocation ? (
+            <ActivityIndicator color={Colors.palette.black} />
+          ) : (
+            <LocationPin
+              size={SEARCH_BUTTON_ICON_SIZE}
+              lightColor={Colors.palette.white}
+              darkColor={Colors.palette.black}
+            />
+          )}
+        </SquareButton>
       </View>
     </View>
   );

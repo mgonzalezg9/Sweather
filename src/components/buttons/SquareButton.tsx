@@ -2,12 +2,17 @@ import React from "react";
 import { Pressable, StyleSheet, View } from "react-native";
 import { useThemeColor } from "../Themed";
 
-type SquareButtonType = {
+type SquareButtonProps = {
   icon?: JSX.Element;
   onClick: () => void;
 };
 
-const SquareButton = ({ icon, onClick, ...props }: SquareButtonType) => {
+const SquareButton = ({
+  icon,
+  onClick,
+  children,
+  ...props
+}: React.PropsWithChildren<SquareButtonProps>) => {
   const backgroundColor = useThemeColor({}, "tint");
 
   return (
@@ -16,7 +21,7 @@ const SquareButton = ({ icon, onClick, ...props }: SquareButtonType) => {
       onPress={onClick}
       {...props}
     >
-      <View style={styles.button}>{icon}</View>
+      <View style={styles.button}>{children}</View>
     </Pressable>
   );
 };

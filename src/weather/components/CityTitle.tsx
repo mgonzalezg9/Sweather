@@ -43,6 +43,7 @@ const styles = StyleSheet.create({
   },
   countryContainer: {
     flexDirection: "row",
+    alignItems: "center",
     marginTop: 5,
     width: 200,
   },
