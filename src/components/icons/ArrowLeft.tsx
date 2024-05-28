@@ -1,22 +1,20 @@
 import { Icon } from "@/interfaces";
-import MaterialIcons from "@expo/vector-icons/MaterialIcons";
-import * as React from "react";
+import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
+import React from "react";
 import { useThemeColor } from "../Themed";
 
-const LocationPin = ({ size, darkColor, lightColor, ...props }: Icon) => {
+export const ArrowLeft = ({ size, darkColor, lightColor, ...props }: Icon) => {
   const colorName = useThemeColor(
     { light: lightColor, dark: darkColor },
     "text"
   );
 
   return (
-    <MaterialIcons
-      name="location-pin"
+    <MaterialCommunityIcons
+      name="arrow-left"
       size={size}
       color={colorName}
       {...props}
     />
   );
 };
-
-export default LocationPin;

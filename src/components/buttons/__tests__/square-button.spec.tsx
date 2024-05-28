@@ -6,7 +6,11 @@ import SquareButton from "../SquareButton";
 describe(`SquareButton`, () => {
   it(`renders correctly`, () => {
     const helloWorld = "Hello World";
-    const tree = renderer.create(<SquareButton icon={<Text>{helloWorld}</Text>} onClick={() => { }} />);
+    const tree = renderer.create(
+      <SquareButton onClick={() => {}}>
+        <Text>{helloWorld}</Text>
+      </SquareButton>
+    );
 
     expect(tree).toMatchSnapshot();
   });

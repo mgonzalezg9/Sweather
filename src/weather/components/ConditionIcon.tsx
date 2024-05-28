@@ -38,74 +38,74 @@ const DayIconsMap: Record<Condition, React.FC<Icon>> = {
 };
 
 type ThemeSetup = {
-  lightStroke: string;
-  darkStroke: string;
+  lightColor: string;
+  darkColor: string;
 };
 
 const DayProps: Record<Condition, ThemeSetup> = {
   Clouds: {
-    lightStroke: Colors.palette.grey,
-    darkStroke: Colors.palette.grey,
+    lightColor: Colors.palette.grey,
+    darkColor: Colors.palette.grey,
   },
   Smoke: {
-    lightStroke: Colors.palette.black,
-    darkStroke: Colors.palette.black,
+    lightColor: Colors.palette.black,
+    darkColor: Colors.palette.black,
   },
   Fog: {
-    lightStroke: Colors.palette.lightGrey,
-    darkStroke: Colors.palette.lightGrey,
+    lightColor: Colors.palette.lightGrey,
+    darkColor: Colors.palette.lightGrey,
   },
   Haze: {
-    lightStroke: Colors.palette.lightGrey,
-    darkStroke: Colors.palette.lightGrey,
+    lightColor: Colors.palette.lightGrey,
+    darkColor: Colors.palette.lightGrey,
   },
   Mist: {
-    lightStroke: Colors.palette.lightGrey,
-    darkStroke: Colors.palette.lightGrey,
+    lightColor: Colors.palette.lightGrey,
+    darkColor: Colors.palette.lightGrey,
   },
   Rain: {
-    lightStroke: Colors.palette.lightBlue,
-    darkStroke: Colors.palette.blue,
+    lightColor: Colors.palette.lightBlue,
+    darkColor: Colors.palette.blue,
   },
   Squall: {
-    lightStroke: Colors.palette.lightBlue,
-    darkStroke: Colors.palette.blue,
+    lightColor: Colors.palette.lightBlue,
+    darkColor: Colors.palette.blue,
   },
   Drizzle: {
-    lightStroke: Colors.palette.lightBlue,
-    darkStroke: Colors.palette.blue,
+    lightColor: Colors.palette.lightBlue,
+    darkColor: Colors.palette.blue,
   },
   Snow: {
-    lightStroke: Colors.palette.lightGrey,
-    darkStroke: Colors.palette.white,
+    lightColor: Colors.palette.lightGrey,
+    darkColor: Colors.palette.white,
   },
   Clear: {
-    lightStroke: Colors.palette.yellow,
-    darkStroke: Colors.palette.yellow,
+    lightColor: Colors.palette.yellow,
+    darkColor: Colors.palette.yellow,
   },
   Thunderstorm: {
-    lightStroke: Colors.palette.yellow,
-    darkStroke: Colors.palette.yellow,
+    lightColor: Colors.palette.yellow,
+    darkColor: Colors.palette.yellow,
   },
   Wind: {
-    lightStroke: Colors.palette.deepBlue,
-    darkStroke: Colors.palette.deepBlue,
+    lightColor: Colors.palette.deepBlue,
+    darkColor: Colors.palette.deepBlue,
   },
   Dust: {
-    lightStroke: Colors.palette.brown,
-    darkStroke: Colors.palette.brown,
+    lightColor: Colors.palette.brown,
+    darkColor: Colors.palette.brown,
   },
   Sand: {
-    lightStroke: Colors.palette.brown,
-    darkStroke: Colors.palette.brown,
+    lightColor: Colors.palette.brown,
+    darkColor: Colors.palette.brown,
   },
   Ash: {
-    lightStroke: Colors.palette.black,
-    darkStroke: Colors.palette.black,
+    lightColor: Colors.palette.black,
+    darkColor: Colors.palette.black,
   },
   Tornado: {
-    lightStroke: Colors.palette.lightGrey,
-    darkStroke: Colors.palette.lightGrey,
+    lightColor: Colors.palette.lightGrey,
+    darkColor: Colors.palette.lightGrey,
   },
 };
 
@@ -130,68 +130,68 @@ const NightIconsMap: Record<Condition, React.FC<Icon>> = {
 
 const NightProps: Record<Condition, ThemeSetup> = {
   Clouds: {
-    lightStroke: Colors.palette.grey,
-    darkStroke: Colors.palette.grey,
+    lightColor: Colors.palette.grey,
+    darkColor: Colors.palette.grey,
   },
   Smoke: {
-    lightStroke: Colors.palette.grey,
-    darkStroke: Colors.palette.grey,
+    lightColor: Colors.palette.grey,
+    darkColor: Colors.palette.grey,
   },
   Fog: {
-    lightStroke: Colors.palette.lightGrey,
-    darkStroke: Colors.palette.lightGrey,
+    lightColor: Colors.palette.lightGrey,
+    darkColor: Colors.palette.lightGrey,
   },
   Haze: {
-    lightStroke: Colors.palette.lightGrey,
-    darkStroke: Colors.palette.lightGrey,
+    lightColor: Colors.palette.lightGrey,
+    darkColor: Colors.palette.lightGrey,
   },
   Mist: {
-    lightStroke: Colors.palette.lightGrey,
-    darkStroke: Colors.palette.lightGrey,
+    lightColor: Colors.palette.lightGrey,
+    darkColor: Colors.palette.lightGrey,
   },
   Rain: {
-    lightStroke: Colors.palette.blue,
-    darkStroke: Colors.palette.blue,
+    lightColor: Colors.palette.blue,
+    darkColor: Colors.palette.blue,
   },
   Squall: {
-    lightStroke: Colors.palette.lightBlue,
-    darkStroke: Colors.palette.blue,
+    lightColor: Colors.palette.lightBlue,
+    darkColor: Colors.palette.blue,
   },
   Drizzle: {
-    lightStroke: Colors.palette.lightBlue,
-    darkStroke: Colors.palette.blue,
+    lightColor: Colors.palette.lightBlue,
+    darkColor: Colors.palette.blue,
   },
   Snow: {
-    lightStroke: Colors.palette.lightGrey,
-    darkStroke: Colors.palette.white,
+    lightColor: Colors.palette.lightGrey,
+    darkColor: Colors.palette.white,
   },
   Clear: {
-    lightStroke: Colors.palette.purple,
-    darkStroke: Colors.palette.purple,
+    lightColor: Colors.palette.purple,
+    darkColor: Colors.palette.purple,
   },
   Thunderstorm: {
-    lightStroke: Colors.palette.yellow,
-    darkStroke: Colors.palette.yellow,
+    lightColor: Colors.palette.yellow,
+    darkColor: Colors.palette.yellow,
   },
   Wind: {
-    lightStroke: Colors.palette.deepBlue,
-    darkStroke: Colors.palette.blue,
+    lightColor: Colors.palette.deepBlue,
+    darkColor: Colors.palette.blue,
   },
   Dust: {
-    lightStroke: Colors.palette.brown,
-    darkStroke: Colors.palette.brown,
+    lightColor: Colors.palette.brown,
+    darkColor: Colors.palette.brown,
   },
   Sand: {
-    lightStroke: Colors.palette.brown,
-    darkStroke: Colors.palette.brown,
+    lightColor: Colors.palette.brown,
+    darkColor: Colors.palette.brown,
   },
   Ash: {
-    lightStroke: Colors.palette.grey,
-    darkStroke: Colors.palette.grey,
+    lightColor: Colors.palette.grey,
+    darkColor: Colors.palette.grey,
   },
   Tornado: {
-    lightStroke: Colors.palette.lightGrey,
-    darkStroke: Colors.palette.lightGrey,
+    lightColor: Colors.palette.lightGrey,
+    darkColor: Colors.palette.lightGrey,
   },
 } as const;
 
@@ -204,9 +204,9 @@ const ConditionIcon = ({
 }: ConditionIconProps) => {
   const isDay = now && sunrise && sunset && now < sunset;
   const Icon = isDay ? DayIconsMap[condition] : NightIconsMap[condition];
-  const Props = isDay ? DayProps[condition] : NightProps[condition];
+  const dayTimeProps = isDay ? DayProps[condition] : NightProps[condition];
 
-  return <Icon {...ICON_DEFAULT_PROPS} {...Props} {...props} />;
+  return <Icon {...ICON_DEFAULT_PROPS} {...dayTimeProps} {...props} />;
 };
 
 export default ConditionIcon;

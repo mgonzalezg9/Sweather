@@ -93,6 +93,7 @@ Sweather architecture is composed by the following folders:
     Each folder represents the components used in each screen. The screens are:
     - `LocationRequest`: Shows an input where the user can enter its location. 
     - `LocationDetails`: Shows the weather of the selected location. 
+    - `WallpaperInfo`: Contains information about the wallpaper shown at one location. 
     - `NotFound`: Route not found sample screen. Not used in the app. 
 
 -   Services:

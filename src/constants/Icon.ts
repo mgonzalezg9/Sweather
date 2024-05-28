@@ -1,10 +1,10 @@
+import { Icon } from "@/interfaces";
 import Colors from "./Colors";
 
-const ICON_SIZE = 17;
+const ICON_SIZE = 18;
 
-export const ICON_DEFAULT_PROPS = {
-    width: ICON_SIZE,
-    height: ICON_SIZE,
-    lightColor: Colors.palette.white,
-    darkColor: Colors.palette.black,
+export const ICON_DEFAULT_PROPS: Icon = {
+  size: ICON_SIZE,
+  lightColor: Colors.palette.white,
+  darkColor: Colors.palette.black,
 };

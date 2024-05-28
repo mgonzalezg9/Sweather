@@ -4,17 +4,18 @@
  * https://reactnavigation.org/docs/configuring-links
  */
 
-import { LinkingOptions } from '@react-navigation/native';
-import * as Linking from 'expo-linking';
-import { RootStackParamList } from './types.d';
+import { LinkingOptions } from "@react-navigation/native";
+import * as Linking from "expo-linking";
+import { RootStackParamList } from "./types.d";
 
 const linking: LinkingOptions<RootStackParamList> = {
-  prefixes: [Linking.createURL('')],
+  prefixes: [Linking.createURL("")],
   config: {
     screens: {
-      LocationRequest: 'request',
-      LocationDetails: 'details',
-      NotFound: '*',
+      LocationRequest: "request",
+      LocationDetails: "details",
+      WallpaperInfo: "wallpaper-info",
+      NotFound: "*",
     },
   },
 };

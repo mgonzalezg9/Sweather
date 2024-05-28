@@ -3,7 +3,7 @@
  * https://reactnavigation.org/docs/typescript/
  */
 
-import { Uri } from "@/wallpaper/interfaces";
+import { Wallpaper } from "@/wallpaper/interfaces";
 import { Forecast, Weather } from "@/weather/interfaces";
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
 
@@ -18,7 +18,10 @@ export type RootStackParamList = {
   LocationDetails: {
     weather: Weather;
     forecast: Forecast;
-    wallpaper?: Uri;
+    wallpaper: Wallpaper;
+  };
+  WallpaperInfo: {
+    wallpaper: Wallpaper;
   };
   NotFound: undefined;
 };
