@@ -7,7 +7,7 @@ import type {
   Weather,
   WeatherResponse,
 } from "../interfaces";
-import { formatMilliseconds } from "../utils/time-formatter";
+import { formatMilliseconds } from "../utils/time";
 
 const FORECAST_MAX_HOURS = 10;
 const UNIT_SYSTEM = "metric";
