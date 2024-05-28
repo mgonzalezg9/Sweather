@@ -20,7 +20,7 @@ export const ViewInUnsplashButton = ({
   };
 
   return (
-    <SquareButton style={styles.default} onClick={goToUnsplash}>
+    <SquareButton style={styles.default} onClick={goToUnsplash} isSecondary>
       <View style={styles.buttonContent}>
         <Globe size={BUTTON_ICON_SIZE} lightColor={Colors.palette.white} />
         <Text lightColor={Colors.palette.white}>

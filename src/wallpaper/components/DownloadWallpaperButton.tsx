@@ -39,7 +39,7 @@ export const DownloadWallpaperButton = ({
 
 const styles = StyleSheet.create({
   default: {
-    width: 150,
+    width: 125,
   },
   buttonContent: {
     flexDirection: "row",

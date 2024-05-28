@@ -1,3 +1,4 @@
+import Colors from "@/constants/Colors";
 import React from "react";
 import {
   Pressable,
@@ -6,22 +7,23 @@ import {
   View,
   ViewStyle,
 } from "react-native";
-import { useThemeColor } from "../Themed";
 
 type SquareButtonProps = {
   style?: StyleProp<ViewStyle>;
-  icon?: JSX.Element;
+  isSecondary?: boolean;
   onClick: () => void;
 };
 
 const SquareButton = ({
-  icon,
   onClick,
+  isSecondary,
   children,
   style,
   ...props
 }: React.PropsWithChildren<SquareButtonProps>) => {
-  const backgroundColor = useThemeColor({}, "tint");
+  const backgroundColor = isSecondary
+    ? Colors.palette.deepBlue
+    : Colors.palette.orange;
   const combinedStyle = StyleSheet.flatten([
     styles.outline,
     { backgroundColor },
