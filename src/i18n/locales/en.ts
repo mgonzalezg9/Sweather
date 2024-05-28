@@ -26,7 +26,8 @@ const en: SweatherLocale = {
     Ash: "Ash",
     Tornado: "Tornado",
   },
-  viewInUnsplash: "View profile in Unsplash",
+  viewInUnsplash: "Unsplash",
+  downloadWallpaper: "Download",
 };
 
 export default en;

@@ -32,8 +32,19 @@ export const getLocationBackground = async ({
   }
 
   const chosenPhotoIndex = Math.floor(Math.random() * data.results.length);
+  const chosenPhoto = data.results[chosenPhotoIndex];
+
   return {
-    uri: data.results[chosenPhotoIndex].urls.regular,
+    uri: chosenPhoto.urls.regular,
+    details: {
+      slug: chosenPhoto.alt_description,
+      unsplashUrl: chosenPhoto.links.html,
+      author: {
+        name: chosenPhoto.user.name,
+        username: chosenPhoto.user.username,
+        image: chosenPhoto.user.profile_image.large,
+      },
+    },
   };
 };
 

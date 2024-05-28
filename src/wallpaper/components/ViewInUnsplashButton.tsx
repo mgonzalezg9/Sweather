@@ -8,12 +8,14 @@ import { Linking, StyleSheet, View } from "react-native";
 const BUTTON_ICON_SIZE = 35;
 
 interface ViewInUnsplashButtonProps {
-  url: string;
+  unsplashUrl: string;
 }
 
-export const ViewInUnsplashButton = ({ url }: ViewInUnsplashButtonProps) => {
+export const ViewInUnsplashButton = ({
+  unsplashUrl,
+}: ViewInUnsplashButtonProps) => {
   const goToUnsplash = () => {
-    Linking.openURL(url);
+    Linking.openURL(unsplashUrl);
   };
 
   return (
@@ -28,7 +30,7 @@ export const ViewInUnsplashButton = ({ url }: ViewInUnsplashButtonProps) => {
 
 const styles = StyleSheet.create({
   default: {
-    width: 225,
+    width: 150,
   },
   buttonContent: {
     flexDirection: "row",

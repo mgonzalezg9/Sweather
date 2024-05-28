@@ -24,4 +24,5 @@ export type SweatherLocale = {
     Tornado: string;
   };
   viewInUnsplash: string;
+  downloadWallpaper: string;
 };

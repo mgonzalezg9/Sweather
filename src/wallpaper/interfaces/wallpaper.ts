@@ -3,11 +3,12 @@ export interface Wallpaper {
   details?: {
     slug: string;
     author: Author;
+    unsplashUrl: string;
   };
 }
 
 interface Author {
   name: string;
   username: string;
-  link: string;
+  image: string;
 }
