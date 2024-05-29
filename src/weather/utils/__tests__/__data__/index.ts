@@ -2,26 +2,26 @@ const MINUTE = 60000;
 const HOUR = MINUTE * 60;
 
 export const ES_LOCALE_TEST_SUITE = [
-  [0, "00:00"],
-  [MINUTE, "00:01"],
-  [2 * MINUTE, "00:02"],
-  [HOUR, "01:00"],
-  [2 * HOUR, "02:00"],
-  [12 * HOUR, "12:00"],
-  [13 * HOUR, "13:00"],
-  [23 * HOUR, "23:00"],
-  [24 * HOUR, "00:00"],
+  [new Date(0), "00:00"],
+  [new Date(MINUTE), "00:01"],
+  [new Date(2 * MINUTE), "00:02"],
+  [new Date(HOUR), "01:00"],
+  [new Date(2 * HOUR), "02:00"],
+  [new Date(12 * HOUR), "12:00"],
+  [new Date(13 * HOUR), "13:00"],
+  [new Date(23 * HOUR), "23:00"],
+  [new Date(24 * HOUR), "00:00"],
 ] as const;
 export const EN_LOCALE_TEST_SUITE = [
-  [0, "12:00 AM"],
-  [MINUTE, "12:01 AM"],
-  [2 * MINUTE, "12:02 AM"],
-  [HOUR, "01:00 AM"],
-  [2 * HOUR, "02:00 AM"],
-  [12 * HOUR, "12:00 PM"],
-  [13 * HOUR, "01:00 PM"],
-  [23 * HOUR, "11:00 PM"],
-  [24 * HOUR, "12:00 AM"],
+  [new Date(0), "12:00 AM"],
+  [new Date(MINUTE), "12:01 AM"],
+  [new Date(2 * MINUTE), "12:02 AM"],
+  [new Date(HOUR), "01:00 AM"],
+  [new Date(2 * HOUR), "02:00 AM"],
+  [new Date(12 * HOUR), "12:00 PM"],
+  [new Date(13 * HOUR), "01:00 PM"],
+  [new Date(23 * HOUR), "11:00 PM"],
+  [new Date(24 * HOUR), "12:00 AM"],
 ] as const;
 
 export const IS_DAY_TEST_SUITE = [
