@@ -16,3 +16,7 @@ yarn.lock
 .DS_Store
 
 coverage/
+
+# Mobile builds
+android
+ios
