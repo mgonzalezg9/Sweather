@@ -11,7 +11,7 @@ type ConditionRow = {
   text?: string;
   condition?: Weather["condition"];
   icon?: (p: Icon) => JSX.Element;
-} & Partial<Weather["time"]>;
+} & Weather["time"];
 
 const ConditionRow = ({
   icon,

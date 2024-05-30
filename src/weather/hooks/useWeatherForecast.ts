@@ -11,7 +11,6 @@ export type LocationQuery = {
   coordinates: Coordinates;
   device: {
     locale: string;
-    timeZone?: string;
   };
 };
 
@@ -39,7 +38,7 @@ const getWeatherAndForecast = async ({
 export default function useWeatherForecast({
   location,
   coordinates,
-  device: { locale, timeZone },
+  device: { locale },
 }: LocationQuery) {
   const [weather, setWeather] = useState<Weather>();
   const [forecast, setForecast] = useState<Forecast>();
@@ -61,7 +60,6 @@ export default function useWeatherForecast({
           coordinates,
           device: {
             locale,
-            timeZone,
           },
         });
 
@@ -79,7 +77,7 @@ export default function useWeatherForecast({
     };
 
     loadWeather();
-  }, [location, coordinates, timeZone, locale]);
+  }, [location, coordinates, locale]);
 
   return {
     weather,
