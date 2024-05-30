@@ -18,7 +18,7 @@ const LocationRequestBody: React.FC = () => {
   );
   const [locationDenied, setLocationDenied] = useState(false);
 
-  const { locale, timeZone } = useDeviceLocales();
+  const { locale } = useDeviceLocales();
   const {
     weather,
     forecast,
@@ -28,7 +28,6 @@ const LocationRequestBody: React.FC = () => {
     ...geoData,
     device: {
       locale,
-      timeZone,
     },
   });
   const { wallpaper, loading: loadingWallpaper } = useWallpaper(

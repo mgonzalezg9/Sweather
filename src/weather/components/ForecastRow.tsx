@@ -3,7 +3,7 @@ import { View as DefaultView, FlatList, StyleSheet } from "react-native";
 import { Forecast } from "../interfaces";
 import TimeWeather from "./TimeWeather";
 
-const ForecastRow = ({ hours, sunrise, sunset }: Partial<Forecast>) => {
+const ForecastRow = ({ hours, sunrise, sunset }: Forecast) => {
   if (!hours) {
     return null;
   }

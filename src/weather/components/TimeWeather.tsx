@@ -1,13 +1,15 @@
 import { Text } from "@/components/text/Text";
+import useDeviceLocales from "@/i18n/hooks/useDeviceLocales";
 import React from "react";
 import { View as DefaultView, StyleSheet } from "react-native";
 import { Weather } from "../interfaces";
+import { formatDate } from "../utils/time";
 import ConditionIcon from "./ConditionIcon";
 
 type TimeWeatherProps = {
   temperature: Weather["temperature"]["current"];
   condition: Weather["condition"];
-} & Partial<Weather["time"]>;
+} & Weather["time"];
 
 const TimeWeather = ({
   temperature,
@@ -17,11 +19,18 @@ const TimeWeather = ({
   sunset,
   ...props
 }: TimeWeatherProps) => {
+  const { locale, timeZone } = useDeviceLocales();
+
   const computedTemperature = Math.ceil(temperature);
+  const time = formatDate({
+    time: new Date(now),
+    locale,
+    timeZone,
+  });
 
   return (
     <DefaultView style={styles.container} {...props}>
-      <Text style={styles.timeWeatherText}>{now}</Text>
+      <Text style={styles.timeWeatherText}>{time}</Text>
       <ConditionIcon
         size={32}
         condition={condition}

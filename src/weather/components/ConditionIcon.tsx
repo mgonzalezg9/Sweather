@@ -3,6 +3,7 @@ import { ICON_DEFAULT_PROPS } from "@/constants/Icon";
 import { Icon } from "@/interfaces";
 import React from "react";
 import { Condition, Weather } from "../interfaces";
+import { hasDaylight } from "../utils/time";
 import Cloud from "./icons/Cloud";
 import Fog from "./icons/Fog";
 import Moon from "./icons/Moon";
@@ -15,7 +16,7 @@ import Wind from "./icons/Wind";
 
 type ConditionIconProps = {
   condition: Weather["condition"];
-} & Partial<Weather["time"]> &
+} & Weather["time"] &
   Icon;
 
 const DayIconsMap: Record<Condition, React.FC<Icon>> = {
@@ -202,7 +203,11 @@ const ConditionIcon = ({
   sunset,
   ...props
 }: ConditionIconProps) => {
-  const isDay = now && sunrise && sunset && now < sunset;
+  const isDay = hasDaylight({
+    time: new Date(now),
+    sunrise: new Date(sunrise),
+    sunset: new Date(sunset),
+  });
   const Icon = isDay ? DayIconsMap[condition] : NightIconsMap[condition];
   const dayTimeProps = isDay ? DayProps[condition] : NightProps[condition];
 

@@ -16,7 +16,7 @@ const WeatherDetails = ({
   condition,
   windSpeed,
   time,
-}: Partial<WeatherDetailsProps>) => {
+}: WeatherDetailsProps) => {
   const temperatureText = temperature ? Math.ceil(temperature) : "-";
 
   return (
@@ -25,11 +25,17 @@ const WeatherDetails = ({
       <DefaultView style={styles.main}>
         <ConditionRow
           condition={condition}
-          now={time?.now}
-          sunrise={time?.sunrise}
-          sunset={time?.sunset}
+          now={time.now}
+          sunrise={time.sunrise}
+          sunset={time.sunset}
         />
-        <ConditionRow condition="Wind" text={`${windSpeed} m/s`} />
+        <ConditionRow
+          condition="Wind"
+          text={`${windSpeed} m/s`}
+          now={time.now}
+          sunrise={time.sunrise}
+          sunset={time.sunset}
+        />
       </DefaultView>
     </DefaultView>
   );

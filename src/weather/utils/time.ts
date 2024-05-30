@@ -1,5 +1,5 @@
-interface formatMillisecondsOptions {
-  time: number;
+interface formatDateOptions {
+  time: Date;
   locale: string;
   timeZone?: string;
 }
@@ -8,31 +8,31 @@ interface formatMillisecondsOptions {
  * Formats a given time in milliseconds to a localized time string.
  *
  * @param {Object} options - The options object.
- * @param {number} options.time - The time in milliseconds since the Unix epoch (January 1, 1970 00:00:00 UTC).
+ * @param {Date} options.time - The time Date object.
  * @param {string} options.locale - A string with a BCP 47 language tag, or an array of such strings, to specify the locale.
  * @param {string} [options.timeZone="UTC"] - An optional string representing the time zone to use. Defaults to "UTC".
  * @returns {string} - A string representing the formatted time according to the specified locale and time zone.
  *
  * @example
  * // Example usage:
- * const formattedTime = formatMilliseconds({ time: Date.now(), locale: 'en-US', timeZone: 'America/New_York' });
+ * const formattedTime = formatDate({ time: Date.now(), locale: 'en-US', timeZone: 'America/New_York' });
  * console.log(formattedTime); // Output: "02:30 PM" (depending on the current time)
  */
-export const formatMilliseconds = ({
+export const formatDate = ({
   time,
   locale,
   timeZone = "UTC",
-}: formatMillisecondsOptions) => {
+}: formatDateOptions) => {
   const timeFormatter = new Intl.DateTimeFormat(locale, {
     hour: "2-digit",
     minute: "2-digit",
     timeZone,
   });
 
-  return timeFormatter.format(new Date(time));
+  return timeFormatter.format(time);
 };
 
-interface IsDayTimeProps {
+interface HasDaylightProps {
   time: Date;
   sunrise: Date;
   sunset: Date;
@@ -48,23 +48,14 @@ interface IsDayTimeProps {
  * @param {Date} params.sunset - The time of sunset.
  * @returns {boolean} - Returns `true` if the time is between sunrise and sunset, otherwise `false`.
  */
-export const isDayTime = ({
+export const hasDaylight = ({
   time,
   sunrise,
   sunset,
-}: IsDayTimeProps): boolean => {
-  const getTimeInMilliseconds = (date: Date) =>
-    date.getUTCHours() * 60 * 60 +
-    date.getUTCMinutes() * 60 +
-    date.getUTCSeconds() * 1000 +
-    date.getUTCMilliseconds();
+}: HasDaylightProps): boolean => {
+  time.setFullYear(2000, 0, 1);
+  sunrise.setFullYear(2000, 0, 1);
+  sunset.setFullYear(2000, 0, 1);
 
-  const timeInMilliseconds = getTimeInMilliseconds(time);
-  const sunriseInMilliseconds = getTimeInMilliseconds(sunrise);
-  const sunsetInMilliseconds = getTimeInMilliseconds(sunset);
-
-  return (
-    timeInMilliseconds >= sunriseInMilliseconds &&
-    timeInMilliseconds <= sunsetInMilliseconds
-  );
+  return time >= sunrise && time <= sunset;
 };
