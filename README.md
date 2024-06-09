@@ -116,6 +116,8 @@ eas login
 eas whoami
 ```
 
+Do not forget to add your `.env` variables as [secrets](https://docs.expo.dev/build-reference/variables/#importing-secrets-from-a-dotenv-file) in Expo Go.
+
 The default build format is enhanced for the Play Store, this is Android App Bundle (`.aab`). In case you want to generate an `apk` please create `eas.json` file.
 
 Now you can run your build with the following command:
