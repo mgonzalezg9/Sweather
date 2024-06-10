@@ -3,28 +3,34 @@ name: PR checks
 on:
   pull_request:
     branches:
-      - master
+      - development
 
 jobs:
   pr_checks:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v2
-    
-    - name: Install dependencies
-      run: yarn install
-      env:
-        CI: true
+      - name: Checkout code
+        uses: actions/checkout@v2
 
-    - name: Run Typescript
-      run: yarn tsc
-      env:
-        CI: true
+      - name: Install dependencies
+        run: yarn install
+        env:
+          CI: true
 
-    # Fetch master branch and run changing test cases 
-    - name: Run Unit tests
-      run: yarn test:ci
-      env:
-        CI: true
+      - name: Run Typescript
+        run: yarn tsc
+        env:
+          CI: true
+
+      # Fetch development branch and run changing test cases
+      - name: Run Unit tests
+        run: yarn test:ci
+        env:
+          CI: true
+
+      # Check expo packages incompatibilities
+      - name: Run Expo doctor
+        run: npx -y expo-doctor
+        env:
+          CI: true
