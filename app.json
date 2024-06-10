@@ -15,7 +15,9 @@
     "updates": {
       "fallbackToCacheTimeout": 0
     },
-    "assetBundlePatterns": ["**/*"],
+    "assetBundlePatterns": [
+      "**/*"
+    ],
     "ios": {
       "supportsTablet": true,
       "bundleIdentifier": "com.mgonzalezg9.Sweather"
@@ -51,6 +53,7 @@
           "isAccessMediaLocationEnabled": true
         }
       ]
-    ]
+    ],
+    "owner": "mgonzalezg9"
   }
 }
