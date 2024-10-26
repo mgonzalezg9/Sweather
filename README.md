@@ -20,8 +20,8 @@
 
 Sweather stands for "**S**imple **weather**".
 <p align="center">
-  <img src="src/assets/images/location-request.png" width="350" height="700" title="Weather request screen">
-  <img src="src/assets/images/location-details.png" width="350" height="700" title="Weather details screen">
+  <img src="src/assets/images/location-request.webp" height="750" title="Weather request screen">
+  <img src="src/assets/images/location-details.webp" height="750" title="Weather details screen">
 </p>
 
 The main goal behind this project is to learn React Native along with Figma prototyping by creating an app
