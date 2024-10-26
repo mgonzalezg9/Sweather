@@ -15,6 +15,8 @@
   - [Technologies](#technologies)
   - [Architecture](#architecture)
   - [Android Build](#android-build)
+  - [FAQ](#faq)
+    - [Q: How do I update expo dependencies for best compatibility with current expo version?](#q-how-do-i-update-expo-dependencies-for-best-compatibility-with-current-expo-version)
   - [Further information](#further-information)
 
 ## Introduction
@@ -129,6 +131,11 @@ eas build -p android --profile preview
 ```
 
 Note: you can name the profile whatever you like. We named the profile preview. However, you can call it local, emulator, or whatever makes the most sense for you.
+
+## FAQ
+
+### Q: How do I update expo dependencies for best compatibility with current expo version? 
+A: Just use `yarn expo install --check`
 
 ## Further information
 To learn more about React and React native, you can check the docs at the [Technologies](#technologies) section.
