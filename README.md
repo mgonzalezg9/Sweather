@@ -1,4 +1,6 @@
-# Sweather
+# Sweather 
+
+[![image](src/assets/images/Google_Play_Store_badge_EN.svg)](https://play.google.com/store/apps/details?id=com.mgonzalezg9.Sweather)
 
 ## Index
 - [Sweather](#sweather)
