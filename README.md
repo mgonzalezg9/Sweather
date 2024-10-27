@@ -127,8 +127,14 @@ The default build format is enhanced for the Play Store, this is Android App Bun
 Now you can run your build with the following command:
 
 ```bash
+# Development
 eas build -p android --profile preview
+
+# Production
+eas build -p android --profile production
 ```
+
+Also you can submit your application to a store with eas using: `eas submit --platform android `
 
 Note: you can name the profile whatever you like. We named the profile preview. However, you can call it local, emulator, or whatever makes the most sense for you.
 

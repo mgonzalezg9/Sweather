@@ -22,5 +22,8 @@
         "autoIncrement": true
       }
     }
+  },
+  "cli": {
+    "appVersionSource": "local"
   }
 }
