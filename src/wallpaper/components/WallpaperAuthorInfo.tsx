@@ -12,6 +12,7 @@ import {
   Linking,
   StyleProp,
   StyleSheet,
+  ToastAndroid,
   View,
   ViewStyle,
 } from "react-native";
@@ -32,7 +33,7 @@ export const WallpaperAuthorInfo = (props: WallpaperAuthorInfoProps) => {
   }
 
   // HOOKS
-  const { error, isSaving, save } = useSaveImage({
+  const { error, isSaving, isSuccess, save } = useSaveImage({
     imageURL: uri,
     fileName: details?.slug || "wallpaper",
     albumName: "Sweather Wallpaper",
@@ -40,8 +41,16 @@ export const WallpaperAuthorInfo = (props: WallpaperAuthorInfoProps) => {
 
   // EFFECTS
   useEffect(() => {
-    if (error) console.log(error);
+    if (error) {
+      ToastAndroid.show(error, ToastAndroid.LONG);
+    }
   }, [error]);
+
+  useEffect(() => {
+    if (isSuccess) {
+      ToastAndroid.show("Wallpaper saved successfully", ToastAndroid.SHORT);
+    }
+  }, [isSuccess]);
 
   // VARS
   const combinedStyle = StyleSheet.flatten([styles.default, style]);

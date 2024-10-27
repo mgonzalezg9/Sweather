@@ -15,6 +15,7 @@ export const useSaveImage = (props: UseSaveImageProps) => {
   // STATE
   const [error, setError] = useState("");
   const [isSaving, setIsSaving] = useState(false);
+  const [isSuccess, setIsSuccess] = useState(false);
 
   // HOOKS
   const [permission, requestPermission] = MediaLibrary.usePermissions();
@@ -23,6 +24,7 @@ export const useSaveImage = (props: UseSaveImageProps) => {
   const save = async () => {
     const fileUri = `${FileSystem.documentDirectory}${fileName}.jpg`;
 
+    setIsSuccess(false);
     setIsSaving(true);
 
     try {
@@ -41,11 +43,9 @@ export const useSaveImage = (props: UseSaveImageProps) => {
         await MediaLibrary.addAssetsToAlbumAsync([asset], album, false);
       }
 
-      console.log(`Saved image from "${imageURL}" in album "${albumName}`);
+      setIsSuccess(true);
     } catch (err) {
-      setError(
-        `Error saving image from "${imageURL}" in album "${albumName}". ${err}`
-      );
+      setError(String(err));
     } finally {
       setIsSaving(false);
     }
@@ -54,6 +54,7 @@ export const useSaveImage = (props: UseSaveImageProps) => {
   return {
     error,
     isSaving,
+    isSuccess,
     save,
   };
 };
