@@ -3,9 +3,9 @@ import { DownloadArrow } from "@/components/icons/DownloadArrow";
 import { Text } from "@/components/text/Text";
 import Colors from "@/constants/Colors";
 import i18n from "@/i18n";
-import React from "react";
+import React, { useEffect } from "react";
 import { StyleSheet, View } from "react-native";
-import { useWallpaperStorage } from "../hooks/useWallpaperStorage";
+import { useSaveWallpaper } from "../hooks/useSaveWallpaper";
 import { Wallpaper } from "../interfaces";
 
 const BUTTON_ICON_SIZE = 35;
@@ -17,13 +17,19 @@ interface DownloadWallpaperButtonProps {
 export const DownloadWallpaperButton = ({
   wallpaper,
 }: DownloadWallpaperButtonProps) => {
-  const { storeWallpaper, storingWallpaper } = useWallpaperStorage();
+  // HOOKS
+  const { saveWallpaper, isStoring, error } = useSaveWallpaper();
+
+  // EFFECTS
+  useEffect(() => {
+    if (error) console.log(error);
+  }, [error]);
 
   return (
     <SquareButton
       style={styles.default}
-      onClick={() => storeWallpaper(wallpaper)}
-      loading={storingWallpaper}
+      onClick={() => saveWallpaper(wallpaper)}
+      loading={isStoring}
     >
       <View style={styles.buttonContent}>
         <DownloadArrow
