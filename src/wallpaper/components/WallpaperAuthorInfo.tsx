@@ -1,28 +1,59 @@
+import SquareButton from "@/components/buttons/SquareButton";
+import { DownloadArrow } from "@/components/icons/DownloadArrow";
+import { Globe } from "@/components/icons/Globe";
 import { Text } from "@/components/text/Text";
 import { CurvedThemedView } from "@/components/view/CurvedThemeView";
-import React from "react";
-import { Image, StyleProp, StyleSheet, View, ViewStyle } from "react-native";
+import Colors from "@/constants/Colors";
+import { useSaveImage } from "@/hooks/useSaveImage";
+import i18n from "@/i18n";
+import React, { useEffect } from "react";
+import {
+  Image,
+  Linking,
+  StyleProp,
+  StyleSheet,
+  ToastAndroid,
+  View,
+  ViewStyle,
+} from "react-native";
 import { Wallpaper } from "../interfaces";
-import { DownloadWallpaperButton } from "./DownloadWallpaperButton";
-import { ViewInUnsplashButton } from "./ViewInUnsplashButton";
-
-const PROFILE_IMAGE_SIZE = 50;
 
 interface WallpaperAuthorInfoProps {
   style?: StyleProp<ViewStyle>;
   wallpaper: Wallpaper;
 }
 
-export const WallpaperAuthorInfo = ({
-  style,
-  wallpaper,
-}: WallpaperAuthorInfoProps) => {
-  const combinedStyle = StyleSheet.flatten([styles.default, style]);
-  const details = wallpaper.details;
+export const WallpaperAuthorInfo = (props: WallpaperAuthorInfoProps) => {
+  // PROPS
+  const { wallpaper, style } = props;
+  const { details, uri } = wallpaper;
 
   if (!details) {
     return null;
   }
+
+  // HOOKS
+  const { error, isSaving, isSuccess, save } = useSaveImage({
+    imageURL: uri,
+    fileName: details?.slug || "wallpaper",
+    albumName: "Sweather Wallpaper",
+  });
+
+  // EFFECTS
+  useEffect(() => {
+    if (error) {
+      ToastAndroid.show(error, ToastAndroid.LONG);
+    }
+  }, [error]);
+
+  useEffect(() => {
+    if (isSuccess) {
+      ToastAndroid.show("Wallpaper saved successfully", ToastAndroid.SHORT);
+    }
+  }, [isSuccess]);
+
+  // VARS
+  const combinedStyle = StyleSheet.flatten([styles.default, style]);
 
   return (
     <CurvedThemedView style={combinedStyle}>
@@ -44,12 +75,36 @@ export const WallpaperAuthorInfo = ({
         </View>
       </View>
       <View style={styles.wallpaperActions}>
-        <DownloadWallpaperButton wallpaper={wallpaper} />
-        <ViewInUnsplashButton unsplashUrl={details.unsplashUrl} />
+        <SquareButton style={styles.button} loading={isSaving} onClick={save}>
+          <View style={styles.buttonContent}>
+            <DownloadArrow size={35} lightColor={Colors.palette.white} />
+            <Text lightColor={Colors.palette.white}>
+              {i18n.t("downloadWallpaper")}
+            </Text>
+          </View>
+        </SquareButton>
+
+        <SquareButton
+          style={styles.button}
+          onClick={() => {
+            Linking.openURL(details.unsplashUrl);
+          }}
+          isSecondary
+        >
+          <View style={styles.buttonContent}>
+            <Globe size={35} lightColor={Colors.palette.white} />
+            <Text lightColor={Colors.palette.white}>
+              {i18n.t("viewInUnsplash")}
+            </Text>
+          </View>
+        </SquareButton>
       </View>
     </CurvedThemedView>
   );
 };
+
+// STYLES
+const PROFILE_IMAGE_SIZE = 50;
 
 const styles = StyleSheet.create({
   default: {
@@ -81,5 +136,15 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     gap: 16,
+  },
+  button: {
+    width: 150,
+  },
+  buttonContent: {
+    flexDirection: "row",
+    gap: 5,
+    alignItems: "center",
+    justifyContent: "center",
+    paddingHorizontal: 10,
   },
 });
