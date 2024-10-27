@@ -5,7 +5,7 @@ import Colors from "@/constants/Colors";
 import i18n from "@/i18n";
 import React, { useEffect } from "react";
 import { StyleSheet, View } from "react-native";
-import { useSaveWallpaper } from "../hooks/useSaveWallpaper";
+import { useSaveImage } from "../../hooks/useSaveImage";
 import { Wallpaper } from "../interfaces";
 
 const BUTTON_ICON_SIZE = 35;
@@ -18,7 +18,11 @@ export const DownloadWallpaperButton = ({
   wallpaper,
 }: DownloadWallpaperButtonProps) => {
   // HOOKS
-  const { saveWallpaper, isStoring, error } = useSaveWallpaper();
+  const { error, isSaving, save } = useSaveImage({
+    imageURL: wallpaper.uri,
+    fileName: wallpaper.details?.slug || "wallpaper",
+    albumName: "Sweather Wallpaper",
+  });
 
   // EFFECTS
   useEffect(() => {
@@ -26,11 +30,7 @@ export const DownloadWallpaperButton = ({
   }, [error]);
 
   return (
-    <SquareButton
-      style={styles.default}
-      onClick={() => saveWallpaper(wallpaper)}
-      loading={isStoring}
-    >
+    <SquareButton style={styles.default} onClick={save} loading={isSaving}>
       <View style={styles.buttonContent}>
         <DownloadArrow
           size={BUTTON_ICON_SIZE}
