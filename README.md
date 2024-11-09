@@ -1,4 +1,6 @@
-# Sweather
+# Sweather 
+
+[![image](src/assets/images/Google_Play_Store_badge_EN.svg)](https://play.google.com/store/apps/details?id=com.mgonzalezg9.Sweather)
 
 ## Index
 - [Sweather](#sweather)
@@ -13,6 +15,8 @@
   - [Technologies](#technologies)
   - [Architecture](#architecture)
   - [Android Build](#android-build)
+  - [FAQ](#faq)
+    - [Q: How do I update expo dependencies for best compatibility with current expo version?](#q-how-do-i-update-expo-dependencies-for-best-compatibility-with-current-expo-version)
   - [Further information](#further-information)
 
 ## Introduction
@@ -20,8 +24,8 @@
 
 Sweather stands for "**S**imple **weather**".
 <p align="center">
-  <img src="src/assets/images/location-request.png" width="350" height="700" title="Weather request screen">
-  <img src="src/assets/images/location-details.png" width="350" height="700" title="Weather details screen">
+  <img src="src/assets/images/location-request.webp" height="750" title="Weather request screen">
+  <img src="src/assets/images/location-details.webp" height="750" title="Weather details screen">
 </p>
 
 The main goal behind this project is to learn React Native along with Figma prototyping by creating an app
@@ -123,10 +127,21 @@ The default build format is enhanced for the Play Store, this is Android App Bun
 Now you can run your build with the following command:
 
 ```bash
+# Development
 eas build -p android --profile preview
+
+# Production
+eas build -p android --profile production
 ```
 
+Also you can submit your application to a store with eas using: `eas submit --platform android `
+
 Note: you can name the profile whatever you like. We named the profile preview. However, you can call it local, emulator, or whatever makes the most sense for you.
+
+## FAQ
+
+### Q: How do I update expo dependencies for best compatibility with current expo version? 
+A: Just use `yarn expo install --check`
 
 ## Further information
 To learn more about React and React native, you can check the docs at the [Technologies](#technologies) section.
