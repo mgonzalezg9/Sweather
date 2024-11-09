@@ -30,8 +30,7 @@
         "android.permission.READ_EXTERNAL_STORAGE",
         "android.permission.WRITE_EXTERNAL_STORAGE",
         "android.permission.ACCESS_MEDIA_LOCATION"
-      ],
-      "versionCode": 3
+      ]
     },
     "web": {
       "favicon": "./src/assets/images/favicon.png"
