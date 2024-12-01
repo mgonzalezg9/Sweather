@@ -23,7 +23,7 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./src/assets/images/adaptive-icon.png"
+        "foregroundImage": "./src/assets/images/icon.png"
       },
       "package": "com.mgonzalezg9.Sweather",
       "permissions": [
