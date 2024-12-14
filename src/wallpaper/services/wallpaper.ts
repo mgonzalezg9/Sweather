@@ -1,15 +1,10 @@
 import { wallpaperApi } from "../api";
 import { WallpaperEndpoint } from "../api/endpoints";
-import bg1 from "../assets/images/background_1.jpg";
-import bg2 from "../assets/images/background_2.jpg";
-import bg3 from "../assets/images/background_3.jpg";
-import bg4 from "../assets/images/background_4.jpg";
-import bg5 from "../assets/images/background_5.jpg";
+import BACKGROUND_LIST from "../assets/images";
 import { Wallpaper, WallpaperResponse } from "../interfaces";
 
 const PER_PAGE = 3; // retrieves 3 wallpaper and choose one of them
 const ORIENTATION = "portrait";
-const BACKGROUND_LIST = [bg1, bg2, bg3, bg4, bg5];
 
 type BackgroundQuery = {
   query: string;

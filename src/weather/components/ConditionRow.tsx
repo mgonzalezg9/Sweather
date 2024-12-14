@@ -45,8 +45,6 @@ const ConditionRow = ({
   );
 };
 
-export default ConditionRow;
-
 const styles = StyleSheet.create({
   container: {
     flexDirection: "row",
@@ -59,3 +57,5 @@ const styles = StyleSheet.create({
     marginLeft: 5,
   },
 });
+
+export default ConditionRow;

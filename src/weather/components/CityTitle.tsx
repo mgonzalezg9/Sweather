@@ -10,7 +10,7 @@ interface CityTitleProps {
   countryCode: string;
 }
 
-const CityTitle: React.FC<CityTitleProps> = ({ city, countryCode }) => {
+const CityTitle = ({ city, countryCode }: CityTitleProps) => {
   let regionName = "-";
   if (countryCode) {
     regionName = i18n.locale.includes("es")
@@ -33,8 +33,6 @@ const CityTitle: React.FC<CityTitleProps> = ({ city, countryCode }) => {
   );
 };
 
-export default CityTitle;
-
 const styles = StyleSheet.create({
   cityText: {
     fontSize: 36,
@@ -53,3 +51,5 @@ const styles = StyleSheet.create({
     fontSize: 16,
   },
 });
+
+export default CityTitle;

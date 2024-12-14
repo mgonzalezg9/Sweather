@@ -43,8 +43,6 @@ const TimeWeather = ({
   );
 };
 
-export default TimeWeather;
-
 const styles = StyleSheet.create({
   container: {
     flexDirection: "column",
@@ -57,3 +55,5 @@ const styles = StyleSheet.create({
     fontSize: 16,
   },
 });
+
+export default TimeWeather;

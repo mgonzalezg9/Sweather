@@ -2,18 +2,19 @@ import Colors from "@/constants/Colors";
 import { SweatherErrorCode } from "@/error/error-logic";
 import { useDeviceLocales } from "@/hooks";
 import useWallpaper from "@/wallpaper/hooks/useWallpaper";
-import useWeatherForecast, {
-  LocationQuery,
-} from "@/weather/hooks/useWeatherForecast";
+import {
+  UseWeatherAndForecastProps,
+  useWeatherForecast,
+} from "@/weather/hooks";
 import { useNavigation } from "@react-navigation/native";
 import React, { useEffect, useState } from "react";
 import { ActivityIndicator, StyleSheet, View } from "react-native";
 import ErrorSection from "./ErrorSection";
 import SearchSection from "./SearchSection";
 
-const LocationRequestBody: React.FC = () => {
+const LocationRequestBody = () => {
   const navigation = useNavigation();
-  const [geoData, setGeoData] = useState<Omit<LocationQuery, "device">>(
+  const [geoData, setGeoData] = useState<Omit<UseWeatherAndForecastProps, "device">>(
     {} as never
   );
   const [locationDenied, setLocationDenied] = useState(false);
