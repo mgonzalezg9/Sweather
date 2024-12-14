@@ -1,7 +1,7 @@
+import i18n from "@/i18n";
 import { useCalendars, useLocales } from "expo-localization";
-import i18n from "../";
 
-export default function useDeviceLocales() {
+const useDeviceLocales = () => {
   const [{ timeZone }] = useCalendars();
   const [{ languageCode }] = useLocales();
 
@@ -10,3 +10,5 @@ export default function useDeviceLocales() {
     timeZone: timeZone ?? "UTC",
   };
 }
+
+export default useDeviceLocales;

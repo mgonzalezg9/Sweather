@@ -3,7 +3,7 @@ import MaterialIcons from "@expo/vector-icons/MaterialIcons";
 import * as React from "react";
 import { useThemeColor } from "../Themed";
 
-const Search = ({ size, darkColor, lightColor, ...props }: Icon) => {
+const SearchIcon = ({ size, darkColor, lightColor, ...props }: Icon) => {
   const colorName = useThemeColor(
     { light: lightColor, dark: darkColor },
     "text"
@@ -14,4 +14,4 @@ const Search = ({ size, darkColor, lightColor, ...props }: Icon) => {
   );
 };
 
-export default Search;
+export default SearchIcon;

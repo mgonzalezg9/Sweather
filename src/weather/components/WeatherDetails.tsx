@@ -1,4 +1,4 @@
-import { Text } from "@/components/text/Text";
+import { Text } from "@/components";
 import React from "react";
 import { View as DefaultView, StyleSheet } from "react-native";
 import { Weather } from "../interfaces";

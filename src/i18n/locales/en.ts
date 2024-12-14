@@ -1,4 +1,4 @@
-import { SweatherLocale } from "./types";
+import { SweatherLocale } from "@/interfaces";
 
 const en: SweatherLocale = {
   appTitle: "Sweather",

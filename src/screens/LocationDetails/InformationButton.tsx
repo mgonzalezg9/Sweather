@@ -1,4 +1,4 @@
-import { Info } from "@/components/icons/Info";
+import { InfoIcon } from "@/components";
 import { StyleProp, TouchableOpacity, ViewStyle } from "react-native";
 
 const INFO_BUTTON_SIZE = 40;
@@ -13,6 +13,6 @@ export const InformationButton = ({
   style,
 }: InformationButtonProps) => (
   <TouchableOpacity onPress={onClick} style={style}>
-    <Info size={INFO_BUTTON_SIZE} />
+    <InfoIcon size={INFO_BUTTON_SIZE} />
   </TouchableOpacity>
 );

@@ -1,4 +1,4 @@
-import { SweatherLocale } from "@/i18n/locales/types";
+import { SweatherLocale } from "@/interfaces";
 
 export enum SweatherErrorCode {
     USER_LOCATION_DENIED = 'USER_LOCATION_DENIED',

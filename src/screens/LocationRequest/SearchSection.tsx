@@ -1,10 +1,9 @@
+import { Text, TextInput } from "@/components";
 import SquareButton from "@/components/buttons/SquareButton";
-import LocationPin from "@/components/icons/LocationPin";
-import Search from "@/components/icons/Search";
-import { TextInput } from "@/components/input/TextInput";
-import { Text } from "@/components/text/Text";
+import LocationPinIcon from "@/components/icons/LocationPinIcon";
+import SearchIcon from "@/components/icons/SearchIcon";
 import Colors from "@/constants/Colors";
-import { useUserCoordinates } from "@/hooks/useUserCoordinates";
+import { useUserCoordinates } from "@/hooks";
 import i18n from "@/i18n";
 import { useState } from "react";
 import { StyleSheet, View } from "react-native";
@@ -63,13 +62,13 @@ const SearchSection = ({ onSearch, onLocationDeny }: SearchSection) => {
           loading={isLoadingCoordinates}
         >
           {location || exactCoordinates ? (
-            <Search
+            <SearchIcon
               size={SEARCH_BUTTON_ICON_SIZE}
               lightColor={Colors.palette.white}
               darkColor={Colors.palette.black}
             />
           ) : (
-            <LocationPin
+            <LocationPinIcon
               size={SEARCH_BUTTON_ICON_SIZE}
               lightColor={Colors.palette.white}
               darkColor={Colors.palette.black}

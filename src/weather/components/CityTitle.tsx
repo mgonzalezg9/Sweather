@@ -1,5 +1,4 @@
-import LocationPin from "@/components/icons/LocationPin";
-import { Text } from "@/components/text/Text";
+import { LocationPinIcon, Text } from "@/components";
 import i18n from "@/i18n";
 import { countries } from "country-data";
 import { getCountry } from "country-list-spanish";
@@ -25,7 +24,7 @@ const CityTitle: React.FC<CityTitleProps> = ({ city, countryCode }) => {
         {city}
       </Text>
       <DefaultView style={styles.countryContainer}>
-        <LocationPin style={styles.locationPin} size={32} />
+        <LocationPinIcon style={styles.locationPin} size={32} />
         <Text style={styles.countryText} numberOfLines={1}>
           {regionName}
         </Text>

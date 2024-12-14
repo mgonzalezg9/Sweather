@@ -1,5 +1,5 @@
 import AppLogo from "@/assets/images/banner.png";
-import { Text } from "@/components/text/Text";
+import { Text } from "@/components";
 import i18n from "@/i18n";
 import {
   Image,

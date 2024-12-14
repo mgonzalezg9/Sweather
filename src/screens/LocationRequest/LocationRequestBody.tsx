@@ -1,6 +1,6 @@
 import Colors from "@/constants/Colors";
 import { SweatherErrorCode } from "@/error/error-logic";
-import useDeviceLocales from "@/i18n/hooks/useDeviceLocales";
+import { useDeviceLocales } from "@/hooks";
 import useWallpaper from "@/wallpaper/hooks/useWallpaper";
 import useWeatherForecast, {
   LocationQuery,

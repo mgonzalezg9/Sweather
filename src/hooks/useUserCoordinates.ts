@@ -5,7 +5,7 @@ interface UseUserCoordinatesProps {
   onCoordinatesDeny?: () => void;
 }
 
-export const useUserCoordinates = ({
+ const useUserCoordinates = ({
   onCoordinatesDeny,
 }: UseUserCoordinatesProps) => {
   const [loading, setLoading] = useState(false);
@@ -37,3 +37,5 @@ export const useUserCoordinates = ({
     loading,
   };
 };
+
+export default useUserCoordinates;

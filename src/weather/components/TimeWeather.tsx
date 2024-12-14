@@ -1,5 +1,5 @@
-import { Text } from "@/components/text/Text";
-import useDeviceLocales from "@/i18n/hooks/useDeviceLocales";
+import { Text } from "@/components";
+import { useDeviceLocales } from "@/hooks";
 import React from "react";
 import { View as DefaultView, StyleSheet } from "react-native";
 import { Weather } from "../interfaces";
