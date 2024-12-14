@@ -7,10 +7,6 @@
     "icon": "./src/assets/images/icon.png",
     "scheme": "myapp",
     "userInterfaceStyle": "automatic",
-    "splash": {
-      "image": "./src/assets/images/splash.png",
-      "resizeMode": "contain"
-    },
     "updates": {
       "fallbackToCacheTimeout": 0
     },
