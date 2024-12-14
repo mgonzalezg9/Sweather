@@ -1,4 +1,4 @@
-import { Text } from "@/components/text/Text";
+import { Text } from "@/components";
 import React from "react";
 import { View as DefaultView, StyleSheet } from "react-native";
 import { Weather } from "../interfaces";
@@ -41,8 +41,6 @@ const WeatherDetails = ({
   );
 };
 
-export default WeatherDetails;
-
 const styles = StyleSheet.create({
   container: {
     flexDirection: "row",
@@ -56,3 +54,5 @@ const styles = StyleSheet.create({
     marginTop: 25,
   },
 });
+
+export default WeatherDetails;

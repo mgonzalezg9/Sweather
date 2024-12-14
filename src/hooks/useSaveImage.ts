@@ -8,7 +8,7 @@ type UseSaveImageProps = {
   albumName: string;
 };
 
-export const useSaveImage = (props: UseSaveImageProps) => {
+const useSaveImage = (props: UseSaveImageProps) => {
   // PROPS
   const { imageURL, fileName, albumName } = props;
 
@@ -58,3 +58,5 @@ export const useSaveImage = (props: UseSaveImageProps) => {
     save,
   };
 };
+
+export default useSaveImage;

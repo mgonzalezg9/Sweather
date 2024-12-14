@@ -1,5 +1,4 @@
-import { Text } from "@/components/text/Text";
-import { View } from "@/components/view/View";
+import { Text, View } from "@/components";
 import { RootStackScreenProps } from "@/navigation/types.d";
 import { Pressable, StyleSheet } from "react-native";
 

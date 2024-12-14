@@ -1,4 +1,4 @@
-import { Text } from "@/components/text/Text";
+import { Text } from "@/components";
 import {
   SWEATHER_ERROR_MESSAGE_MAP,
   SweatherErrorCode,

@@ -3,10 +3,7 @@
  * https://reactnavigation.org/docs/getting-started
  *
  */
-import LocationDetailsScreen from "@/screens/LocationDetails";
-import LocationRequestScreen from "@/screens/LocationRequest";
-import NotFoundScreen from "@/screens/NotFoundScreen";
-import WallpaperInfo from "@/screens/WallpaperInfo";
+import { LocationDetailsScreen, LocationRequestScreen, NotFoundScreen, WallpaperInfo } from "@/screens";
 import {
   DarkTheme,
   DefaultTheme,

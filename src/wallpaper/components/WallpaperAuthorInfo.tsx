@@ -1,10 +1,6 @@
-import SquareButton from "@/components/buttons/SquareButton";
-import { DownloadArrow } from "@/components/icons/DownloadArrow";
-import { Globe } from "@/components/icons/Globe";
-import { Text } from "@/components/text/Text";
-import { CurvedThemedView } from "@/components/view/CurvedThemeView";
+import { CurvedThemedView, DownloadArrowIcon, GlobeIcon, SquareButton, Text } from "@/components";
 import Colors from "@/constants/Colors";
-import { useSaveImage } from "@/hooks/useSaveImage";
+import { useSaveImage } from "@/hooks";
 import i18n from "@/i18n";
 import React, { useEffect } from "react";
 import {
@@ -77,7 +73,7 @@ export const WallpaperAuthorInfo = (props: WallpaperAuthorInfoProps) => {
       <View style={styles.wallpaperActions}>
         <SquareButton style={styles.button} loading={isSaving} onClick={save}>
           <View style={styles.buttonContent}>
-            <DownloadArrow size={35} lightColor={Colors.palette.white} />
+            <DownloadArrowIcon size={35} lightColor={Colors.palette.white} />
             <Text lightColor={Colors.palette.white}>
               {i18n.t("downloadWallpaper")}
             </Text>
@@ -92,7 +88,7 @@ export const WallpaperAuthorInfo = (props: WallpaperAuthorInfoProps) => {
           isSecondary
         >
           <View style={styles.buttonContent}>
-            <Globe size={35} lightColor={Colors.palette.white} />
+            <GlobeIcon size={35} lightColor={Colors.palette.white} />
             <Text lightColor={Colors.palette.white}>
               {i18n.t("viewInUnsplash")}
             </Text>

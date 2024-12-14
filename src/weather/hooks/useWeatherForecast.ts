@@ -6,7 +6,7 @@ import {
 import { useEffect, useState } from "react";
 import { Coordinates, Forecast, Weather } from "../interfaces";
 
-export type LocationQuery = {
+export type UseWeatherAndForecastProps = {
   location: string;
   coordinates: Coordinates;
   device: {
@@ -18,7 +18,7 @@ const getWeatherAndForecast = async ({
   location,
   coordinates,
   device,
-}: LocationQuery) => {
+}: UseWeatherAndForecastProps) => {
   const [weather, forecast] = await Promise.all([
     getCurrentWeather({
       location,
@@ -39,7 +39,7 @@ export default function useWeatherForecast({
   location,
   coordinates,
   device: { locale },
-}: LocationQuery) {
+}: UseWeatherAndForecastProps) {
   const [weather, setWeather] = useState<Weather>();
   const [forecast, setForecast] = useState<Forecast>();
   const [isLoading, setLoading] = useState<boolean>(false);

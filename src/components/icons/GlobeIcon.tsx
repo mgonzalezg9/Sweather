@@ -3,7 +3,7 @@ import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
 import React from "react";
 import { useThemeColor } from "../Themed";
 
-export const ArrowLeft = ({ size, darkColor, lightColor, ...props }: Icon) => {
+const GlobeIcon = ({ size, darkColor, lightColor, ...props }: Icon) => {
   const colorName = useThemeColor(
     { light: lightColor, dark: darkColor },
     "text"
@@ -11,10 +11,12 @@ export const ArrowLeft = ({ size, darkColor, lightColor, ...props }: Icon) => {
 
   return (
     <MaterialCommunityIcons
-      name="arrow-left"
+      name="earth"
       size={size}
       color={colorName}
       {...props}
     />
   );
 };
+
+export default GlobeIcon;

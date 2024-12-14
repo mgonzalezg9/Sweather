@@ -1,18 +1,10 @@
 import Colors from "@/constants/Colors";
-import { ICON_DEFAULT_PROPS } from "@/constants/Icon";
+import ICON_DEFAULT_PROPS from "@/constants/Icon";
 import { Icon } from "@/interfaces";
 import React from "react";
 import { Condition, Weather } from "../interfaces";
 import { hasDaylight } from "../utils/time";
-import Cloud from "./icons/Cloud";
-import Fog from "./icons/Fog";
-import Moon from "./icons/Moon";
-import Rain from "./icons/Rain";
-import Snow from "./icons/Snow";
-import Storm from "./icons/Storm";
-import Sun from "./icons/Sun";
-import Tornado from "./icons/Tornado";
-import Wind from "./icons/Wind";
+import { Cloud, Fog, Moon, Rain, Snow, Storm, Sun, Tornado, Wind } from "./icons";
 
 type ConditionIconProps = {
   condition: Weather["condition"];

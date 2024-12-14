@@ -28,10 +28,10 @@ const ForecastRow = ({ hours, sunrise, sunset }: Forecast) => {
   );
 };
 
-export default ForecastRow;
-
 const styles = StyleSheet.create({
   forecastRow: {
     paddingHorizontal: 10,
   },
 });
+
+export default ForecastRow;

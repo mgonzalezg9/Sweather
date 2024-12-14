@@ -1,8 +1,5 @@
-import { CurvedThemedView } from "@/components/view/CurvedThemeView";
-import { View as ThemedView } from "@/components/view/View";
-import CityTitle from "@/weather/components/CityTitle";
-import ForecastRow from "@/weather/components/ForecastRow";
-import WeatherDetails from "@/weather/components/WeatherDetails";
+import { CurvedThemedView, View as ThemedView } from "@/components";
+import { CityTitle, ForecastRow, WeatherDetails } from "@/weather/components";
 import { Forecast, Weather } from "@/weather/interfaces";
 import React from "react";
 import { StyleSheet, View } from "react-native";

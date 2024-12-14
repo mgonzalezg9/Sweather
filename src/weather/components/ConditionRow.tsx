@@ -1,5 +1,5 @@
-import { Text } from "@/components/text/Text";
-import { ICON_DEFAULT_PROPS } from "@/constants/Icon";
+import { Text } from "@/components";
+import ICON_DEFAULT_PROPS from "@/constants/Icon";
 import i18n from "@/i18n";
 import { Icon } from "@/interfaces";
 import React from "react";
@@ -45,8 +45,6 @@ const ConditionRow = ({
   );
 };
 
-export default ConditionRow;
-
 const styles = StyleSheet.create({
   container: {
     flexDirection: "row",
@@ -59,3 +57,5 @@ const styles = StyleSheet.create({
     marginLeft: 5,
   },
 });
+
+export default ConditionRow;

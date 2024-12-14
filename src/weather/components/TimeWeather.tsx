@@ -1,5 +1,5 @@
-import { Text } from "@/components/text/Text";
-import useDeviceLocales from "@/i18n/hooks/useDeviceLocales";
+import { Text } from "@/components";
+import { useDeviceLocales } from "@/hooks";
 import React from "react";
 import { View as DefaultView, StyleSheet } from "react-native";
 import { Weather } from "../interfaces";
@@ -43,8 +43,6 @@ const TimeWeather = ({
   );
 };
 
-export default TimeWeather;
-
 const styles = StyleSheet.create({
   container: {
     flexDirection: "column",
@@ -57,3 +55,5 @@ const styles = StyleSheet.create({
     fontSize: 16,
   },
 });
+
+export default TimeWeather;

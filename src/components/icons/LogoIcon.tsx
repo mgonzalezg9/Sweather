@@ -1,8 +1,8 @@
 import * as React from "react";
-import Svg, { G, Path, Ellipse } from "react-native-svg";
+import Svg, { Ellipse, G, Path } from "react-native-svg";
 
 // TODO: This library does not have support for SVG filters.
-const Logo = ({ width = 169, height = 134, color = "none" }) => (
+const LogoIcon = ({ width = 169, height = 134, color = "none" }) => (
   <Svg width={width} height={height} viewBox="0 0 169 134" fill={color}>
     <Path d="M120.309 131H36.869V60.3431L120.309 52.4923V131Z" fill="#F9F9F9" />
     <G>
@@ -35,4 +35,4 @@ const Logo = ({ width = 169, height = 134, color = "none" }) => (
   </Svg>
 );
 
-export default Logo;
+export default LogoIcon;
