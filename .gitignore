@@ -20,3 +20,6 @@ coverage/
 # Mobile builds
 android
 ios
+
+# Eas submit key for submitting to store
+play-console-account-key.json
