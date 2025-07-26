@@ -1,4 +1,10 @@
-import { CurvedThemedView, DownloadArrowIcon, GlobeIcon, SquareButton, Text } from "@/components";
+import {
+  CurvedThemedView,
+  DownloadArrowIcon,
+  GlobeIcon,
+  SquareButton,
+  Text,
+} from "@/components";
 import Colors from "@/constants/Colors";
 import { useSaveImage } from "@/hooks";
 import i18n from "@/i18n";
@@ -132,6 +138,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     gap: 16,
+    marginBottom: 25,
   },
   button: {
     width: 150,
