@@ -2,12 +2,7 @@
 
 // Module declaration for country-list-spanish
 declare module 'country-list-spanish' {
-  interface Country {
-    name: string;
-    code: string;
-  }
-  export function getCountry(code: string): Country | null;
-  export function getCountries(): Country[];
+  export function getCountry(code: string): string;
 }
 
 // Image file declarations
