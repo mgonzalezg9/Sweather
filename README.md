@@ -165,6 +165,24 @@ eas submit --platform android
 
 A: Just use `yarn expo install --check`
 
+### Q: Why expo-doctor skips `country-data` and `country-list-spanish`?
+
+A: These packages are not listed in the React Native Directory but are safe and functional for our use case.
+
+The `expo-doctor` configuration in `package.json` is set to skip warnings for unknown packages:
+
+```json
+{
+  "expo": {
+    "doctor": {
+      "reactNativeDirectoryCheck": {
+        "listUnknownPackages": false
+      }
+    }
+  }
+}
+```
+
 ## Further information
 
 To learn more about React and React native, you can check the docs at the [Technologies](#technologies) section.
